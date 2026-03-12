@@ -13,6 +13,7 @@ const px = (val: number, base: number) => `${(val / base * 100).toFixed(4)}%`
 // Button 1 — Zero-Emission Mode (active/blue):  x=591  y=4791  w=736  h=109  rx=28
 // Button 2 — Alarm Listing Mode (inactive):     x=1648 y=4791  w=736  h=109  rx=28
 // Screen placeholder area:                      x=72   y=4944  w=2831 h=1602
+// Diagram5 overlay (right side):                x=1354 y=7232  w=1395 h=1045
 // ─────────────────────────────────────────────────────────────────────────────
 
 const BTN = { y: 4791, w: 736, h: 109, rx: 28 }
@@ -20,6 +21,36 @@ const BTN1_X = 591
 const BTN2_X = 1648
 const SCREEN = { x: 72, y: 4944, w: 2831, h: 1602 }
 
+// Arrow button: diameter in SVG px, centered at given xCenter, at screen vertical midpoint
+const AB = 96
+const SC_MID_Y = SCREEN.y + SCREEN.h / 2  // 5745
+
+// Alarm mode arrow x positions (all in SVG px)
+// tablet col ends ≈2109; phone col: 2217–2849
+const PAD_RIGHT_X    = 2040   // tablet right arrow (moved left of column edge)
+const PHONE_LEFT_X   = 2200   // phone left arrow
+const PHONE_RIGHT_X  = 2820   // phone right arrow (moved left of screen edge)
+
+function arrowBtnStyle(xCenter: number): React.CSSProperties {
+  return {
+    position: 'absolute',
+    left: px(xCenter - AB / 2, SVG_W),
+    top: px(SC_MID_Y - AB / 2, SVG_H),
+    width: px(AB, SVG_W),
+    height: px(AB, SVG_H),
+    borderRadius: '50%',
+    border: '1.5px solid #B7C6D7',
+    background: 'white',
+    color: '#1E4F84',
+    fontSize: 'clamp(18px, 2vw, 36px)',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 2px 12px rgba(0,0,0,0.18)',
+    zIndex: 20,
+  }
+}
 
 const energySlides = [
   '/svg/Project1/Energy1.png',
@@ -47,51 +78,17 @@ function wrap(i: number, n: number) {
 
 type Mode = 'energy' | 'alarm'
 
-function Pager({
-  index,
-  total,
-  onPrev,
-  onNext,
-}: {
-  index: number
-  total: number
-  onPrev: () => void
-  onNext: () => void
-}) {
+// Dot indicators — shown just below the screen, centered
+function Dots({ index, total }: { index: number; total: number }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '3%', flexShrink: 0 }}>
-      <button
-        type="button"
-        onClick={onPrev}
-        aria-label="Previous"
-        style={{
-          width: '2.4em', height: '2.4em', borderRadius: '50%',
-          border: '1.5px solid #B7C6D7', background: 'white', color: '#1E4F84',
-          fontSize: 'clamp(14px, 1.6vw, 28px)', cursor: 'pointer',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}
-      >‹</button>
-
-      <div style={{ display: 'flex', gap: '0.5em' }}>
-        {Array.from({ length: total }).map((_, i) => (
-          <span key={i} style={{
-            width: '0.55em', height: '0.55em', borderRadius: '50%', display: 'inline-block',
-            background: i === index ? '#1E4F84' : '#C7D5E3',
-          }} />
-        ))}
-      </div>
-
-      <button
-        type="button"
-        onClick={onNext}
-        aria-label="Next"
-        style={{
-          width: '2.4em', height: '2.4em', borderRadius: '50%',
-          border: '1.5px solid #B7C6D7', background: 'white', color: '#1E4F84',
-          fontSize: 'clamp(14px, 1.6vw, 28px)', cursor: 'pointer',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}
-      >›</button>
+    <div style={{ display: 'flex', gap: '0.45em', alignItems: 'center', justifyContent: 'center' }}>
+      {Array.from({ length: total }).map((_, i) => (
+        <span key={i} style={{
+          width: '0.5em', height: '0.5em', borderRadius: '50%', display: 'inline-block',
+          background: i === index ? '#1E4F84' : '#C7D5E3',
+          transition: 'background 0.2s',
+        }} />
+      ))}
     </div>
   )
 }
@@ -101,6 +98,9 @@ export function Project1Detail() {
   const [energyIdx, setEnergyIdx] = useState(0)
   const [padIdx, setPadIdx] = useState(0)
   const [phoneIdx, setPhoneIdx] = useState(0)
+
+  const handleEnergyPrev = () => setEnergyIdx(i => wrap(i - 1, energySlides.length))
+  const handleEnergyNext = () => setEnergyIdx(i => wrap(i + 1, energySlides.length))
 
   // Common button style
   const btnStyle = (active: boolean): React.CSSProperties => ({
@@ -121,6 +121,19 @@ export function Project1Detail() {
     justifyContent: 'center',
     transition: 'background 0.25s, color 0.25s',
   })
+
+  // Dot bar below screen — centered horizontally over screen, at a fixed y below screen bottom
+  const dotsBarStyle: React.CSSProperties = {
+    position: 'absolute',
+    left: px(SCREEN.x, SVG_W),
+    top: px(SCREEN.y + SCREEN.h + 28, SVG_H),
+    width: px(SCREEN.w, SVG_W),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 'clamp(10px, 1.2vw, 20px)',
+    zIndex: 15,
+  }
 
   return (
     <div style={{ position: 'relative', width: '100%', aspectRatio: `${SVG_W} / ${SVG_H}` }}>
@@ -144,7 +157,7 @@ export function Project1Detail() {
         Alarm Listing Mode
       </button>
 
-      {/* ── Screen area — always opaque, cross-fade content layers inside ── */}
+      {/* ── Screen area ── */}
       <div style={{
         position: 'absolute',
         left: px(SCREEN.x, SVG_W),
@@ -161,71 +174,98 @@ export function Project1Detail() {
           opacity: mode === 'energy' ? 1 : 0,
           transition: 'opacity 0.3s ease',
           pointerEvents: mode === 'energy' ? 'auto' : 'none',
-          display: 'flex', flexDirection: 'column',
-          padding: '2% 2.1% 1.5%', boxSizing: 'border-box',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          padding: '2% 2.1%', boxSizing: 'border-box',
         }}>
-          <div style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={energySlides[energyIdx]}
-              alt={`Energy UI page ${energyIdx + 1}`}
-              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
-            />
-          </div>
-          <Pager
-            index={energyIdx}
-            total={energySlides.length}
-            onPrev={() => setEnergyIdx(i => wrap(i - 1, energySlides.length))}
-            onNext={() => setEnergyIdx(i => wrap(i + 1, energySlides.length))}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={energySlides[energyIdx]}
+            alt={`Energy UI page ${energyIdx + 1}`}
+            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
           />
         </div>
 
-        {/* Alarm layer — phone col ~2.5× wider than before (58% vs 23%) */}
+        {/* Alarm layer */}
         <div style={{
           position: 'absolute', inset: 0,
           opacity: mode === 'alarm' ? 1 : 0,
           transition: 'opacity 0.3s ease',
           pointerEvents: mode === 'alarm' ? 'auto' : 'none',
           display: 'grid', gridTemplateColumns: '72.9% 23.3%', gap: '4%',
-          padding: '2% 2.1% 1.5%', boxSizing: 'border-box',
+          padding: '2% 2.1%', boxSizing: 'border-box',
         }}>
           {/* Tablet */}
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-            <div style={{ flex: 1, minHeight: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={alarmPadSlides[padIdx]}
-                alt={`Alarm pad UI page ${padIdx + 1}`}
-                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
-              />
-            </div>
-            <Pager
-              index={padIdx}
-              total={alarmPadSlides.length}
-              onPrev={() => setPadIdx(i => wrap(i - 1, alarmPadSlides.length))}
-              onNext={() => setPadIdx(i => wrap(i + 1, alarmPadSlides.length))}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={alarmPadSlides[padIdx]}
+              alt={`Alarm pad UI page ${padIdx + 1}`}
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
             />
           </div>
 
-          {/* Phone — 2× zoom via scale(2), overflow:hidden clips to column bounds */}
-          <div style={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
-            <div style={{ flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={alarmPhoneSlides[phoneIdx]}
-                alt={`Alarm phone UI page ${phoneIdx + 1}`}
-                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block', transform: 'scale(3.3)', transformOrigin: 'center center' }}
-              />
-            </div>
-            <Pager
-              index={phoneIdx}
-              total={alarmPhoneSlides.length}
-              onPrev={() => setPhoneIdx(i => wrap(i - 1, alarmPhoneSlides.length))}
-              onNext={() => setPhoneIdx(i => wrap(i + 1, alarmPhoneSlides.length))}
+          {/* Phone — image only, arrows are outside the screen div below */}
+          <div style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={alarmPhoneSlides[phoneIdx]}
+              alt={`Alarm phone UI page ${phoneIdx + 1}`}
+              style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block', transform: 'scale(3.3)', transformOrigin: 'center center' }}
             />
           </div>
         </div>
 
+      </div>
+
+      {/* ── Energy mode: left + right arrows at screen edges ── */}
+      {mode === 'energy' && <>
+        <button type="button" onClick={handleEnergyPrev} aria-label="Previous"
+          style={arrowBtnStyle(SCREEN.x)}>‹</button>
+        <button type="button" onClick={handleEnergyNext} aria-label="Next"
+          style={arrowBtnStyle(SCREEN.x + SCREEN.w)}>›</button>
+      </>}
+
+      {/* ── Alarm mode: pad arrows + phone arrows, all same size ── */}
+      {mode === 'alarm' && <>
+        {/* Pad prev */}
+        <button type="button" onClick={() => setPadIdx(i => wrap(i - 1, alarmPadSlides.length))}
+          aria-label="Pad previous" style={arrowBtnStyle(SCREEN.x)}>‹</button>
+        {/* Pad next */}
+        <button type="button" onClick={() => setPadIdx(i => wrap(i + 1, alarmPadSlides.length))}
+          aria-label="Pad next" style={arrowBtnStyle(PAD_RIGHT_X)}>›</button>
+        {/* Phone prev */}
+        <button type="button" onClick={() => setPhoneIdx(i => wrap(i - 1, alarmPhoneSlides.length))}
+          aria-label="Phone previous" style={arrowBtnStyle(PHONE_LEFT_X)}>‹</button>
+        {/* Phone next */}
+        <button type="button" onClick={() => setPhoneIdx(i => wrap(i + 1, alarmPhoneSlides.length))}
+          aria-label="Phone next" style={arrowBtnStyle(PHONE_RIGHT_X)}>›</button>
+      </>}
+
+      {/* ── Dot indicators below screen ── */}
+      <div style={dotsBarStyle}>
+        {mode === 'energy'
+          ? <Dots index={energyIdx} total={energySlides.length} />
+          : <Dots index={padIdx} total={alarmPadSlides.length} />}
+      </div>
+
+      {/* ── Diagram5 overlay — white bg covers SVG's baked-in content at this position ── */}
+      <div style={{
+        position: 'absolute',
+        left: px(1354, SVG_W),
+        top: px(7232, SVG_H),
+        width: px(1395, SVG_W),
+        height: px(1045, SVG_H),
+        background: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/svg/Project1/Diagram5.png"
+          alt="Diagram 5"
+          style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
+        />
       </div>
     </div>
   )

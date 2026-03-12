@@ -104,7 +104,7 @@ export default async function ProjectPage({
           */}
           <div className="w-full h-[400px] rounded-xl bg-gradient-to-br from-[#f5f5f5] to-[#e8e8e8]
                           flex items-center justify-center text-[#bbb] text-[14px]">
-            Project content — 把你的设计 SVG 和图片放在这里
+            Project content — Coming Soon
           </div>
         </div>
         </main>
