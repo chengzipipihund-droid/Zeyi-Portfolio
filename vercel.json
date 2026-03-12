@@ -1,0 +1,3 @@
+{
+  "buildCommand": "[ -d Public ] && mv Public public; next build"
+}
