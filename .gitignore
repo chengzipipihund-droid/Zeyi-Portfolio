@@ -4,3 +4,7 @@ out/
 .env*.local
 *.tsbuildinfo
 next-env.d.ts
+
+# Large video files (served via Cloudinary CDN)
+Public/Project1/Video/
+public/Project1/Video/
