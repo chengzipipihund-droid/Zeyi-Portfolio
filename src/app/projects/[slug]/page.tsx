@@ -1,8 +1,20 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { notFound } from 'next/navigation'
 import { projects, getProjectBySlug } from '@/data/projects'
-import { ProjectHeader } from '@/components'
+import { ProjectHeader, Project1Header } from '@/components'
 import { Project1Detail } from '@/components/Project1Detail'
+
+// ssr:false — prevents SSR/client structural mismatch (hydration error)
+const Project1TitleVideo = dynamic(
+  () => import('@/components/Project1TitleVideo').then(m => ({ default: m.Project1TitleVideo })),
+  { ssr: false }
+)
+
+const Project1AdvisoryIndex = dynamic(
+  () => import('@/components/Project1AdvisoryIndex').then(m => ({ default: m.Project1AdvisoryIndex })),
+  { ssr: false }
+)
 
 // Generate static params for all projects
 export function generateStaticParams() {
@@ -21,13 +33,21 @@ export default async function ProjectPage({
 
   if (project.slug === 'beyond-visibility') {
     return (
-      <div className="w-screen min-h-screen p-5" style={{ background: project.themeColor ?? '#1661AB' }}>
-        <div className="flex flex-col overflow-hidden">
-          <ProjectHeader
-            title={project.name}
-            themeColor={project.themeColor ?? '#1661AB'}
-            logoPath={project.logoPath}
-          />
+      <div style={{ background: 'white', minHeight: '100vh', padding: '0 20px' }}>
+        <Project1Header />
+
+        {/* Video — 100px below header */}
+        <div style={{ marginTop: 100 }}>
+          <Project1TitleVideo />
+        </div>
+
+        {/* AdvisoryIndex — 50px below video, 100px before detail */}
+        <div style={{ marginTop: 50 }}>
+          <Project1AdvisoryIndex />
+        </div>
+
+        {/* Project1Detail (zero-emission / alarm) — 100px below AdvisoryIndex */}
+        <div id="project1-detail" style={{ marginTop: 100 }}>
           <Project1Detail />
         </div>
       </div>
@@ -94,14 +114,6 @@ export default async function ProjectPage({
             {project.description}
           </p>
 
-          {/*
-            ╔══════════════════════════════════════════════╗
-            ║  在这里放你的项目详情内容                        ║
-            ║  - 导入你的 SVG: <img src="/svg/xxx.svg" />   ║
-            ║  - 项目图片: <img src="/images/projects/..." />║
-            ║  - 或者用 Next.js Image 组件优化加载             ║
-            ╚══════════════════════════════════════════════╝
-          */}
           <div className="w-full h-[400px] rounded-xl bg-gradient-to-br from-[#f5f5f5] to-[#e8e8e8]
                           flex items-center justify-center text-[#bbb] text-[14px]">
             Project content — Coming Soon

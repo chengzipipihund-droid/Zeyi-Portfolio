@@ -1,5 +1,8 @@
 export { Header } from './Header'
 export { ProjectHeader } from './ProjectHeader'
+export { Project1Header } from './Project1Header'
+export { Project1TitleVideo } from './Project1TitleVideo'
+export { Project1AdvisoryIndex } from './Project1AdvisoryIndex'
 export { Pegboard } from './Pegboard'
 export { ProjectCard } from './ProjectCard'
 export { BioCard } from './BioCard'
