@@ -47,7 +47,7 @@ export function Project1AdvisoryIndex() {
   useEffect(() => {
     const onScroll = () => {
       if (!wrapRef.current) return
-      const { top, height } = wrapRef.current.getBoundingClientRect()
+      const { top } = wrapRef.current.getBoundingClientRect()
       // Fade starts after ~4 scroll ticks (≈400px) past the element top, over the next 400px
       const progress = Math.max(0, Math.min(1, (-top - 400) / 400))
       setFade(progress)
