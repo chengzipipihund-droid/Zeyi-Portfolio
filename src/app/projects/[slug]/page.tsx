@@ -37,17 +37,17 @@ export default async function ProjectPage({
         <Project1Header />
 
         {/* Video — 100px below header */}
-        <div style={{ marginTop: 100 }}>
+        <div style={{ marginTop: 'clamp(40px, 7vw, 100px)' }}>
           <Project1TitleVideo />
         </div>
 
         {/* AdvisoryIndex — 50px below video, 100px before detail */}
-        <div style={{ marginTop: 50 }}>
+        <div style={{ marginTop: 'clamp(20px, 3.5vw, 50px)' }}>
           <Project1AdvisoryIndex />
         </div>
 
         {/* Project1Detail (zero-emission / alarm) — 100px below AdvisoryIndex */}
-        <div id="project1-detail" style={{ marginTop: 100 }}>
+        <div id="project1-detail" style={{ marginTop: 'clamp(40px, 7vw, 100px)' }}>
           <Project1Detail />
         </div>
       </div>
