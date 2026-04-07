@@ -45,7 +45,7 @@ export const projects: Project[] = [
     id: 4,
     slug: 'atlas-of-unseen',
     name: 'Atlas of Unseen',
-    description: 'Cinematic visualization mapping invisible urban phenomena.',
+    description: 'Please turn on the volume when you watch it!',
     tags: ['cinematic-viz', 'information-design'],
     col: 1, row: 1,
   },

@@ -13,7 +13,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <footer style={{
+          width: '100%',
+          textAlign: 'center',
+          padding: '20px',
+          fontSize: '11px',
+          color: '#aaa',
+          letterSpacing: '0.04em',
+          fontWeight: 500,
+        }}>
+          © 2026 Zeyi Cheng. All rights reserved. Non-commercial use only.
+        </footer>
+      </body>
     </html>
   )
 }

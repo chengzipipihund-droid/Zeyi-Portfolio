@@ -1,5 +1,5 @@
-import { Header } from '@/components/Header'
-import { Pegboard } from '@/components/Pegboard'
+import { Header } from '@/components/shared/Header'
+import { Pegboard } from '@/components/home/Pegboard'
 
 export default function Home() {
   return (
