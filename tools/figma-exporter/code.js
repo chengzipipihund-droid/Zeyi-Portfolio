@@ -46,6 +46,9 @@ const CONFIG = {
     'Project Card', 'Detail Board', 'Tag/Skill', 'Nav/Tab', 'Toggle/Lang', 'Lamp/Status',
     'Plate/Nameplate', 'Badge/Edu', 'Object/Clipboard', 'Object/Note', 'Object', 'Board/Panel', 'Board/Hole',
   ],
+  // Spec components whose vector illustrations (pure-vector groups / vectors) and image fills are exported as assets
+  specArt: ['Detail Board'],
+  imageScale: 2,
   pngScale: 1,
 };
 
@@ -159,17 +162,38 @@ async function exportTextStyles() {
   }));
 }
 
+// Typography of a text layer that has no Pegboard text style (same shape as a text style; mixed text → first character).
+function textFont(node) {
+  const pick = (v, getter) => (v === figma.mixed ? node[getter](0, 1) : v);
+  const fontName = pick(node.fontName, 'getRangeFontName');
+  return {
+    fontFamily: fontName.family,
+    fontStyle: fontName.style,
+    fontWeight: fontWeight(fontName.style),
+    italic: /italic/i.test(fontName.style),
+    fontSize: pick(node.fontSize, 'getRangeFontSize'),
+    lineHeight: lineHeightCss(pick(node.lineHeight, 'getRangeLineHeight')),
+    letterSpacing: letterSpacingCss(pick(node.letterSpacing, 'getRangeLetterSpacing')),
+    textCase: pick(node.textCase, 'getRangeTextCase'),
+    textDecoration: pick(node.textDecoration, 'getRangeTextDecoration'),
+  };
+}
+
+function effectsCss(effects) {
+  const shadows = effects.filter((e) => e.visible !== false && (e.type === 'DROP_SHADOW' || e.type === 'INNER_SHADOW'));
+  return {
+    boxShadow: shadows.map((e) => `${e.type === 'INNER_SHADOW' ? 'inset ' : ''}${round(e.offset.x)}px ${round(e.offset.y)}px ${round(e.radius)}px ${round(e.spread || 0)}px ${colorCss(e.color)}`).join(', '),
+    dropShadow: shadows.filter((e) => e.type === 'DROP_SHADOW').map((e) => `drop-shadow(${round(e.offset.x)}px ${round(e.offset.y)}px ${round(e.radius / 2)}px ${colorCss(e.color)})`).join(' '),
+  };
+}
+
 async function exportEffectStyles() {
   const styles = (await figma.getLocalEffectStylesAsync()).filter((s) => s.name.startsWith(CONFIG.stylePrefix));
-  return styles.map((s) => {
-    const shadows = s.effects.filter((e) => e.visible !== false && (e.type === 'DROP_SHADOW' || e.type === 'INNER_SHADOW'));
-    return {
-      name: s.name,
-      css: cssVar(s.name.slice(CONFIG.stylePrefix.length).replace(/·/g, ' ')),
-      boxShadow: shadows.map((e) => `${e.type === 'INNER_SHADOW' ? 'inset ' : ''}${round(e.offset.x)}px ${round(e.offset.y)}px ${round(e.radius)}px ${round(e.spread || 0)}px ${colorCss(e.color)}`).join(', '),
-      dropShadow: shadows.filter((e) => e.type === 'DROP_SHADOW').map((e) => `drop-shadow(${round(e.offset.x)}px ${round(e.offset.y)}px ${round(e.radius / 2)}px ${colorCss(e.color)})`).join(' '),
-    };
-  });
+  return styles.map((s) => ({
+    name: s.name,
+    css: cssVar(s.name.slice(CONFIG.stylePrefix.length).replace(/·/g, ' ')),
+    ...effectsCss(s.effects),
+  }));
 }
 
 async function styleName(id) {
@@ -196,6 +220,7 @@ function layoutInfo(n) {
     mode: n.layoutMode, gap: n.itemSpacing, padding: [n.paddingTop, n.paddingRight, n.paddingBottom, n.paddingLeft],
     primaryAlign: n.primaryAxisAlignItems, counterAlign: n.counterAxisAlignItems,
     primarySizing: n.primaryAxisSizingMode, counterSizing: n.counterAxisSizingMode, wrap: n.layoutWrap, clips: n.clipsContent,
+    strokesInLayout: n.strokesIncludedInLayout, counterGap: n.layoutWrap === 'WRAP' ? n.counterAxisSpacing : undefined,
   };
 }
 
@@ -208,21 +233,31 @@ async function describe(node, origin, depth, opts = {}) {
   if (bb) { d.cx = round(bb.x - origin.x + bb.width / 2); d.cy = round(bb.y - origin.y + bb.height / 2); }
   if (node.rotation) d.rotation = round(node.rotation, 2);
   if (node.visible === false) d.visible = false;
+  // How the node sits in an auto-layout parent: absolute (ignores the flow) and FIXED / HUG / FILL per axis.
+  if (node.layoutPositioning === 'ABSOLUTE') d.absolute = true;
+  if ('layoutSizingHorizontal' in node && node.parent && 'layoutMode' in node.parent && node.parent.layoutMode !== 'NONE') {
+    d.sizing = [node.layoutSizingHorizontal, node.layoutSizingVertical];
+  }
   if ('opacity' in node && node.opacity < 1) d.opacity = round(node.opacity, 3);
   if ('fills' in node) { const f = await paintsCss(node.fills); if (f === 'mixed' || f.length) d.fills = f; }
   if ('strokes' in node && node.strokes.length) {
     d.strokes = await paintsCss(node.strokes);
     d.strokeWeight = node.strokeWeight === figma.mixed ? 'mixed' : node.strokeWeight;
+    if (d.strokeWeight === 'mixed' && 'strokeTopWeight' in node) d.strokeSides = [node.strokeTopWeight, node.strokeRightWeight, node.strokeBottomWeight, node.strokeLeftWeight];
     if (node.dashPattern && node.dashPattern.length) d.dash = node.dashPattern;
     d.strokeAlign = node.strokeAlign;
   }
   if ('cornerRadius' in node) d.radius = node.cornerRadius === figma.mixed ? [node.topLeftRadius, node.topRightRadius, node.bottomRightRadius, node.bottomLeftRadius] : node.cornerRadius || undefined;
-  if ('effects' in node && node.effects.length) d.effect = (await styleName(node.effectStyleId)) || 'custom';
+  if ('effects' in node && node.effects.length) {
+    d.effect = (await styleName(node.effectStyleId)) || 'custom';
+    if (d.effect === 'custom') d.effectCss = effectsCss(node.effects); // effect without a Pegboard style (e.g. the lamp glow)
+  }
   if (node.type === 'TEXT') {
     d.text = node.characters;
     d.textStyle = await styleName(node.textStyleId);
     d.align = node.textAlignHorizontal;
     d.autoResize = node.textAutoResize;
+    if (!d.textStyle && node.characters.length) d.font = textFont(node);
   }
   if (node.type === 'INSTANCE') {
     const main = await node.getMainComponentAsync();
@@ -244,11 +279,20 @@ async function describe(node, origin, depth, opts = {}) {
     if (opts.expandInstances && depth < 10) d.children = await kids(node, origin, depth, opts);
     return d;
   }
+  if (opts.art && isVectorArt(node)) {
+    d.asset = opts.art.add(node, 'svg');
+    d.artBox = relBox(node, node.parent.absoluteBoundingBox); // rendered box (rotation baked into the SVG)
+    return d;
+  }
+  if (opts.art && 'fills' in node && Array.isArray(node.fills) && node.fills.some((p) => p.type === 'IMAGE' && p.visible !== false)) {
+    d.image = opts.art.add(node, 'png');
+  }
   if ('children' in node) {
     d.layout = layoutInfo(node);
     const modes = await explicitModes(node);
     if (modes) d.modes = modes;
-    if (opts.collapseArt && /^art$/i.test(node.name)) { d.note = 'vector art — use the exported SVG'; return d; }
+    // "Art" frames of pure vectors are collapsed; an Art frame holding an icon instance keeps it (size + which icon).
+    if (opts.collapseArt && /^art$/i.test(node.name) && isVectorArt(node)) { d.note = 'vector art — use the exported SVG'; return d; }
     if (depth < 10) d.children = await kids(node, origin, depth, opts);
   }
   return d;
@@ -259,27 +303,72 @@ async function kids(node, origin, depth, opts) {
   return out;
 }
 
-async function exportSpecs(page) {
+const VECTOR_TYPES = ['VECTOR', 'BOOLEAN_OPERATION', 'STAR', 'POLYGON', 'LINE'];
+/** A vector, or a group/frame made only of shapes that contains at least one vector (no text, no instances). */
+function isVectorArt(node) {
+  if (VECTOR_TYPES.includes(node.type)) return true;
+  if (!['GROUP', 'FRAME'].includes(node.type) || !node.children.length) return false;
+  const all = node.findAll(() => true);
+  return all.some((n) => VECTOR_TYPES.includes(n.type)) && all.every((n) => [...VECTOR_TYPES, 'GROUP', 'FRAME', 'ELLIPSE', 'RECTANGLE'].includes(n.type));
+}
+
+/** Collects art found while describing a spec: key = "<component>-<variant>-<layer>", unique. */
+function artCollector(prefix, jobs) {
+  const used = new Set();
+  return {
+    add(node, format) {
+      let key = `${prefix}-${slug(node.name)}`;
+      for (let i = 2; used.has(key); i++) key = `${prefix}-${slug(node.name)}-${i}`;
+      used.add(key);
+      jobs.push({ key, node, format });
+      return key;
+    },
+  };
+}
+
+async function exportSpecs(page, artJobs) {
   const out = {};
   const nodes = page.findAllWithCriteria({ types: ['COMPONENT_SET', 'COMPONENT'] });
   for (const name of CONFIG.specNames) {
     const node = nodes.find((n) => n.name === name && (n.type === 'COMPONENT_SET' || n.parent.type !== 'COMPONENT_SET'));
     if (!node) { out[name] = { missing: true }; continue; }
+    const withArt = CONFIG.specArt.includes(name);
     if (node.type === 'COMPONENT_SET') {
       const defs = {};
       for (const [k, v] of Object.entries(node.componentPropertyDefinitions)) defs[k.split('#')[0]] = { type: v.type, default: v.defaultValue, options: v.variantOptions };
       const variants = [];
       for (const v of node.children) {
         const o = v.absoluteBoundingBox;
-        variants.push({ name: v.name, variant: v.variantProperties, tree: await describe(v, { x: o.x, y: o.y }, 0, { collapseArt: true }) });
+        const art = withArt ? artCollector(`${slug(name)}-${Object.values(v.variantProperties || {}).map(slug).join('-')}`, artJobs) : undefined;
+        variants.push({ name: v.name, variant: v.variantProperties, tree: await describe(v, { x: o.x, y: o.y }, 0, { collapseArt: true, art }) });
       }
       out[name] = { id: node.id, type: 'COMPONENT_SET', properties: defs, variants };
     } else {
       const o = node.absoluteBoundingBox;
-      out[name] = { id: node.id, type: 'COMPONENT', tree: await describe(node, { x: o.x, y: o.y }, 0, { collapseArt: true }) };
+      const art = withArt ? artCollector(slug(name), artJobs) : undefined;
+      out[name] = { id: node.id, type: 'COMPONENT', tree: await describe(node, { x: o.x, y: o.y }, 0, { collapseArt: true, art }) };
     }
   }
   return out;
+}
+
+/** Spec art → SVG assets (group "art", theme-aware like the others) and PNG images. */
+async function exportSpecArt(artJobs, assets, onProgress) {
+  const counter = { i: 9000 }; // sentinel range distinct from exportAssets
+  const images = {};
+  let done = 0;
+  for (const job of artJobs) {
+    const b = job.node.absoluteBoundingBox;
+    if (job.format === 'svg') {
+      const { svg, tokens } = await exportSvg(job.node, counter);
+      assets[job.key] = { group: 'art', source: job.node.name, componentId: job.node.id, w: round(b.width), h: round(b.height), art: null, collider: null, anchor: null, tokens, svg };
+    } else {
+      const bytes = await job.node.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: CONFIG.imageScale } });
+      images[job.key] = { source: job.node.name, nodeId: job.node.id, w: round(b.width), h: round(b.height), scale: CONFIG.imageScale, png: figma.base64Encode(bytes) };
+    }
+    if (onProgress && ++done % 5 === 0) onProgress(`art ${done}/${artJobs.length}`);
+  }
+  return images;
 }
 
 // Paints bound to variables are swapped for unique sentinel colours before export,
@@ -287,8 +376,10 @@ async function exportSpecs(page) {
 function sentinel(i) { return '#FE' + i.toString(16).padStart(4, '0').toUpperCase(); }
 function hexToRgb(h) { return { r: parseInt(h.slice(1, 3), 16) / 255, g: parseInt(h.slice(3, 5), 16) / 255, b: parseInt(h.slice(5, 7), 16) / 255 }; }
 
-async function exportSvg(component, counter, hideLayers) {
-  const inst = component.createInstance();
+async function exportSvg(source, counter, hideLayers) {
+  // Components export through a temporary instance; art layers inside a component through a temporary clone on the page.
+  const inst = source.type === 'COMPONENT' ? source.createInstance() : source.clone();
+  if (inst.parent !== figma.currentPage) figma.currentPage.appendChild(inst);
   inst.x = -200000; inst.y = -200000;
   const tokens = {};
   const byVar = {};
@@ -442,14 +533,17 @@ async function pegboardExport(opts = {}) {
   const motion = {};
   for (const mf of CONFIG.motionFrames) { const f = frameBy(mf.prefix); motion[mf.key] = f ? await exportMotion(f) : { missing: mf.prefix }; }
   log('component specs…');
-  const specs = await exportSpecs(page);
+  const artJobs = [];
+  const specs = await exportSpecs(page, artJobs);
   log('SVG assets…');
   const assets = opts.svg === false ? {} : await exportAssets(page, log);
+  log('spec art…');
+  const images = opts.svg === false ? {} : await exportSpecArt(artJobs, assets, log);
   let references = {};
   if (opts.png) { log('reference PNGs…'); references = await exportReferences(section, log); }
   return {
     meta: { version: 2, file: figma.root.name, fileKey: CONFIG.fileKey, page: page.name, section: section.name, exportedAt: new Date().toISOString() },
-    tokens, textStyles, effects, layouts, motion, specs, assets, references,
+    tokens, textStyles, effects, layouts, motion, specs, assets, images, references,
   };
 }
 

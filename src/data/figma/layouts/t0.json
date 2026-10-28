@@ -50,6 +50,16 @@
       "textStyle": null,
       "align": "LEFT",
       "autoResize": "WIDTH_AND_HEIGHT",
+      "font": {
+        "fontFamily": "Helvetica Rounded",
+        "fontWeight": 700,
+        "italic": false,
+        "fontSize": 26,
+        "lineHeight": "normal",
+        "letterSpacing": "0",
+        "textCase": "ORIGINAL",
+        "textDecoration": "NONE"
+      },
       "css": {
         "left": 40,
         "top": 50,
@@ -212,7 +222,8 @@
         "primarySizing": "AUTO",
         "counterSizing": "AUTO",
         "wrap": "NO_WRAP",
-        "clips": true
+        "clips": true,
+        "strokesInLayout": true
       },
       "children": [
         {
@@ -232,6 +243,10 @@
           "textStyle": "Pegboard/Label",
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "sizing": [
+            "HUG",
+            "HUG"
+          ],
           "css": {
             "left": 13.5,
             "top": 7.5,
@@ -611,7 +626,7 @@
         "var(--surface-board)"
       ],
       "strokes": [
-        "#000000"
+        "var(--line-strong)"
       ],
       "strokeWeight": 2,
       "strokeAlign": "INSIDE",

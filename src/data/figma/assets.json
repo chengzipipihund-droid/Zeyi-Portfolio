@@ -1041,5 +1041,57 @@
       "--surface-board",
       "--theme-accent"
     ]
+  },
+  "detail-board-ultra-bridge-captain2": {
+    "group": "art",
+    "file": "art/detail-board-ultra-bridge-captain2.svg",
+    "source": "1119:106199 (MCP)",
+    "w": 129,
+    "h": 106.89,
+    "art": null,
+    "collider": null,
+    "anchor": null,
+    "cssVars": [
+      "--theme-accent"
+    ]
+  },
+  "detail-board-ultra-bridge-vector-635": {
+    "group": "art",
+    "file": "art/detail-board-ultra-bridge-vector-635.svg",
+    "source": "1119:106223 (MCP)",
+    "w": 42,
+    "h": 38,
+    "art": null,
+    "collider": null,
+    "anchor": null,
+    "cssVars": [
+      "--theme-accent"
+    ]
+  },
+  "detail-board-ultra-bridge-vector-636": {
+    "group": "art",
+    "file": "art/detail-board-ultra-bridge-vector-636.svg",
+    "source": "1119:106225 (MCP)",
+    "w": 12.6592,
+    "h": 13.5672,
+    "art": null,
+    "collider": null,
+    "anchor": null,
+    "cssVars": [
+      "--theme-accent"
+    ]
+  },
+  "detail-board-ultra-bridge-captain": {
+    "group": "art",
+    "file": "art/detail-board-ultra-bridge-captain.svg",
+    "source": "1119:106226 (MCP)",
+    "w": 92.9997,
+    "h": 114.349,
+    "art": null,
+    "collider": null,
+    "anchor": null,
+    "cssVars": [
+      "--theme-accent"
+    ]
   }
 }

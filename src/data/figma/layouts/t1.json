@@ -50,6 +50,16 @@
       "textStyle": null,
       "align": "LEFT",
       "autoResize": "WIDTH_AND_HEIGHT",
+      "font": {
+        "fontFamily": "Helvetica Rounded",
+        "fontWeight": 700,
+        "italic": false,
+        "fontSize": 26,
+        "lineHeight": "normal",
+        "letterSpacing": "0",
+        "textCase": "ORIGINAL",
+        "textDecoration": "NONE"
+      },
       "css": {
         "left": 40,
         "top": 50,
@@ -237,7 +247,8 @@
         "primarySizing": "AUTO",
         "counterSizing": "AUTO",
         "wrap": "NO_WRAP",
-        "clips": true
+        "clips": true,
+        "strokesInLayout": true
       },
       "children": [
         {
@@ -257,6 +268,10 @@
           "textStyle": "Pegboard/Label",
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "sizing": [
+            "HUG",
+            "HUG"
+          ],
           "css": {
             "left": 13.5,
             "top": 7.5,
@@ -713,6 +728,10 @@
           "text": "Floatopia"
         }
       ],
+      "effectCss": {
+        "boxShadow": "0px 2.16px 2.88px 0px rgba(0, 0, 0, 0.1)",
+        "dropShadow": "drop-shadow(0px 2.16px 1.44px rgba(0, 0, 0, 0.1))"
+      },
       "css": {
         "left": 77.29,
         "top": 781.6,
@@ -771,6 +790,10 @@
           "text": "Atlas of Unseen"
         }
       ],
+      "effectCss": {
+        "boxShadow": "0px 2.16px 2.88px 0px rgba(0, 0, 0, 0.1)",
+        "dropShadow": "drop-shadow(0px 2.16px 1.44px rgba(0, 0, 0, 0.1))"
+      },
       "css": {
         "left": 128,
         "top": 762,
@@ -830,6 +853,10 @@
           "text": "Land of Snow"
         }
       ],
+      "effectCss": {
+        "boxShadow": "0px 2.16px 2.88px 0px rgba(0, 0, 0, 0.1)",
+        "dropShadow": "drop-shadow(0px 2.16px 1.44px rgba(0, 0, 0, 0.1))"
+      },
       "css": {
         "left": 174.73,
         "top": 766.9,
@@ -1306,6 +1333,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 27,
             "top": 29,
@@ -1415,6 +1452,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 145,
             "top": 29,
@@ -1524,6 +1571,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 263,
             "top": 29,
@@ -1633,6 +1690,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 381,
             "top": 29,
@@ -1742,6 +1809,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 499,
             "top": 29,
@@ -1851,6 +1928,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 617,
             "top": 29,
@@ -1960,6 +2047,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 735,
             "top": 29,
@@ -2069,6 +2166,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 853,
             "top": 29,
@@ -2115,6 +2222,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 113.6,
             "top": 13,
@@ -2161,6 +2278,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 405.06,
             "top": 13,
@@ -2207,6 +2334,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 700.06,
             "top": 13,
@@ -2253,6 +2390,16 @@
           "textStyle": null,
           "align": "LEFT",
           "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Geist Mono",
+            "fontWeight": 500,
+            "italic": false,
+            "fontSize": 10,
+            "lineHeight": "14px",
+            "letterSpacing": "0.06em",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
           "css": {
             "left": 777.94,
             "top": 13,
@@ -2408,7 +2555,8 @@
         "primarySizing": "FIXED",
         "counterSizing": "AUTO",
         "wrap": "WRAP",
-        "clips": true
+        "clips": true,
+        "strokesInLayout": true
       },
       "children": [
         {
@@ -2442,6 +2590,10 @@
               "layer": "Label",
               "text": "HMI / SCADA"
             }
+          ],
+          "sizing": [
+            "HUG",
+            "HUG"
           ],
           "css": {
             "left": 0,
@@ -2483,6 +2635,10 @@
               "text": "AI decision support"
             }
           ],
+          "sizing": [
+            "HUG",
+            "HUG"
+          ],
           "css": {
             "left": 137,
             "top": 0,
@@ -2522,6 +2678,10 @@
               "layer": "Label",
               "text": "Design systems"
             }
+          ],
+          "sizing": [
+            "HUG",
+            "HUG"
           ],
           "css": {
             "left": 0,
@@ -2563,6 +2723,10 @@
               "text": "System architecture"
             }
           ],
+          "sizing": [
+            "HUG",
+            "HUG"
+          ],
           "css": {
             "left": 153,
             "top": 45,
@@ -2602,6 +2766,10 @@
               "layer": "Label",
               "text": "Front-end · React"
             }
+          ],
+          "sizing": [
+            "HUG",
+            "HUG"
           ],
           "css": {
             "left": 0,
@@ -2643,6 +2811,10 @@
               "text": "B2B web tools"
             }
           ],
+          "sizing": [
+            "HUG",
+            "HUG"
+          ],
           "css": {
             "left": 162,
             "top": 90,
@@ -2683,6 +2855,10 @@
               "text": "Sustainable design"
             }
           ],
+          "sizing": [
+            "HUG",
+            "HUG"
+          ],
           "css": {
             "left": 0,
             "top": 135,
@@ -2714,7 +2890,7 @@
         "var(--surface-board)"
       ],
       "strokes": [
-        "#000000"
+        "var(--line-strong)"
       ],
       "strokeWeight": 2,
       "strokeAlign": "INSIDE",
@@ -2761,7 +2937,7 @@
         "var(--surface-board)"
       ],
       "strokes": [
-        "#000000"
+        "var(--line-strong)"
       ],
       "strokeWeight": 2,
       "strokeAlign": "INSIDE",

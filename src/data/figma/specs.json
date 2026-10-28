@@ -85,7 +85,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -105,7 +106,12 @@
                 "var(--line-strong)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1064:11406",
@@ -131,7 +137,8 @@
                 "primarySizing": "FIXED",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "modes": {
                 "theme": "neutral"
@@ -161,7 +168,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -180,7 +188,21 @@
                       "text": "01",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 26,
+                        "lineHeight": "32px",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11409",
@@ -206,7 +228,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -232,6 +255,10 @@
                               "layer": "Label",
                               "text": "WIP"
                             }
+                          ],
+                          "sizing": [
+                            "HUG",
+                            "HUG"
                           ]
                         },
                         {
@@ -250,10 +277,22 @@
                           "text": "2025.09 – 26.05",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -268,6 +307,10 @@
                   "cy": 73,
                   "fills": [
                     "var(--theme-accent)"
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
                   ]
                 },
                 {
@@ -286,7 +329,11 @@
                   "text": "Ultra Bridge",
                   "textStyle": "Pegboard/Title M",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11416",
@@ -312,9 +359,29 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
-                  "note": "vector art — use the exported SVG"
+                  "sizing": [
+                    "FILL",
+                    "FILL"
+                  ],
+                  "children": [
+                    {
+                      "id": "1064:11417",
+                      "name": "Icon",
+                      "type": "INSTANCE",
+                      "x": 42,
+                      "y": -1,
+                      "w": 124,
+                      "h": 124,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "component": "Icon/Project/Ultra Bridge"
+                    }
+                  ]
                 },
                 {
                   "id": "1064:11439",
@@ -340,7 +407,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -359,7 +427,21 @@
                       "text": "View case",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 16,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11441",
@@ -389,7 +471,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -408,12 +491,38 @@
                           "text": "→",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Geist",
+                            "fontWeight": 600,
+                            "italic": false,
+                            "fontSize": 14,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "FILL"
               ]
             }
           ]
@@ -458,7 +567,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -478,7 +588,12 @@
                 "var(--theme-accent)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1064:11445",
@@ -504,7 +619,8 @@
                 "primarySizing": "FIXED",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -531,7 +647,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -550,7 +667,11 @@
                       "text": "01",
                       "textStyle": "Pegboard/Number",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11448",
@@ -576,7 +697,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -602,6 +724,10 @@
                               "layer": "Label",
                               "text": "WIP"
                             }
+                          ],
+                          "sizing": [
+                            "HUG",
+                            "HUG"
                           ]
                         },
                         {
@@ -620,10 +746,22 @@
                           "text": "2025.09 – 26.05",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -638,6 +776,10 @@
                   "cy": 79,
                   "fills": [
                     "var(--theme-accent)"
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
                   ]
                 },
                 {
@@ -656,7 +798,11 @@
                   "text": "Ultra Bridge",
                   "textStyle": "Pegboard/Title L",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11455",
@@ -674,7 +820,11 @@
                   "text": "Edge AI Advisory System",
                   "textStyle": "Pegboard/Body",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11456",
@@ -700,9 +850,29 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
-                  "note": "vector art — use the exported SVG"
+                  "sizing": [
+                    "FILL",
+                    "FILL"
+                  ],
+                  "children": [
+                    {
+                      "id": "1064:11457",
+                      "name": "Icon",
+                      "type": "INSTANCE",
+                      "x": 4,
+                      "y": 4,
+                      "w": 264,
+                      "h": 264,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "component": "Icon/Project/Ultra Bridge"
+                    }
+                  ]
                 },
                 {
                   "id": "1064:11479",
@@ -720,7 +890,11 @@
                   "text": "MANUAL → GUIDED · MARITIME HMI",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11480",
@@ -746,7 +920,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -765,7 +940,21 @@
                       "text": "Take it off",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 20,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11482",
@@ -795,7 +984,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -814,12 +1004,38 @@
                           "text": "↗",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Geist",
+                            "fontWeight": 600,
+                            "italic": false,
+                            "fontSize": 17,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "FILL"
               ]
             }
           ]
@@ -864,7 +1080,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -884,7 +1101,12 @@
                 "var(--theme-accent)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1064:11486",
@@ -910,7 +1132,8 @@
                 "primarySizing": "FIXED",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -937,7 +1160,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -956,7 +1180,21 @@
                       "text": "01",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 26,
+                        "lineHeight": "32px",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11489",
@@ -982,7 +1220,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -1008,6 +1247,10 @@
                               "layer": "Label",
                               "text": "WIP"
                             }
+                          ],
+                          "sizing": [
+                            "HUG",
+                            "HUG"
                           ]
                         },
                         {
@@ -1026,10 +1269,22 @@
                           "text": "2025.09 – 26.05",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -1044,6 +1299,10 @@
                   "cy": 74,
                   "fills": [
                     "var(--theme-accent)"
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
                   ]
                 },
                 {
@@ -1062,7 +1321,11 @@
                   "text": "Ultra Bridge",
                   "textStyle": "Pegboard/Title M",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11496",
@@ -1088,9 +1351,29 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
-                  "note": "vector art — use the exported SVG"
+                  "sizing": [
+                    "FILL",
+                    "FILL"
+                  ],
+                  "children": [
+                    {
+                      "id": "1064:11497",
+                      "name": "Icon",
+                      "type": "INSTANCE",
+                      "x": 41,
+                      "y": -2,
+                      "w": 124,
+                      "h": 124,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "component": "Icon/Project/Ultra Bridge"
+                    }
+                  ]
                 },
                 {
                   "id": "1064:11519",
@@ -1116,7 +1399,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -1135,7 +1419,21 @@
                       "text": "View case",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 16,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11521",
@@ -1165,7 +1463,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -1184,12 +1483,38 @@
                           "text": "→",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Geist",
+                            "fontWeight": 600,
+                            "italic": false,
+                            "fontSize": 14,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "FILL"
               ]
             }
           ]
@@ -1235,7 +1560,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -1255,7 +1581,12 @@
                 "var(--line-strong)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1064:11525",
@@ -1281,7 +1612,8 @@
                 "primarySizing": "FIXED",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "modes": {
                 "theme": "neutral"
@@ -1311,7 +1643,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -1330,7 +1663,21 @@
                       "text": "01",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 26,
+                        "lineHeight": "32px",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11528",
@@ -1356,7 +1703,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -1382,6 +1730,10 @@
                               "layer": "Label",
                               "text": "WIP"
                             }
+                          ],
+                          "sizing": [
+                            "HUG",
+                            "HUG"
                           ]
                         },
                         {
@@ -1400,10 +1752,22 @@
                           "text": "2025.09 – 26.05",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -1418,6 +1782,10 @@
                   "cy": 73,
                   "fills": [
                     "var(--theme-accent)"
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
                   ]
                 },
                 {
@@ -1436,7 +1804,11 @@
                   "text": "Ultra Bridge",
                   "textStyle": "Pegboard/Title M",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11535",
@@ -1462,9 +1834,29 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
-                  "note": "vector art — use the exported SVG"
+                  "sizing": [
+                    "FILL",
+                    "FILL"
+                  ],
+                  "children": [
+                    {
+                      "id": "1064:11536",
+                      "name": "Icon",
+                      "type": "INSTANCE",
+                      "x": 42,
+                      "y": -1,
+                      "w": 124,
+                      "h": 124,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "component": "Icon/Project/Ultra Bridge"
+                    }
+                  ]
                 },
                 {
                   "id": "1064:11558",
@@ -1490,7 +1882,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -1509,7 +1902,21 @@
                       "text": "View case",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 16,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11560",
@@ -1539,7 +1946,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -1558,12 +1966,38 @@
                           "text": "→",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Geist",
+                            "fontWeight": 600,
+                            "italic": false,
+                            "fontSize": 14,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "FILL"
               ]
             }
           ]
@@ -1608,7 +2042,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -1628,7 +2063,12 @@
                 "var(--line-strong)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1064:11564",
@@ -1654,7 +2094,8 @@
                 "primarySizing": "FIXED",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "modes": {
                 "theme": "neutral"
@@ -1684,7 +2125,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -1704,7 +2146,21 @@
                       "text": "01",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 26,
+                        "lineHeight": "32px",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11567",
@@ -1730,7 +2186,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -1756,6 +2213,10 @@
                               "layer": "Label",
                               "text": "WIP"
                             }
+                          ],
+                          "sizing": [
+                            "HUG",
+                            "HUG"
                           ]
                         },
                         {
@@ -1775,10 +2236,22 @@
                           "text": "2025.09 – 26.05",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "FIXED",
+                            "FIXED"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -1793,6 +2266,10 @@
                   "cy": 73,
                   "fills": [
                     "var(--theme-accent)"
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
                   ]
                 },
                 {
@@ -1812,7 +2289,11 @@
                   "text": "Ultra Bridge",
                   "textStyle": "Pegboard/Title M",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1064:11574",
@@ -1838,9 +2319,30 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
-                  "note": "vector art — use the exported SVG"
+                  "sizing": [
+                    "FILL",
+                    "FILL"
+                  ],
+                  "children": [
+                    {
+                      "id": "1064:11575",
+                      "name": "Icon",
+                      "type": "INSTANCE",
+                      "x": 0,
+                      "y": -39,
+                      "w": 124,
+                      "h": 124,
+                      "visible": false,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "component": "Icon/Project/Ultra Bridge"
+                    }
+                  ]
                 },
                 {
                   "id": "1064:11597",
@@ -1867,7 +2369,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -1886,7 +2389,21 @@
                       "text": "View case",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 16,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11599",
@@ -1916,7 +2433,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -1935,12 +2453,38 @@
                           "text": "→",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Geist",
+                            "fontWeight": 600,
+                            "italic": false,
+                            "fontSize": 14,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FIXED",
+                    "HUG"
                   ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "FILL"
               ]
             },
             {
@@ -1959,7 +2503,12 @@
               "text": "OUT · VIEWING NOW",
               "textStyle": "Pegboard/Label",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             }
           ]
         }
@@ -2003,7 +2552,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -2023,7 +2573,12 @@
                 "var(--line-strong)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "absolute": true,
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1064:11604",
@@ -2049,7 +2604,8 @@
                 "primarySizing": "FIXED",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "modes": {
                 "theme": "neutral"
@@ -2079,7 +2635,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -2098,7 +2655,11 @@
                       "text": "01",
                       "textStyle": "Pegboard/Title M",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11607",
@@ -2124,7 +2685,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -2150,10 +2712,22 @@
                               "layer": "Label",
                               "text": "WIP"
                             }
+                          ],
+                          "sizing": [
+                            "HUG",
+                            "HUG"
                           ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -2180,7 +2754,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -2199,7 +2774,11 @@
                       "text": "Ultra Bridge",
                       "textStyle": "Pegboard/Body",
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1064:11613",
@@ -2211,10 +2790,22 @@
                       "h": 48,
                       "cx": 160,
                       "cy": 82,
-                      "component": "Icon/Project/Ultra Bridge"
+                      "component": "Icon/Project/Ultra Bridge",
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FILL"
                   ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "FILL"
               ]
             }
           ]
@@ -2317,7 +2908,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -2344,7 +2936,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -2377,7 +2970,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -2396,8 +2990,16 @@
                           "text": "↩ PUT BACK · ESC",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     },
                     {
@@ -2416,8 +3018,16 @@
                       "text": "01",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -2453,7 +3063,8 @@
                     "primarySizing": "AUTO",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -2472,7 +3083,11 @@
                       "text": "PDP · WÄRTSILÄ × AALTO · 2025–26",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:13790",
@@ -2490,7 +3105,21 @@
                       "text": "Ultra Bridge",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 34,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:13791",
@@ -2508,7 +3137,21 @@
                       "text": "Edge AI Advisory System",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Geist",
+                        "fontWeight": 600,
+                        "italic": false,
+                        "fontSize": 15,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:13792",
@@ -2523,6 +3166,11 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--theme-accent)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     },
                     {
@@ -2538,8 +3186,17 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--theme-accent)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -2558,7 +3215,11 @@
                   "text": "An AI-driven control interface and lever-operation optimisation for the next-generation ship bridge — tested with Finnlines captains and crew.",
                   "textStyle": "Pegboard/Body",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1119:106198",
@@ -2584,7 +3245,8 @@
                     "primarySizing": "AUTO",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -2600,369 +3262,17 @@
                       "layout": {
                         "mode": "NONE"
                       },
-                      "children": [
-                        {
-                          "id": "1119:106200",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 0,
-                          "y": 15.98,
-                          "w": 48.53,
-                          "h": 92.95,
-                          "cx": 48.27,
-                          "cy": 336.45,
-                          "fills": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 2,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106201",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 11.5,
-                          "y": 52.58,
-                          "w": 9.24,
-                          "h": 8.49,
-                          "cx": 40.12,
-                          "cy": 330.82,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106202",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 11.63,
-                          "y": 68.94,
-                          "w": 20.35,
-                          "h": 8.9,
-                          "cx": 45.81,
-                          "cy": 347.39,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106203",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 18.32,
-                          "y": 80.69,
-                          "w": 14.3,
-                          "h": 0,
-                          "cx": 49.46,
-                          "cy": 354.69,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106204",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 19.96,
-                          "y": 82.08,
-                          "w": 9.47,
-                          "h": 0.01,
-                          "cx": 48.7,
-                          "cy": 356.09,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106205",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 20.41,
-                          "y": 83.9,
-                          "w": 8.76,
-                          "h": 0.03,
-                          "cx": 48.79,
-                          "cy": 357.91,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106206",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 22.87,
-                          "y": 102.74,
-                          "w": 3.93,
-                          "h": 5.87,
-                          "cx": 48.83,
-                          "cy": 379.67,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106207",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 29.09,
-                          "y": 72.58,
-                          "w": 15.13,
-                          "h": 2.7,
-                          "cx": 60.65,
-                          "cy": 347.93,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106208",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 17.39,
-                          "y": 70.02,
-                          "w": 4.11,
-                          "h": 4.2,
-                          "cx": 43.44,
-                          "cy": 346.12,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106209",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 27.86,
-                          "y": 74.5,
-                          "w": 3.21,
-                          "h": 2.63,
-                          "cx": 53.47,
-                          "cy": 349.81,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106210",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 25.35,
-                          "y": 75.82,
-                          "w": 1,
-                          "h": 0.95,
-                          "cx": 49.85,
-                          "cy": 350.29,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106211",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 27.37,
-                          "y": 72.7,
-                          "w": 1,
-                          "h": 0.95,
-                          "cx": 51.87,
-                          "cy": 347.18,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106212",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 18.67,
-                          "y": 61.11,
-                          "w": 1.85,
-                          "h": 1.77,
-                          "cx": 43.59,
-                          "cy": 335.99,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106213",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 11.62,
-                          "y": 58.91,
-                          "w": 1.06,
-                          "h": 18.74,
-                          "cx": 36.16,
-                          "cy": 342.28,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106214",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 4.12,
-                          "y": 42.55,
-                          "w": 9.33,
-                          "h": 11,
-                          "cx": 32.78,
-                          "cy": 322.05,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106215",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 1.64,
-                          "y": 16.16,
-                          "w": 3.31,
-                          "h": 26.19,
-                          "cx": 27.3,
-                          "cy": 303.25,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106216",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 20.14,
-                          "y": 93.44,
-                          "w": 9.23,
-                          "h": 0,
-                          "cx": 48.76,
-                          "cy": 367.44,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 0.75,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106217",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 9.33,
-                          "y": 4.04,
-                          "w": 43.65,
-                          "h": 49.79,
-                          "cx": 55.16,
-                          "cy": 302.93,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 2,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106218",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 38.04,
-                          "y": 56.7,
-                          "w": 31.53,
-                          "h": 48.06,
-                          "cx": 77.8,
-                          "cy": 354.73,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 2,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106219",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 73.29,
-                          "y": 41.38,
-                          "w": 53.71,
-                          "h": 66.77,
-                          "cx": 124.14,
-                          "cy": 348.77,
-                          "fills": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 2,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106220",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 72.02,
-                          "y": 26.18,
-                          "w": 22.34,
-                          "h": 17.62,
-                          "cx": 107.19,
-                          "cy": 308.99,
-                          "fills": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 1,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106221",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 75.71,
-                          "y": 103.91,
-                          "w": 48.88,
-                          "h": 2.59,
-                          "cx": 124.15,
-                          "cy": 379.2,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 1,
-                          "strokeAlign": "CENTER"
-                        }
-                      ]
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "asset": "detail-board-ultra-bridge-captain2",
+                      "artBox": {
+                        "x": 0,
+                        "y": 4.04,
+                        "w": 127,
+                        "h": 104.89
+                      }
                     },
                     {
                       "id": "1119:106222",
@@ -2997,7 +3307,14 @@
                           ],
                           "strokeWeight": 5,
                           "strokeAlign": "CENTER",
-                          "radius": 5
+                          "radius": 5,
+                          "asset": "detail-board-ultra-bridge-vector-635",
+                          "artBox": {
+                            "x": 15,
+                            "y": 18,
+                            "w": 37,
+                            "h": 33
+                          }
                         },
                         {
                           "id": "1119:106224",
@@ -3020,7 +3337,17 @@
                           "text": "AI",
                           "textStyle": null,
                           "align": "CENTER",
-                          "autoResize": "NONE"
+                          "autoResize": "NONE",
+                          "font": {
+                            "fontFamily": "Baloo Chettan 2",
+                            "fontWeight": 400,
+                            "italic": false,
+                            "fontSize": 24,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          }
                         },
                         {
                           "id": "1119:106225",
@@ -3040,8 +3367,19 @@
                           ],
                           "strokeWeight": 2,
                           "strokeAlign": "CENTER",
-                          "radius": 0.10000000149011612
+                          "radius": 0.10000000149011612,
+                          "asset": "detail-board-ultra-bridge-vector-636",
+                          "artBox": {
+                            "x": 44,
+                            "y": 11,
+                            "w": 11,
+                            "h": 12
+                          }
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     },
                     {
@@ -3058,56 +3396,22 @@
                       "layout": {
                         "mode": "NONE"
                       },
-                      "children": [
-                        {
-                          "id": "1119:106227",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 237.82,
-                          "y": 0,
-                          "w": 20.82,
-                          "h": 112.35,
-                          "cx": 251.41,
-                          "cy": 330.17,
-                          "rotation": -180,
-                          "strokes": [
-                            "var(--theme-accent)"
-                          ],
-                          "strokeWeight": 2,
-                          "strokeAlign": "CENTER"
-                        },
-                        {
-                          "id": "1119:106228",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 309,
-                          "y": 44.03,
-                          "w": 60.06,
-                          "h": 68.93,
-                          "cx": 302.97,
-                          "cy": 352.5,
-                          "rotation": -180,
-                          "fills": [
-                            "var(--theme-accent)"
-                          ]
-                        },
-                        {
-                          "id": "1119:106229",
-                          "name": "Vector",
-                          "type": "VECTOR",
-                          "x": 300.32,
-                          "y": 35.58,
-                          "w": 3.65,
-                          "h": 36.4,
-                          "cx": 310.16,
-                          "cy": 321.16,
-                          "rotation": 135,
-                          "fills": [
-                            "var(--theme-accent)"
-                          ]
-                        }
-                      ]
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "asset": "detail-board-ultra-bridge-captain",
+                      "artBox": {
+                        "x": 217,
+                        "y": 0,
+                        "w": 92,
+                        "h": 112.96
+                      }
                     }
+                  ],
+                  "sizing": [
+                    "HUG",
+                    "HUG"
                   ]
                 },
                 {
@@ -3134,7 +3438,9 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true,
+                    "counterGap": 10
                   },
                   "children": [
                     {
@@ -3166,7 +3472,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3185,7 +3492,11 @@
                           "text": "PARTNER",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:13806",
@@ -3203,8 +3514,22 @@
                           "text": "Wärtsilä × Aalto Design Factory",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -3236,7 +3561,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3255,7 +3581,11 @@
                           "text": "TIME · TEAM",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:13809",
@@ -3273,8 +3603,22 @@
                           "text": "9 months · 7 members",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -3306,7 +3650,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3325,7 +3670,11 @@
                           "text": "ROLE · TO CONFIRM",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:13812",
@@ -3343,8 +3692,22 @@
                           "text": "UX/UI & HMI — energy, alarm, AI interaction",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -3376,7 +3739,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3395,7 +3759,11 @@
                           "text": "AWARD",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:13815",
@@ -3413,10 +3781,28 @@
                           "text": "DIA Honorable Mention",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -3431,7 +3817,12 @@
                   "cy": 631.46,
                   "fills": [
                     "image"
-                  ]
+                  ],
+                  "sizing": [
+                    "FIXED",
+                    "FIXED"
+                  ],
+                  "image": "detail-board-ultra-bridge-image-77"
                 },
                 {
                   "id": "1066:13848",
@@ -3457,7 +3848,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -3493,7 +3885,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3512,8 +3905,26 @@
                           "text": "Open the case →",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Tilt Warp",
+                            "fontWeight": 400,
+                            "italic": false,
+                            "fontSize": 16,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "HUG"
                       ]
                     },
                     {
@@ -3546,7 +3957,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3565,10 +3977,22 @@
                           "text": "PDF",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
               ]
@@ -3655,7 +4079,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -3682,7 +4107,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -3715,7 +4141,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -3734,8 +4161,16 @@
                           "text": "↩ PUT BACK · ESC",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     },
                     {
@@ -3754,8 +4189,16 @@
                       "text": "02",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -3791,7 +4234,8 @@
                     "primarySizing": "AUTO",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -3810,7 +4254,11 @@
                       "text": "B2B PRE-SALES WEB TOOL · MARINE",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:14837",
@@ -3828,7 +4276,21 @@
                       "text": "SeaTrial Explorer",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 28,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:14838",
@@ -3846,7 +4308,21 @@
                       "text": "A sea trial before the steel is cut",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Geist",
+                        "fontWeight": 600,
+                        "italic": false,
+                        "fontSize": 15,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:14839",
@@ -3861,6 +4337,11 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--theme-accent)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     },
                     {
@@ -3876,8 +4357,17 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--theme-accent)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -3896,7 +4386,11 @@
                   "text": "A full-mission ship simulator turned into a pre-sales web tool: a sales engineer and a ship owner compare propulsion set-ups in one standard manoeuvre — in time and euros.",
                   "textStyle": "Pegboard/Body",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1066:14844",
@@ -3922,7 +4416,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -3941,7 +4436,11 @@
                       "text": "FROM",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:14846",
@@ -3959,7 +4458,21 @@
                       "text": "SIMULATOR",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 18,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:14847",
@@ -3973,6 +4486,10 @@
                       "cy": 303.5,
                       "fills": [
                         "var(--theme-accent)"
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "FIXED"
                       ]
                     },
                     {
@@ -3991,7 +4508,11 @@
                       "text": "TO",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:14849",
@@ -4009,8 +4530,26 @@
                       "text": "WEB TOOL",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 18,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -4025,7 +4564,12 @@
                   "cy": 377.91,
                   "fills": [
                     "image"
-                  ]
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
+                  ],
+                  "image": "detail-board-seatrial-image-79"
                 },
                 {
                   "id": "1066:14850",
@@ -4051,7 +4595,9 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true,
+                    "counterGap": 10
                   },
                   "children": [
                     {
@@ -4083,7 +4629,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4102,7 +4649,11 @@
                           "text": "MANOEUVRE TIME",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:14853",
@@ -4120,8 +4671,22 @@
                           "text": "−1:51 vs baseline (illustrative)",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -4153,7 +4718,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4172,7 +4738,11 @@
                           "text": "FIDELITY",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:14856",
@@ -4190,8 +4760,22 @@
                           "text": "3 tiers on every number",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -4223,7 +4807,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4242,7 +4827,11 @@
                           "text": "LIBRARY",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:14859",
@@ -4260,8 +4849,22 @@
                           "text": "5 standard harbour manoeuvres",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -4293,7 +4896,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4312,7 +4916,11 @@
                           "text": "SCREENS",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:14862",
@@ -4330,10 +4938,28 @@
                           "text": "16 · 1 main path · 4 states",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -4348,7 +4974,12 @@
                   "cy": 632.81,
                   "fills": [
                     "image"
-                  ]
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "FIXED"
+                  ],
+                  "image": "detail-board-seatrial-image-80"
                 },
                 {
                   "id": "1066:14905",
@@ -4374,7 +5005,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -4410,7 +5042,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4429,8 +5062,26 @@
                           "text": "Open the case →",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Tilt Warp",
+                            "fontWeight": 400,
+                            "italic": false,
+                            "fontSize": 16,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "HUG"
                       ]
                     },
                     {
@@ -4463,7 +5114,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4482,10 +5134,22 @@
                           "text": "PDF",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
               ]
@@ -4512,7 +5176,7 @@
             "#FFFFFF"
           ],
           "strokes": [
-            "#000000"
+            "var(--line-strong)"
           ],
           "strokeWeight": 3,
           "strokeAlign": "INSIDE",
@@ -4550,7 +5214,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -4577,7 +5242,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -4610,7 +5276,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4629,8 +5296,16 @@
                           "text": "↩ PUT BACK · ESC",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     },
                     {
@@ -4649,8 +5324,16 @@
                       "text": "03",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -4686,7 +5369,8 @@
                     "primarySizing": "AUTO",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -4705,7 +5389,11 @@
                       "text": "DESIGN SYSTEM · VISUAL · FRONT-END",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:15894",
@@ -4723,7 +5411,21 @@
                       "text": "CoreDS",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 34,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:15895",
@@ -4741,7 +5443,21 @@
                       "text": "Unified design system & guideline",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Geist",
+                        "fontWeight": 600,
+                        "italic": false,
+                        "fontSize": 15,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:15896",
@@ -4756,6 +5472,11 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--text-primary)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     },
                     {
@@ -4771,8 +5492,17 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--text-primary)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -4791,7 +5521,11 @@
                   "text": "Web portals and machinery UI kept separate libraries. CoreDS unites them under one guideline — shared principles, token naming and component specs, shipped as React components in Storybook.",
                   "textStyle": "Pegboard/Body",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1066:15901",
@@ -4817,7 +5551,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -4836,7 +5571,11 @@
                       "text": "FROM",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:15903",
@@ -4854,7 +5593,21 @@
                       "text": "4 LIBRARIES",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 18,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:15904",
@@ -4868,6 +5621,10 @@
                       "cy": 305.5,
                       "fills": [
                         "var(--board-ink)"
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "FIXED"
                       ]
                     },
                     {
@@ -4886,7 +5643,11 @@
                       "text": "TO",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:15906",
@@ -4904,8 +5665,26 @@
                       "text": "1 GUIDELINE",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 18,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -4932,7 +5711,9 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true,
+                    "counterGap": 10
                   },
                   "children": [
                     {
@@ -4964,7 +5745,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -4983,7 +5765,11 @@
                           "text": "PERIOD",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:15910",
@@ -5001,8 +5787,22 @@
                           "text": "May – Sep 2026 · individual",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -5034,7 +5834,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5053,7 +5854,11 @@
                           "text": "OUTPUT",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:15913",
@@ -5071,8 +5876,22 @@
                           "text": "7 chapters · 8 UX patterns",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -5104,7 +5923,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5123,7 +5943,11 @@
                           "text": "SCOPE",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:15916",
@@ -5141,8 +5965,22 @@
                           "text": "Web portals · machinery UI",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -5174,7 +6012,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5193,7 +6032,11 @@
                           "text": "ROLE",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:15919",
@@ -5211,8 +6054,22 @@
                           "text": "Visual language · tokens & code · governance",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -5227,7 +6084,12 @@
                       "cy": 538.04,
                       "fills": [
                         "image"
-                      ]
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "image": "detail-board-coreds-cover-visual-1"
                     },
                     {
                       "id": "1122:109339",
@@ -5241,8 +6103,17 @@
                       "cy": 689.09,
                       "fills": [
                         "image"
-                      ]
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
+                      ],
+                      "image": "detail-board-coreds-image-81"
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -5269,7 +6140,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -5286,7 +6158,7 @@
                         "var(--surface-board)"
                       ],
                       "strokes": [
-                        "#000000"
+                        "var(--line-strong)"
                       ],
                       "strokeWeight": 2,
                       "strokeAlign": "INSIDE",
@@ -5305,7 +6177,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5324,8 +6197,26 @@
                           "text": "Open the case →",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Tilt Warp",
+                            "fontWeight": 400,
+                            "italic": false,
+                            "fontSize": 16,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "HUG"
                       ]
                     },
                     {
@@ -5358,7 +6249,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5377,10 +6269,22 @@
                           "text": "PDF",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
               ]
@@ -5464,7 +6368,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -5491,7 +6396,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -5524,7 +6430,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5543,8 +6450,16 @@
                           "text": "↩ PUT BACK · ESC",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     },
                     {
@@ -5563,8 +6478,16 @@
                       "text": "04",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -5600,7 +6523,8 @@
                     "primarySizing": "AUTO",
                     "counterSizing": "FIXED",
                     "wrap": "NO_WRAP",
-                    "clips": false
+                    "clips": false,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -5619,7 +6543,11 @@
                       "text": "PERSONAL PROJECT · 2026 — NOW",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:16931",
@@ -5637,7 +6565,21 @@
                       "text": "SCADA+",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 34,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:16932",
@@ -5655,7 +6597,21 @@
                       "text": "Energy SCADA for a fuel-cell data center",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "HEIGHT"
+                      "autoResize": "HEIGHT",
+                      "font": {
+                        "fontFamily": "Geist",
+                        "fontWeight": 600,
+                        "italic": false,
+                        "fontSize": 15,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "FILL",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:16933",
@@ -5670,6 +6626,11 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--text-primary)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     },
                     {
@@ -5685,8 +6646,17 @@
                       "opacity": 0.35,
                       "fills": [
                         "var(--text-primary)"
+                      ],
+                      "absolute": true,
+                      "sizing": [
+                        "FIXED",
+                        "FIXED"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -5705,7 +6675,11 @@
                   "text": "System and information architecture for a PCFC-powered data center, from site overview down to a single cabinet — prototyped in React: data in → live dashboard → alarms.",
                   "textStyle": "Pegboard/Body",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1066:16938",
@@ -5731,7 +6705,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -5750,7 +6725,11 @@
                       "text": "FROM",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:16940",
@@ -5768,7 +6747,21 @@
                       "text": "SITE",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 18,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:16941",
@@ -5782,6 +6775,10 @@
                       "cy": 325.5,
                       "fills": [
                         "var(--board-ink)"
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "FIXED"
                       ]
                     },
                     {
@@ -5800,7 +6797,11 @@
                       "text": "TO",
                       "textStyle": "Pegboard/Label",
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     },
                     {
                       "id": "1066:16943",
@@ -5818,8 +6819,26 @@
                       "text": "CABINET",
                       "textStyle": null,
                       "align": "LEFT",
-                      "autoResize": "WIDTH_AND_HEIGHT"
+                      "autoResize": "WIDTH_AND_HEIGHT",
+                      "font": {
+                        "fontFamily": "Tilt Warp",
+                        "fontWeight": 400,
+                        "italic": false,
+                        "fontSize": 18,
+                        "lineHeight": "normal",
+                        "letterSpacing": "0",
+                        "textCase": "ORIGINAL",
+                        "textDecoration": "NONE"
+                      },
+                      "sizing": [
+                        "HUG",
+                        "HUG"
+                      ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -5846,7 +6865,9 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true,
+                    "counterGap": 10
                   },
                   "children": [
                     {
@@ -5878,7 +6899,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5897,7 +6919,11 @@
                           "text": "WITH",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:16947",
@@ -5915,8 +6941,22 @@
                           "text": "Smart + IONs",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -5948,7 +6988,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -5967,7 +7008,11 @@
                           "text": "TIME",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:16950",
@@ -5985,8 +7030,22 @@
                           "text": "2026.01–04 · 2026.09 —",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -6018,7 +7077,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -6037,7 +7097,11 @@
                           "text": "BUILD",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:16953",
@@ -6055,8 +7119,22 @@
                           "text": "React prototype · live data",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -6088,7 +7166,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "FIXED",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -6107,7 +7186,11 @@
                           "text": "STATUS",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         },
                         {
                           "id": "1066:16956",
@@ -6125,10 +7208,28 @@
                           "text": "In progress",
                           "textStyle": "Pegboard/Small",
                           "align": "LEFT",
-                          "autoResize": "HEIGHT"
+                          "autoResize": "HEIGHT",
+                          "sizing": [
+                            "FILL",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FIXED",
+                        "HUG"
+                      ],
+                      "strokeSides": [
+                        1,
+                        0,
+                        0,
+                        0
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 },
                 {
@@ -6147,7 +7248,11 @@
                   "text": "CHAPTERS",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1066:16984",
@@ -6173,7 +7278,8 @@
                     "primarySizing": "FIXED",
                     "counterSizing": "AUTO",
                     "wrap": "NO_WRAP",
-                    "clips": true
+                    "clips": true,
+                    "strokesInLayout": true
                   },
                   "children": [
                     {
@@ -6209,7 +7315,8 @@
                         "primarySizing": "FIXED",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -6228,8 +7335,26 @@
                           "text": "Open the case →",
                           "textStyle": null,
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "font": {
+                            "fontFamily": "Tilt Warp",
+                            "fontWeight": 400,
+                            "italic": false,
+                            "fontSize": 16,
+                            "lineHeight": "normal",
+                            "letterSpacing": "0",
+                            "textCase": "ORIGINAL",
+                            "textDecoration": "NONE"
+                          },
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "FILL",
+                        "HUG"
                       ]
                     },
                     {
@@ -6262,7 +7387,8 @@
                         "primarySizing": "AUTO",
                         "counterSizing": "AUTO",
                         "wrap": "NO_WRAP",
-                        "clips": true
+                        "clips": true,
+                        "strokesInLayout": true
                       },
                       "children": [
                         {
@@ -6281,10 +7407,22 @@
                           "text": "PDF",
                           "textStyle": "Pegboard/Label",
                           "align": "LEFT",
-                          "autoResize": "WIDTH_AND_HEIGHT"
+                          "autoResize": "WIDTH_AND_HEIGHT",
+                          "sizing": [
+                            "HUG",
+                            "HUG"
+                          ]
                         }
+                      ],
+                      "sizing": [
+                        "HUG",
+                        "HUG"
                       ]
                     }
+                  ],
+                  "sizing": [
+                    "FILL",
+                    "HUG"
                   ]
                 }
               ]
@@ -6351,7 +7489,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6368,7 +7507,11 @@
                 "var(--theme-accent)"
               ],
               "strokeWeight": 1.5,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1019:1290",
@@ -6386,7 +7529,11 @@
               "text": "HMI / SCADA",
               "textStyle": "Pegboard/Body",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -6429,7 +7576,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6446,7 +7594,11 @@
                 "var(--theme-on-accent)"
               ],
               "strokeWeight": 1.5,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1019:1293",
@@ -6464,7 +7616,11 @@
               "text": "HMI / SCADA",
               "textStyle": "Pegboard/Body",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -6508,7 +7664,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6525,7 +7682,11 @@
                 "var(--theme-accent)"
               ],
               "strokeWeight": 1.5,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1019:1296",
@@ -6543,7 +7704,11 @@
               "text": "HMI / SCADA",
               "textStyle": "Pegboard/Body",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -6597,7 +7762,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6612,6 +7778,10 @@
               "cy": 5,
               "fills": [
                 "var(--line-strong)"
+              ],
+              "sizing": [
+                "FIXED",
+                "FIXED"
               ]
             },
             {
@@ -6626,6 +7796,10 @@
               "cy": 15,
               "fills": [
                 "var(--line-strong)"
+              ],
+              "sizing": [
+                "FIXED",
+                "FIXED"
               ]
             },
             {
@@ -6661,7 +7835,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "AUTO",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -6680,8 +7855,16 @@
                   "text": "WORK",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 }
+              ],
+              "sizing": [
+                "HUG",
+                "HUG"
               ]
             }
           ]
@@ -6716,7 +7899,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6731,6 +7915,10 @@
               "cy": 5,
               "fills": [
                 "var(--line-strong)"
+              ],
+              "sizing": [
+                "FIXED",
+                "FIXED"
               ]
             },
             {
@@ -6745,6 +7933,10 @@
               "cy": 21,
               "fills": [
                 "var(--line-strong)"
+              ],
+              "sizing": [
+                "FIXED",
+                "FIXED"
               ]
             },
             {
@@ -6780,7 +7972,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "AUTO",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -6799,8 +7992,16 @@
                   "text": "WORK",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 }
+              ],
+              "sizing": [
+                "HUG",
+                "HUG"
               ]
             }
           ]
@@ -6851,7 +8052,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6870,7 +8072,21 @@
               "text": "EN",
               "textStyle": null,
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "font": {
+                "fontFamily": "Geist Mono",
+                "fontWeight": 500,
+                "italic": false,
+                "fontSize": 11,
+                "lineHeight": "normal",
+                "letterSpacing": "0",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              },
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             },
             {
               "id": "1019:1311",
@@ -6910,6 +8126,10 @@
                     "var(--theme-accent)"
                   ]
                 }
+              ],
+              "sizing": [
+                "FIXED",
+                "FIXED"
               ]
             },
             {
@@ -6928,7 +8148,21 @@
               "text": "中",
               "textStyle": null,
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "font": {
+                "fontFamily": "Geist Mono",
+                "fontWeight": 500,
+                "italic": false,
+                "fontSize": 11,
+                "lineHeight": "normal",
+                "letterSpacing": "0",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              },
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -6962,7 +8196,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -6981,7 +8216,21 @@
               "text": "EN",
               "textStyle": null,
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "font": {
+                "fontFamily": "Geist Mono",
+                "fontWeight": 500,
+                "italic": false,
+                "fontSize": 11,
+                "lineHeight": "normal",
+                "letterSpacing": "0",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              },
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             },
             {
               "id": "1019:1316",
@@ -7021,6 +8270,10 @@
                     "var(--theme-accent)"
                   ]
                 }
+              ],
+              "sizing": [
+                "FIXED",
+                "FIXED"
               ]
             },
             {
@@ -7039,7 +8292,21 @@
               "text": "中",
               "textStyle": null,
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "font": {
+                "fontFamily": "Geist Mono",
+                "fontWeight": 500,
+                "italic": false,
+                "fontSize": 11,
+                "lineHeight": "normal",
+                "letterSpacing": "0",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              },
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -7094,7 +8361,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -7115,7 +8383,15 @@
               ],
               "strokeWeight": 2,
               "strokeAlign": "INSIDE",
-              "effect": "custom"
+              "effect": "custom",
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ],
+              "effectCss": {
+                "boxShadow": "0px 0px 10px 1px rgba(46, 184, 115, 0.55)",
+                "dropShadow": "drop-shadow(0px 0px 5px rgba(46, 184, 115, 0.55))"
+              }
             },
             {
               "id": "1019:1346",
@@ -7133,7 +8409,11 @@
               "text": "ON SHIFT",
               "textStyle": "Pegboard/Label",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -7167,7 +8447,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -7188,7 +8469,15 @@
               ],
               "strokeWeight": 2,
               "strokeAlign": "INSIDE",
-              "effect": "custom"
+              "effect": "custom",
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ],
+              "effectCss": {
+                "boxShadow": "0px 0px 10px 1px rgba(242, 168, 0, 0.55)",
+                "dropShadow": "drop-shadow(0px 0px 5px rgba(242, 168, 0, 0.55))"
+              }
             },
             {
               "id": "1019:1349",
@@ -7206,7 +8495,11 @@
               "text": "ON SHIFT",
               "textStyle": "Pegboard/Label",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -7240,7 +8533,8 @@
             "primarySizing": "AUTO",
             "counterSizing": "AUTO",
             "wrap": "NO_WRAP",
-            "clips": false
+            "clips": false,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -7260,7 +8554,11 @@
                 "var(--line-strong)"
               ],
               "strokeWeight": 2,
-              "strokeAlign": "INSIDE"
+              "strokeAlign": "INSIDE",
+              "sizing": [
+                "FIXED",
+                "FIXED"
+              ]
             },
             {
               "id": "1019:1352",
@@ -7278,7 +8576,11 @@
               "text": "ON SHIFT",
               "textStyle": "Pegboard/Label",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         }
@@ -7383,7 +8685,17 @@
           "text": "ZEYI CHENG",
           "textStyle": null,
           "align": "LEFT",
-          "autoResize": "WIDTH_AND_HEIGHT"
+          "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Tilt Warp",
+            "fontWeight": 400,
+            "italic": false,
+            "fontSize": 38,
+            "lineHeight": "normal",
+            "letterSpacing": "0",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          }
         },
         {
           "id": "1019:1326",
@@ -7424,7 +8736,7 @@
         "var(--surface-board)"
       ],
       "strokes": [
-        "#000000"
+        "var(--line-strong)"
       ],
       "strokeWeight": 2,
       "strokeAlign": "INSIDE",
@@ -7443,7 +8755,8 @@
         "primarySizing": "FIXED",
         "counterSizing": "FIXED",
         "wrap": "NO_WRAP",
-        "clips": false
+        "clips": false,
+        "strokesInLayout": true
       },
       "children": [
         {
@@ -7462,7 +8775,21 @@
           "text": "(TJU)",
           "textStyle": null,
           "align": "LEFT",
-          "autoResize": "WIDTH_AND_HEIGHT"
+          "autoResize": "WIDTH_AND_HEIGHT",
+          "font": {
+            "fontFamily": "Tilt Warp",
+            "fontWeight": 400,
+            "italic": false,
+            "fontSize": 32,
+            "lineHeight": "normal",
+            "letterSpacing": "0",
+            "textCase": "ORIGINAL",
+            "textDecoration": "NONE"
+          },
+          "sizing": [
+            "HUG",
+            "HUG"
+          ]
         },
         {
           "id": "1019:1329",
@@ -7480,7 +8807,11 @@
           "text": "B.ARCH",
           "textStyle": "Pegboard/Label",
           "align": "LEFT",
-          "autoResize": "WIDTH_AND_HEIGHT"
+          "autoResize": "WIDTH_AND_HEIGHT",
+          "sizing": [
+            "HUG",
+            "HUG"
+          ]
         },
         {
           "id": "1019:1330",
@@ -7499,7 +8830,11 @@
           "text": "2020–2025",
           "textStyle": "Pegboard/Label",
           "align": "LEFT",
-          "autoResize": "WIDTH_AND_HEIGHT"
+          "autoResize": "WIDTH_AND_HEIGHT",
+          "sizing": [
+            "HUG",
+            "HUG"
+          ]
         },
         {
           "id": "1019:1331",
@@ -7576,6 +8911,11 @@
                 "var(--theme-accent)"
               ]
             }
+          ],
+          "absolute": true,
+          "sizing": [
+            "FIXED",
+            "FIXED"
           ]
         }
       ]
@@ -7633,7 +8973,8 @@
             "primarySizing": "FIXED",
             "counterSizing": "FIXED",
             "wrap": "NO_WRAP",
-            "clips": true
+            "clips": true,
+            "strokesInLayout": true
           },
           "children": [
             {
@@ -7652,7 +8993,21 @@
               "text": "EXP",
               "textStyle": null,
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "font": {
+                "fontFamily": "Tilt Warp",
+                "fontWeight": 400,
+                "italic": false,
+                "fontSize": 26,
+                "lineHeight": "normal",
+                "letterSpacing": "0",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              },
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             },
             {
               "id": "1019:1357",
@@ -7678,7 +9033,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -7697,7 +9053,11 @@
                   "text": "2026 —",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1019:1359",
@@ -7715,8 +9075,16 @@
                   "text": "Wärtsilä R&D · UX/HMI & System Designer",
                   "textStyle": "Pegboard/Small",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "HUG"
               ]
             },
             {
@@ -7743,7 +9111,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -7762,7 +9131,11 @@
                   "text": "2025–26",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1019:1362",
@@ -7780,8 +9153,16 @@
                   "text": "Edge AI Advisory · with Wärtsilä & AaltoDesignFactory",
                   "textStyle": "Pegboard/Small",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "HUG"
               ]
             },
             {
@@ -7808,7 +9189,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "FIXED",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -7827,7 +9209,11 @@
                   "text": "2023–24",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1019:1365",
@@ -7845,8 +9231,16 @@
                   "text": "Yum China · Product Designer",
                   "textStyle": "Pegboard/Small",
                   "align": "LEFT",
-                  "autoResize": "HEIGHT"
+                  "autoResize": "HEIGHT",
+                  "sizing": [
+                    "FILL",
+                    "HUG"
+                  ]
                 }
+              ],
+              "sizing": [
+                "FILL",
+                "HUG"
               ]
             },
             {
@@ -7865,7 +9259,11 @@
               "text": "→ FULL CV",
               "textStyle": "Pegboard/Label",
               "align": "LEFT",
-              "autoResize": "WIDTH_AND_HEIGHT"
+              "autoResize": "WIDTH_AND_HEIGHT",
+              "sizing": [
+                "HUG",
+                "HUG"
+              ]
             }
           ]
         },
@@ -7934,7 +9332,8 @@
         "primarySizing": "AUTO",
         "counterSizing": "FIXED",
         "wrap": "NO_WRAP",
-        "clips": false
+        "clips": false,
+        "strokesInLayout": true
       },
       "children": [
         {
@@ -7953,7 +9352,11 @@
           "text": "NOW",
           "textStyle": "Pegboard/Label",
           "align": "LEFT",
-          "autoResize": "WIDTH_AND_HEIGHT"
+          "autoResize": "WIDTH_AND_HEIGHT",
+          "sizing": [
+            "HUG",
+            "HUG"
+          ]
         },
         {
           "id": "1019:1378",
@@ -7971,7 +9374,11 @@
           "text": "UX / HMI designer at Wärtsilä R&D. Open to HMI / SCADA UX roles from 2027.",
           "textStyle": "Pegboard/Body",
           "align": "LEFT",
-          "autoResize": "HEIGHT"
+          "autoResize": "HEIGHT",
+          "sizing": [
+            "FILL",
+            "HUG"
+          ]
         },
         {
           "id": "1019:1379",
@@ -7985,9 +9392,18 @@
           "cy": 3,
           "fills": [
             "var(--theme-accent)"
+          ],
+          "absolute": true,
+          "sizing": [
+            "FIXED",
+            "FIXED"
           ]
         }
-      ]
+      ],
+      "effectCss": {
+        "boxShadow": "0px 4px 8px 0px rgba(0, 0, 0, 0.12)",
+        "dropShadow": "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.12))"
+      }
     }
   },
   "Object": {
@@ -8125,7 +9541,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "AUTO",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -8144,7 +9561,11 @@
                   "text": "Archive",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1019:1375",
@@ -8162,7 +9583,11 @@
                   "text": "2021–2024 · 3 projects",
                   "textStyle": "Pegboard/Small",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 }
               ]
             }
@@ -8274,7 +9699,8 @@
                 "primarySizing": "AUTO",
                 "counterSizing": "AUTO",
                 "wrap": "NO_WRAP",
-                "clips": true
+                "clips": true,
+                "strokesInLayout": true
               },
               "children": [
                 {
@@ -8293,7 +9719,11 @@
                   "text": "Projects",
                   "textStyle": "Pegboard/Label",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 },
                 {
                   "id": "1146:112090",
@@ -8311,7 +9741,11 @@
                   "text": "2025–2026· 4 projects",
                   "textStyle": "Pegboard/Small",
                   "align": "LEFT",
-                  "autoResize": "WIDTH_AND_HEIGHT"
+                  "autoResize": "WIDTH_AND_HEIGHT",
+                  "sizing": [
+                    "HUG",
+                    "HUG"
+                  ]
                 }
               ]
             }

@@ -1,14 +1,14 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#coreds-clip0_1170_85414)">
-<path d="M100 31L143 56L100 81L57 56L100 31Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
-<path d="M54.5 57L98 82.5L54.5 108L11 82.5L54.5 57Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
-<path d="M9 84L52 109L9 134L-34 109L9 84Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
+<path d="M100 31L143 56L100 81L57 56L100 31Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
+<path d="M54.5 57L98 82.5L54.5 108L11 82.5L54.5 57Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
+<path d="M9 84L52 109L9 134L-34 109L9 84Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
 <path d="M98.9979 87.5801C99.6178 87.2213 100.382 87.2213 101.002 87.5801L135.01 107.269C136.341 108.039 136.341 109.961 135.01 110.731L101.002 130.42C100.382 130.779 99.6178 130.779 98.9979 130.42L64.9896 110.731C63.6591 109.961 63.6591 108.039 64.9897 107.269L98.9979 87.5801Z" style="fill:var(--surface-board)"/>
-<path d="M54.5 110L98 135.5L54.5 161L11 135.5L54.5 110Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
-<path d="M191 84L234 109L191 134L148 109L191 84Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
-<path d="M145.5 110L189 135.5L145.5 161L102 135.5L145.5 110Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
-<path d="M100 137L143 162L100 187L57 162L100 137Z" fill="black" stroke-width="2" stroke-linejoin="round" stroke="white"/>
-<path d="M145.5 57L189 82.5L145.5 108L102 82.5L145.5 57Z" fill="black"/>
+<path d="M54.5 110L98 135.5L54.5 161L11 135.5L54.5 110Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
+<path d="M191 84L234 109L191 134L148 109L191 84Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
+<path d="M145.5 110L189 135.5L145.5 161L102 135.5L145.5 110Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
+<path d="M100 137L143 162L100 187L57 162L100 137Z" stroke-width="2" stroke-linejoin="round" stroke="white" style="fill:var(--line-strong)"/>
+<path d="M145.5 57L189 82.5L145.5 108L102 82.5L145.5 57Z" style="fill:var(--line-strong)"/>
 <path d="M101.489 61.5929C102.113 61.2268 102.887 61.2268 103.511 61.5929L143.057 84.7746C144.375 85.5473 144.375 87.4527 143.057 88.2254L103.511 111.407C102.887 111.773 102.113 111.773 101.489 111.407L61.9433 88.2254C60.6252 87.4527 60.6252 85.5473 61.9433 84.7746L101.489 61.5929Z" stroke-width="2" stroke-linejoin="round" style="fill:var(--theme-accent);stroke:var(--theme-accent)"/>
 <path d="M102.5 51L146 76.5L102.5 102L59 76.5L102.5 51Z" style="fill:var(--theme-on-accent)"/>
 </g>

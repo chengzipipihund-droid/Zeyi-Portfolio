@@ -59,6 +59,10 @@ import FloatopiaSvg from './icons/floatopia.svg';
 import AtlasSvg from './icons/atlas.svg';
 import LandOfSnowSvg from './icons/land-of-snow.svg';
 import ShelfSvg from './hardware/shelf.svg';
+import DetailBoardUltraBridgeCaptain2Svg from './art/detail-board-ultra-bridge-captain2.svg';
+import DetailBoardUltraBridgeVector635Svg from './art/detail-board-ultra-bridge-vector-635.svg';
+import DetailBoardUltraBridgeVector636Svg from './art/detail-board-ultra-bridge-vector-636.svg';
+import DetailBoardUltraBridgeCaptainSvg from './art/detail-board-ultra-bridge-captain.svg';
 
 export type SvgComponent = ComponentType<SVGProps<SVGSVGElement>>;
 export const figmaSvg = {
@@ -120,5 +124,9 @@ export const figmaSvg = {
   'atlas': AtlasSvg,
   'land-of-snow': LandOfSnowSvg,
   'shelf': ShelfSvg,
+  'detail-board-ultra-bridge-captain2': DetailBoardUltraBridgeCaptain2Svg,
+  'detail-board-ultra-bridge-vector-635': DetailBoardUltraBridgeVector635Svg,
+  'detail-board-ultra-bridge-vector-636': DetailBoardUltraBridgeVector636Svg,
+  'detail-board-ultra-bridge-captain': DetailBoardUltraBridgeCaptainSvg,
 } satisfies Record<string, SvgComponent>;
 export type FigmaSvgKey = keyof typeof figmaSvg;
