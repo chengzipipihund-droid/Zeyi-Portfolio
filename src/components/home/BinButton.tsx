@@ -2,7 +2,7 @@
 
 import t0 from '@/data/figma/layouts/t0.json';
 import t1 from '@/data/figma/layouts/t1.json';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { stagePoint } from '@/components/stage/Stage';
 import type { LayoutNode } from '@/lib/figma/types';
 import { HOME_MOTION } from '@/styles/motion';
@@ -30,8 +30,18 @@ export function BinButton({ children }: { children: ReactNode }) {
   const onBoard = home.phase === 't1' || home.phase === 'stowed';
   const [hot, setHot] = useState(false);
 
+  // Last pointer position, so a board that settles under a still pointer already knows whether the bin is under it
+  // (otherwise the first click there would go to the SCADA+ card on top).
+  const last = useRef<{ clientX: number; clientY: number } | null>(null);
   useEffect(() => {
-    setHot(false);
+    const track = (e: PointerEvent) => (last.current = { clientX: e.clientX, clientY: e.clientY });
+    window.addEventListener('pointermove', track, true);
+    return () => window.removeEventListener('pointermove', track, true);
+  }, []);
+
+  useEffect(() => {
+    const p0 = onBoard && last.current ? stagePoint(last.current) : null;
+    setHot(!!p0 && inside(p0, BOARD_BIN));
     if (!onBoard) return;
     const move = (e: PointerEvent) => {
       const p = stagePoint(e);

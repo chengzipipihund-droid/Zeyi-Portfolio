@@ -116,6 +116,15 @@ loading `/home` shows T1 directly; the Logo on T1 replays Animation A. Deep link
 L card get nudged (≤ 24 px, ≤ 6°) until M7 replaces this with physics. T4 filter: strings draw (`pathLength` 0→1, 400 ms, 60 ms stagger),
 Match/Dim, pill "N TOOLS USE <SKILL> · ESC TO RELEASE". T5 open: see 7.5.
 
+**7.4b M6 as built (Figma T2/T4/T5 diffs in `src/data/figma/states.json`):** a tool under the L card uses Figma's T2 pose when
+there is one (Ultra Bridge: hammer / pliers / screwdriver picked up = Held, drawn above the card, Slot left under it); tools under
+the other three L cards (no Figma frame) get the brief's nudge in place (≤ 24 px, ≤ 6°, under the card). "CLICK TO TAKE IT OFF"
+follows the pointer at Figma's offset. Filter: tools 0.45, archive 0.3, Dim cards + their hooks 0.3, "Pull a skill…" hidden, pill
+"N TOOLS USE <SKILL> · ESC TO RELEASE", strings + dots from the pulled tag's hole to the hooks. Opening a card clears a filter.
+URL: `/home?p=<slug>` / `/home?skill=<slug>` (replaceState). Keyboard focus on a card = L; Enter opens and focus moves to
+"PUT BACK"; touch: 1st tap = L, 2nd tap opens. Side flip perspective 1600 px (not in Figma). "Open the case" / PDF: M9 — TODO(zeyi).
+**Open question (Zeyi):** the SCADA+ L card grows to y = 1100, past the board (984) and the stage (1024) — Figma has no SCADA+ hover.
+
 **7.5 Card click** — the card is pulled off its hook (y −10 px, scale 1.02, 120 ms, ease-out), then fades into the dashed "taken"
 silhouette (200 ms) while the side board flips (rotateY 0→90° 180 ms, swap to the Detail Board, 90→0° 180 ms). URL `/?p=<slug>`.
 Put back (Esc / button): reverse; the card drops back onto the hook and swings once (6° → 0, 0.5 s).

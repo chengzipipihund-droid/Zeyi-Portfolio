@@ -6,8 +6,10 @@ import { useHome } from './HomeState';
 
 /** Reduced motion: T0 ⇄ T1 cross-fades the scene (half out, swap, half in) instead of playing Animation A. */
 export function SceneFade({ children }: { children: ReactNode }) {
-  const { fadedOut } = useHome();
+  const { fadedOut, phase } = useHome();
   return (
-    <div style={{ opacity: fadedOut ? 0 : 1, transition: `opacity ${HOME_MOTION.reducedFade / 2}s ease-out` }}>{children}</div>
+    <div data-phase={phase} style={{ opacity: fadedOut ? 0 : 1, transition: `opacity ${HOME_MOTION.reducedFade / 2}s ease-out` }}>
+      {children}
+    </div>
   );
 }

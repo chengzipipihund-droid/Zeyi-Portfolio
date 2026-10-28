@@ -259,6 +259,8 @@ for (const [key, m] of Object.entries(data.motion || {})) {
   motionCounts[key] = `${m.nodes.length} nodes · ${m.duration}s`;
 }
 write(P.specs, JSON.stringify({ _note: stamp, ...data.specs }, null, 2) + '\n');
+// T2/T4/T5 differences from T1 (interaction states), read from Figma with the MCP until the exporter exports state frames.
+if (sup?.states) write('src/data/figma/states.json', JSON.stringify({ _generated: stamp, ...sup.states }, null, 2) + '\n');
 
 // ---------------------------------------------------------------- SVG assets
 function themeSvg(key, svg, tokens) {

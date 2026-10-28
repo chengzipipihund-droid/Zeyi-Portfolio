@@ -93,6 +93,10 @@ Pure black (`#000000` / `black`) is mapped to `var(--line-strong)` by the import
   `layouts/t0.json`), each in a `MotionLayer` pivot posed by `lib/motion/figma.ts` (`poseAt(node, t)`: Figma tracks + easings, springs
   settle like Figma). `HomeState` = phase / clock / T0 hover. `HoverLayer` plays the T0 hovers as offsets from the T0 pose.
   Hidden layers are `opacity: 0` + `inert`, never `visibility: hidden` (shared SVG mask ids — see MotionLayer).
+- T1 interactions (M6): `BoardState` (hovered / opened / skill, side-board flip, Esc, URL), `Board.tsx` (BoardCard, BoardProp,
+  BoardTag, FilterStrings, pills, SideFlip, DetailActions), geometry in `lib/board/geometry.ts` from `src/data/figma/states.json`.
+  All variants are rendered on the server and only toggled on the client (keeps SVG code out of the client bundle).
+  Tests drive the real page through `[data-phase]` (t0 | intro | t1 | stowed) and `[data-card]`.
 Wrong data → tell Zeyi what to change in Figma; Zeyi re-exports and you run `/figma-sync`. Use the Figma MCP (`get_design_context`, `get_screenshot`,
 `get_metadata`, `get_motion_context`) only for what the export lacks. Budget: **200 calls/day, 10/min**. Never loop screenshots.
 

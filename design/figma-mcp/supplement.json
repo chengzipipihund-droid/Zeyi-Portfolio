@@ -34,6 +34,32 @@
     "1064:11535": [{"id":"1064:11536","name":"Icon","type":"INSTANCE","x":42,"y":-1,"w":124,"h":124,"sizing":["FIXED","FIXED"],"component":"Icon/Project/Ultra Bridge"}],
     "1064:11574": [{"id":"1064:11575","name":"Icon","type":"INSTANCE","x":0,"y":-39,"w":124,"h":124,"visible":false,"sizing":["FIXED","FIXED"],"component":"Icon/Project/Ultra Bridge"}]
   },
+  "states": {
+    "_note": "T2/T4/T5 differences from T1 (Figma frames 1070:17952 / 1072:22648 / 1072:25215, read 2026-10-29). Boxes are Figma x, y, w, h (+ Figma rotation, counter-clockwise). Orange 'Motion · …' / 'Annotation · …' frames and the demo cursor are design notes, not rendered.",
+    "t2": {
+      "card": "Card · Ultra Bridge",
+      "cardBox": [40, 196, 320, 540],
+      "pushed": {
+        "Prop · Hammer": { "box": [20, 640, 116, 268], "rot": -38, "state": "Held" },
+        "Prop · Pliers": { "box": [236, 700, 127, 250], "rot": 28, "state": "Held" },
+        "Prop · Screwdriver": { "box": [520, 600, 223, 60], "rot": 140, "state": "Held" }
+      },
+      "slots": ["Prop · Hammer", "Prop · Pliers", "Prop · Screwdriver"],
+      "pill": { "text": "CLICK TO TAKE IT OFF", "box": [238, 466, 169, 30], "cursor": [214, 430] }
+    },
+    "t4": {
+      "skill": "HMI / SCADA",
+      "toolOpacity": 0.45,
+      "archiveOpacity": 0.3,
+      "dimHookOpacity": 0.3,
+      "pulledTag": { "dy": 10, "state": "Active" },
+      "emptySlot": { "box": [1052, 338, 122, 33], "opacity": 0.5, "strokeWeight": 1.2, "dash": [4, 4], "radius": 999 },
+      "strings": { "opacity": 0.85, "strokeWeight": 2, "dot": 10, "from": [1066, 364.5], "hookDy": 4 },
+      "pill": { "text": "{n} TOOLS USE {SKILL} · ESC TO RELEASE", "box": [1052, 304, 314, 30], "shadow": false },
+      "hidden": ["Tags label"]
+    },
+    "t5": { "card": "Card · Ultra Bridge", "cardState": "Taken", "detailBoardBox": [1024, 120, 376, 864] }
+  },
   "counterGap": {"1066:13803":10,"1066:14850":10,"1066:15907":10,"1066:16944":10},
   "strokeSides": {"1066:13804":[1,0,0,0],"1066:13807":[1,0,0,0],"1066:13810":[1,0,0,0],"1066:13813":[1,0,0,0],"1066:14851":[1,0,0,0],"1066:14854":[1,0,0,0],"1066:14857":[1,0,0,0],"1066:14860":[1,0,0,0],"1066:15908":[1,0,0,0],"1066:15911":[1,0,0,0],"1066:15914":[1,0,0,0],"1066:15917":[1,0,0,0],"1066:16945":[1,0,0,0],"1066:16948":[1,0,0,0],"1066:16951":[1,0,0,0],"1066:16954":[1,0,0,0]},
   "art": [

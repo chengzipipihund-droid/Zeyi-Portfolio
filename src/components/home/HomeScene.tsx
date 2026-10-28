@@ -3,17 +3,34 @@ import t0HoverBin from '@/data/figma/layouts/t0-hover-bin.json';
 import t0HoverHi from '@/data/figma/layouts/t0-hover-hi.json';
 import t1 from '@/data/figma/layouts/t1.json';
 import type { ReactNode } from 'react';
-import { ProjectCard } from '@/components/card/ProjectCard';
+import { DetailBoard } from '@/components/card/DetailBoard';
+import { ProjectCard, type ProjectCardState } from '@/components/card/ProjectCard';
 import { FigmaComponent, FigmaLayer } from '@/components/figma/FigmaNode';
 import { NavTab } from '@/components/parts/Parts';
 import { LayoutPrimitive } from '@/components/stage/LayoutPrimitive';
 import { Placed } from '@/components/stage/Placed';
-import { archive, projects } from '@/data/projects';
+import { archive, projects, skills, type Project } from '@/data/projects';
+import { boxCenter, emptySlotBox, hoverBox, pushPose, states, type Box } from '@/lib/board/geometry';
 import { animationA, hoverBin, hoverHi, motionNode, type MotionNode } from '@/lib/motion/figma';
 import { componentTree } from '@/lib/figma/specs';
-import type { LayoutNode } from '@/lib/figma/types';
-import { Greeting } from './Greeting';
+import { fillCss, paintCss, radiusCss, shadowVar } from '@/lib/figma/style';
+import type { FigmaNode, LayoutNode } from '@/lib/figma/types';
 import { BinButton } from './BinButton';
+import {
+  BoardCard,
+  BoardFade,
+  BoardOverlay,
+  BoardProp,
+  BoardTag,
+  CursorPill,
+  DetailActions,
+  FilterPillText,
+  FilterStrings,
+  SideFlip,
+  WhenFiltered,
+} from './Board';
+import { BoardStateProvider } from './BoardState';
+import { Greeting } from './Greeting';
 import { HoverFade, HoverLayer, HoverTarget, MotionLayer } from './MotionLayer';
 import { StageButton } from './StageButton';
 
@@ -30,6 +47,10 @@ const DEMO_ONLY = new Set(['Cursor · click']); // storyboard cursor, not render
 // T1 controls (Zeyi, 2026-10-29): WORK takes you back to the desk ("/"), the Logo replays Animation A (brief §7.3).
 const STAGE_BUTTONS: Record<string, 'backToDesk' | 'replay'> = { 'Nav · WORK': 'backToDesk', Logo: 'replay' };
 const PRIMITIVES = new Set(['Board/Panel', 'Peg/Hook', 'Shelf', 'Object']);
+// Layers of the personal side board: they flip away when a project opens (T5).
+const SIDE = new Set(['Side board · personal', 'Nameplate', 'Status lamp', 'Tags label', 'Badge · Tongji', 'Badge · Aalto', 'Shelf · education', 'Clipboard · EXP', 'Hook · clipboard']);
+const SIDE_BOARD = byName(T1, 'Side board · personal')!.css!;
+const SIDE_ORIGIN = boxCenter(SIDE_BOARD);
 
 /** One layout layer drawn with the component that owns its interaction (cards, nav) or exactly as in Figma. */
 function Layer({ node }: { node: LayoutNode }) {
@@ -66,35 +87,117 @@ function Layer({ node }: { node: LayoutNode }) {
 }
 
 /** A layer moved to another box (its resting place in Animation A), keeping its own size and rotation. */
-const at = (node: LayoutNode, box: { left: number; top: number; rotate?: number }): LayoutNode => ({
+const at = (node: LayoutNode, b: { left: number; top: number; rotate?: number }): LayoutNode => ({
   ...node,
-  css: { left: box.left, top: box.top, width: node.css!.width, height: node.css!.height, rotate: box.rotate ?? node.css!.rotate },
+  css: { left: b.left, top: b.top, width: node.css!.width, height: node.css!.height, rotate: b.rotate ?? node.css!.rotate },
 });
+const withVariant = (node: LayoutNode, variant: Record<string, string>): LayoutNode => ({ ...node, variant: { ...node.variant, ...variant } });
+const cssBox = (n: LayoutNode): Box => n.css!;
 
-type Entry = { key: string; motion?: MotionNode; el: ReactNode };
+// ---------------------------------------------------------------- T1 interactions (M6)
 
-/** T1 layers in Figma z-order; the skill tags split per tag (each has its own Animation A track). */
+const projectOfCard = (name: string) => projects.find((p) => name === `Card · ${p.detailVariant}`);
+const cardLayer = (p: Project) => byName(T1, `Card · ${p.detailVariant}`)!;
+const hookLayer = (p: Project) => byName(T1, `Hook · ${p.detailVariant}`)!;
+
+/** The Hover variant's own frame, used for the box that grows from M to L. */
+function hoverShell() {
+  const t = componentTree('Project Card', { State: 'Hover' })!;
+  const stroke = t.strokes?.map(paintCss).find(Boolean);
+  return {
+    background: fillCss(t.fills),
+    borderRadius: radiusCss(t.radius),
+    boxShadow: [`inset 0 0 0 ${t.strokeWeight}px ${stroke}`, shadowVar(t.effect)].filter(Boolean).join(', '),
+  };
+}
+
+function boardCard(n: LayoutNode, p: Project) {
+  const variant = (state: ProjectCardState) => <ProjectCard {...p} showStatus={n.props?.['Show status'] === true} state={state} />;
+  return (
+    <BoardCard
+      slug={p.slug}
+      label={`${p.title} — ${p.subtitle}`}
+      skills={p.skills}
+      rest={cssBox(n)}
+      hover={hoverBox(cssBox(n))}
+      hookName={hookLayer(p).name}
+      pivotY={motionNode(animationA, `Hang · ${p.detailVariant}`)!.center.y}
+      shell={hoverShell()}
+      variants={{ rest: variant('rest'), hover: variant('hover'), match: variant('match'), dim: variant('dim'), taken: variant('taken') }}
+    />
+  );
+}
+
+function boardProp(n: LayoutNode) {
+  const pushes = Object.fromEntries(
+    projects.map((p) => [p.slug, pushPose({ name: n.name, box: cssBox(n) }, { name: cardLayer(p).name, box: cssBox(cardLayer(p)) })]),
+  );
+  return (
+    <BoardProp
+      center={boxCenter(cssBox(n))}
+      pushes={pushes}
+      rest={<Layer node={n} />}
+      held={<Layer node={withVariant(n, { State: 'Held' })} />}
+      slot={<Layer node={withVariant(n, { State: 'Slot' })} />}
+    />
+  );
+}
+
+type Entry = { key: string; motion?: MotionNode; el: ReactNode; side?: boolean };
+
+/** T1 layers in Figma z-order, each with its T1 interaction; the skill tags split per tag (each has its own track). */
 function t1Entries(): Entry[] {
   const out: Entry[] = [];
+  const tagsFrame = byName(T1, 'Skill tags')!;
+  const tagBoxes = ((tagsFrame.children ?? []) as LayoutNode[]).map((tag) => ({
+    label: tag.texts?.find((t) => t.layer === 'Label')?.text ?? tag.name,
+    node: at(tag, { left: tagsFrame.css!.left + tag.css!.left, top: tagsFrame.css!.top + tag.css!.top }),
+  }));
+  const hmiTag = cssBox(tagBoxes.find((t) => t.label === states.t4.skill)!.node);
   for (const n of T1) {
     if (REMOVED.has(n.name)) continue;
     if (n.name === 'Skill tags') {
-      for (const tag of n.children ?? []) {
-        const placed = at(tag, { left: n.css!.left + tag.css!.left, top: n.css!.top + tag.css!.top });
-        out.push({ key: tag.id, motion: motionNode(animationA, `Skill tags / ${tag.name}`), el: <Layer node={placed} /> });
+      out.push({
+        key: 'filter-strings',
+        el: <FilterStrings tags={tagBoxes.map((t) => ({ label: t.label, box: cssBox(t.node) }))} cards={projects.map((p) => ({ slug: p.slug, skills: p.skills, hook: cssBox(hookLayer(p)) }))} />,
+      });
+      for (const { label, node } of tagBoxes) {
+        out.push({
+          key: node.id,
+          side: true,
+          motion: motionNode(animationA, `Skill tags / ${node.name}`),
+          el: (
+            <BoardTag
+              label={label}
+              tag={cssBox(node)}
+              slotBox={emptySlotBox(cssBox(node), hmiTag)}
+              idle={<Layer node={node} />}
+              pulled={<Layer node={withVariant(node, { State: states.t4.pulledTag.state })} />}
+            />
+          ),
+        });
       }
       continue;
     }
     const wrapper = n.name.startsWith('Card · ') ? `Hang · ${n.name.slice('Card · '.length)}` : n.name === 'Clipboard · EXP' ? 'Hang · Clipboard' : n.name;
     const action = STAGE_BUTTONS[n.name];
-    const el = action ? (
-      <StageButton box={n.css!} action={action} label={n.texts?.[0]?.text ?? n.text ?? n.name}>
-        <Layer node={at(n, { left: 0, top: 0 })} />
-      </StageButton>
-    ) : (
-      <Layer node={n} />
-    );
-    out.push({ key: n.id, motion: motionNode(animationA, wrapper), el });
+    const project = projectOfCard(n.name);
+    const hookOf = projects.find((p) => hookLayer(p).name === n.name);
+    let el: ReactNode;
+    if (action) {
+      el = (
+        <StageButton box={n.css!} action={action} label={n.texts?.[0]?.text ?? n.text ?? n.name}>
+          <Layer node={at(n, { left: 0, top: 0 })} />
+        </StageButton>
+      );
+    } else if (project) el = boardCard(n, project);
+    else if (n.component?.startsWith('Prop/')) el = boardProp(n);
+    else if (hookOf) el = <BoardFade opacity={states.t4.dimHookOpacity} keepFor={hookOf.skills}><Layer node={n} /></BoardFade>;
+    else if (n.name === 'Pin · pliers') el = <BoardFade opacity={states.t4.toolOpacity}><Layer node={n} /></BoardFade>;
+    else if (n.name.startsWith('Archive · ')) el = <BoardFade opacity={states.t4.archiveOpacity}><Layer node={n} /></BoardFade>;
+    else if (states.t4.hidden.includes(n.name)) el = <BoardFade opacity={0}><Layer node={n} /></BoardFade>;
+    else el = <Layer node={n} />;
+    out.push({ key: n.id, motion: motionNode(animationA, wrapper), el, side: SIDE.has(n.name) });
   }
   return out;
 }
@@ -147,33 +250,77 @@ function sceneEntries(): Entry[] {
   return entries;
 }
 
+/** Path to a layer inside a component tree → its box in the component (Figma x/y are relative to the parent). */
+function layerBox(tree: FigmaNode, name: string, ox = 0, oy = 0): Box | null {
+  for (const c of tree.children ?? []) {
+    if (c.name === name) return { left: ox + c.x, top: oy + c.y, width: c.w, height: c.h };
+    const found = layerBox(c, name, ox + c.x, oy + c.y);
+    if (found) return found;
+  }
+  return null;
+}
+
+/** T5: each project's Detail Board on the side board's place, with its "put back" button. */
+function detailBoards(): ReactNode[] {
+  const [x, y] = states.t5.detailBoardBox;
+  return projects.map((p) => {
+    const tree = componentTree('Detail Board', { Project: p.detailVariant })!;
+    const put = layerBox(tree, 'Put back')!;
+    const label = (tree && JSON.stringify(tree).match(/"text":"(↩[^"]*)"/)?.[1]) ?? 'Put back';
+    return (
+      <SideFlip key={`detail-${p.slug}`} face={p.slug} origin={SIDE_ORIGIN}>
+        <div style={{ position: 'absolute', left: x, top: y, pointerEvents: 'auto' }}>
+          <DetailBoard project={p.slug} />
+          <DetailActions slug={p.slug} label={label} putBack={put} />
+        </div>
+      </SideFlip>
+    );
+  });
+}
+
 // The T0 bin = Fly minis + Project bin + its T0 label, consecutive in the motion frame: one hover/press target.
 const BIN_GROUP = /^(Fly · Mini · |Project bin$|Bin · T0 label$)/;
 
-/** The home page: one DOM for T0, Animation A and T1 (CLAUDE.md → Page model), plus the T0 hover layers. */
+/** The home page: one DOM for T0, Animation A and T1 (CLAUDE.md → Page model), the T0 hovers and the T1 interactions. */
 export function HomeScene() {
   const entries = sceneEntries();
   const out: ReactNode[] = [];
+  const layer = (e: Entry) => {
+    const el = e.motion ? <MotionLayer key={e.key} node={e.motion}>{e.el}</MotionLayer> : <div key={e.key}>{e.el}</div>;
+    return e.side ? <SideFlip key={e.key} face="personal" origin={SIDE_ORIGIN}>{el}</SideFlip> : el;
+  };
   for (let i = 0; i < entries.length; i++) {
     const e = entries[i];
     if (e.motion && BIN_GROUP.test(e.motion.name)) {
       const group: Entry[] = [];
       while (i < entries.length && entries[i].motion && BIN_GROUP.test(entries[i].motion!.name)) group.push(entries[i++]);
       i--;
-      out.push(
-        <BinButton key="bin">
-          {group.map((g) => <MotionLayer key={g.key} node={g.motion!}>{g.el}</MotionLayer>)}
-        </BinButton>,
-      );
+      out.push(<BinButton key="bin">{group.map(layer)}</BinButton>);
       continue;
     }
-    out.push(e.motion ? <MotionLayer key={e.key} node={e.motion}>{e.el}</MotionLayer> : <div key={e.key}>{e.el}</div>);
+    out.push(layer(e));
   }
   const greeting = byName(items(t0HoverHi), 'Greeting')!;
-  const pill = byName(items(t0HoverBin), 'Overlay pill')!;
+  const pill = byName(items(t0HoverBin), 'Overlay pill')!; // the pill style of T0 / T2 / T4
+  const pillText = pill.children?.find((c) => c.type === 'TEXT')?.name ?? '';
+  const [fx, fy, fw, fh] = states.t4.pill.box;
+  const filterPill: LayoutNode = { ...pill, effect: states.t4.pill.shadow ? pill.effect : undefined, effectCss: undefined, css: { left: fx, top: fy, width: fw, height: fh, rotate: 0 } };
+  const counts = Object.fromEntries(skills.map((s) => [s, projects.filter((p) => p.skills.includes(s)).length]));
+  const [px, py] = states.t2.pill.box;
+  const [cx, cy] = states.t2.pill.cursor;
   return (
-    <>
+    <BoardStateProvider skills={skills}>
       {out}
+      <BoardOverlay />
+      {detailBoards()}
+      <WhenFiltered>
+        <Placed node={filterPill}>
+          <FigmaLayer node={filterPill} overrides={{ slots: { [pillText]: <FilterPillText counts={counts} /> } }} />
+        </Placed>
+      </WhenFiltered>
+      <CursorPill offset={{ x: px - cx, y: py - cy }} forcedAt={{ x: cx, y: cy }}>
+        <FigmaLayer node={pill} overrides={{ texts: { [pillText]: states.t2.pill.text } }} />
+      </CursorPill>
       <HoverFade hover="hi">
         <Placed node={greeting}>
           <FigmaLayer node={greeting} overrides={{ slots: { Greeting: <Greeting text={greeting.text ?? ''} /> } }} />
@@ -182,6 +329,6 @@ export function HomeScene() {
       <HoverFade hover="bin">
         <Placed node={pill}><FigmaLayer node={pill} /></Placed>
       </HoverFade>
-    </>
+    </BoardStateProvider>
   );
 }
