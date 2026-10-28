@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 12px/1.45 Inter, system-ui, sans-serif; margin: 0; padding: 16px; color: var(--figma-color-text, #111); background: var(--figma-color-bg, #fff); }
+  h1 { font-size: 13px; margin: 0 0 4px; }
+  p { margin: 0 0 12px; color: var(--figma-color-text-secondary, #666); }
+  label { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+  button { font: inherit; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--figma-color-border, #ccc); background: var(--figma-color-bg-secondary, #f5f5f5); color: inherit; cursor: pointer; }
+  button.primary { background: var(--figma-color-bg-brand, #0d99ff); color: var(--figma-color-text-onbrand, #fff); border-color: transparent; }
+  button:disabled { opacity: .5; cursor: default; }
+  .row { display: flex; gap: 8px; }
+  #status { margin-top: 12px; white-space: pre-wrap; min-height: 36px; }
+  textarea { position: absolute; left: -9999px; }
+</style>
+</head>
+<body>
+  <h1>Pegboard Exporter</h1>
+  <p>Exports tokens, text &amp; effect styles, the layouts of T0 · T0 hovers · T0.5 · T1, the Animation A motion keyframes, component specs and SVG assets into one <b>figma-export.json</b>.</p>
+  <label><input type="checkbox" id="png" checked /> Include reference PNGs of T0–T5 and the Animation A storyboard (bigger file)</label>
+  <div class="row">
+    <button class="primary" id="run">Export</button>
+    <button id="save" disabled>Download again</button>
+    <button id="copy" disabled>Copy JSON</button>
+  </div>
+  <div id="status">Ready.</div>
+  <textarea id="buf"></textarea>
+<script>
+  const $ = (id) => document.getElementById(id);
+  let json = '';
+  function download() {
+    const blob = new Blob([json], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'figma-export.json';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+  }
+  $('run').onclick = () => {
+    $('run').disabled = true;
+    $('status').textContent = 'Exporting… (about 20–60 s)';
+    parent.postMessage({ pluginMessage: { type: 'export', png: $('png').checked } }, '*');
+  };
+  $('save').onclick = download;
+  $('copy').onclick = () => {
+    const t = $('buf'); t.value = json; t.select();
+    const ok = document.execCommand('copy');
+    $('status').textContent = ok ? 'Copied. Paste it into design/figma-export.json in the repo.' : 'Copy failed — use Download.';
+  };
+  onmessage = (e) => {
+    const msg = e.data.pluginMessage;
+    if (!msg) return;
+    if (msg.type === 'progress') $('status').textContent = 'Exporting… ' + msg.text;
+    if (msg.type === 'error') { $('status').textContent = '✗ ' + msg.text; $('run').disabled = false; }
+    if (msg.type === 'done') {
+      json = msg.json;
+      $('status').textContent = '✓ ' + msg.summary + '\n' + (json.length / 1024 / 1024).toFixed(2) + ' MB — saved as figma-export.json (check your Downloads folder).';
+      $('run').disabled = false; $('save').disabled = false; $('copy').disabled = false;
+      download();
+    }
+  };
+</script>
+</body>
+</html>

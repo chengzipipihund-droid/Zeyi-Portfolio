@@ -1,0 +1,11 @@
+<svg width="320" height="128" viewBox="0 0 320 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#object-projectbin-clip0_1170_85378)">
+<path d="M1 1H319L306 127H14L1 1Z" stroke-width="2" stroke-linejoin="round" style="fill:var(--surface-board);stroke:var(--line-strong)"/>
+<path d="M1 1H319" stroke-width="6" style="stroke:var(--line-strong)"/>
+</g>
+<defs>
+<clipPath id="object-projectbin-clip0_1170_85378">
+<rect width="320" height="128" fill="white"/>
+</clipPath>
+</defs>
+</svg>
