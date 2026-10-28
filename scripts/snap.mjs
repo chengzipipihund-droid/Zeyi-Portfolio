@@ -4,6 +4,7 @@
  *
  *   NEXT_DIST_DIR=.next-verify npx next build
  *   NEXT_DIST_DIR=.next-verify node scripts/snap.mjs <out-dir> "<route>|<selector>|<name>" …
+ *   (route: "?phase=t1&visual=1" or "dev/components" — no leading "/" needed)
  *
  * Starts Next in this process (production), screenshots each route (optionally one element), prints console
  * errors, then exits — nothing keeps running. Use it beside `npm run dev`: it never touches `.next`.
@@ -21,6 +22,7 @@ const server = http.createServer((req, res) => handle(req, res)).listen(0);
 const base = `http://localhost:${server.address().port}`;
 
 const browser = await chromium.launch();
+let failed = false;
 try {
   for (const spec of shots) {
     const [route, selector, name] = spec.split('|');
@@ -28,7 +30,8 @@ try {
     const errors = [];
     page.on('pageerror', (e) => errors.push(String(e).slice(0, 300)));
     page.on('console', (m) => m.type() === 'error' && errors.push(m.text().slice(0, 300)));
-    await page.goto(base + route, { waitUntil: 'networkidle' });
+    // Routes may omit the leading "/" (Git Bash rewrites "/dev/…" arguments into Windows paths).
+    await page.goto(base + (route.startsWith('/') ? route : `/${route}`), { waitUntil: 'networkidle' });
     // load lazy images (next/image) before the shot
     await page.evaluate(() => document.querySelectorAll('img[loading="lazy"]').forEach((img) => (img.loading = 'eager')));
     await page.waitForLoadState('networkidle');
@@ -41,9 +44,12 @@ try {
     console.log(`${file}  errors: ${errors.length ? errors.join(' | ') : 'none'}`);
     await page.close();
   }
+} catch (e) {
+  failed = true;
+  console.error(`✗ snap failed: ${e?.stack || e}`);
 } finally {
   await browser.close();
   server.close();
   await app.close?.();
-  process.exit(0);
+  process.exit(failed ? 1 : 0);
 }

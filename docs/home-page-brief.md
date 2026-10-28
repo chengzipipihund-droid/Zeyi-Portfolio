@@ -88,6 +88,10 @@ Cross-check with MCP `get_motion_context` on the frame node (it returns motion.d
 **7.2 T0 · Hover bin** — the four minis spring from their in-bin pose to the fan (`motion/t0-hover-bin.json`, 40 ms stagger, spring
 bounce 0.3). Pill "CLICK TO HANG THEM UP" under the shelf. Leave → spring back into the bin. Pure hover effect.
 
+**7.2b Not in Figma (M4 choices, Zeyi to confirm):** leaving the hi plate eases it back to T0 in 150 ms; leaving the bin springs
+the minis back with the same spring (no stagger); the "CLICK TO HANG THEM UP" pill fades in/out in 150 ms, like the greeting.
+The T0 minis keep their instance's `Show status` (off), so the SCADA+ WIP lamp only shows on the T1 card.
+
 **7.3 Animation A (T0 → T0.5 → T1, 4.8 s)** — trigger: click / Enter on the bin (also on the cards in it).
 | Time (s) | What happens |
 |---|---|
@@ -102,9 +106,11 @@ bounce 0.3). Pill "CLICK TO HANG THEM UP" under the shelf. Leave → spring back
 | 3.3 – 4.0 | "Pull a skill…" label and skill tags rise in (50 ms stagger) |
 | 3.4 – 4.55 | Clipboard drops onto its hook and swings |
 | 4.8 | = T1 |
-Rules: one master timeline (Motion `animate` sequence or per-node keyframes started together; expose `controls.time` for `?t=`).
-Click/Esc during the intro → jump to the end. `prefers-reduced-motion` → 300 ms cross-fade T0 → T1. `sessionStorage['pb-intro-seen']`
-→ next visit starts at T1; the Logo replays the intro. Deep links (`?p=`, `?skill=`) start at T1.
+Rules: one master timeline — a clock (`HomeState`) that every layer samples with `poseAt(node, t)`; `?t=` freezes it.
+Click/Esc during the intro → jump to the end. `prefers-reduced-motion` → 300 ms cross-fade T0 → T1 (hovers jump to their pose).
+**Routes (Zeyi, 2026-10-29, replaces "play once per visit"):** T0 = `/`, T1 = `/home`, one persistent scene. Bin → `/home` plays
+Animation A; WORK on `/home` → `/` plays it backwards at 2× (`styles/motion.ts`, Zeyi to confirm); back/forward animate too;
+loading `/home` shows T1 directly; the Logo on T1 replays Animation A. Deep links (`?p=`, `?skill=`) go to `/home`.
 
 **7.4 T1 states** — T2 hover: 80 ms intent, card M→L under its hook (Motion `layout`, spring 380/30), colour 180 ms, tools overlapping the
 L card get nudged (≤ 24 px, ≤ 6°) until M7 replaces this with physics. T4 filter: strings draw (`pathLength` 0→1, 400 ms, 60 ms stagger),

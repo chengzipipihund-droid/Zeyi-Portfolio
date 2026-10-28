@@ -3,9 +3,9 @@
  * visual-check.mjs — screenshot the running site and diff it against a Figma reference PNG.
  *
  *   npm run dev                                   (in another terminal)
- *   npm run visual                                       → /?phase=t1 vs design/reference/t1-rest.png
- *   npm run visual -- "/?phase=t0" t0-home-page         → T0 vs design/reference/t0-home-page.png
- *   npm run visual -- "/?phase=intro&t=2.15" anim-a-2-15 → Animation A frozen at 2.15 s vs the storyboard
+ *   npm run visual                                       → /home vs design/reference/t1-rest.png
+ *   npm run visual -- "/" t0-home-page                  → T0 vs design/reference/t0-home-page.png
+ *   npm run visual -- "/?t=2.15" anim-a-2-15            → Animation A frozen at 2.15 s vs the storyboard
  *
  * Needs: npm i -D playwright pixelmatch pngjs && npx playwright install chromium
  * Writes design/visual/<name>-actual.png, -diff.png (red = different) and prints the mismatch %.
@@ -18,7 +18,7 @@ import { chromium } from 'playwright';
 import { PNG } from 'pngjs';
 import pixelmatch from 'pixelmatch';
 
-const route = process.argv[2] || '/?phase=t1';
+const route = process.argv[2] || '/home';
 const name = process.argv[3] || 't1-rest';
 const base = process.env.VISUAL_URL || 'http://localhost:3000';
 const refPath = path.join('design/reference', `${name}.png`);

@@ -89,6 +89,10 @@ Pure black (`#000000` / `black`) is mapped to `var(--line-strong)` by the import
   Component wrappers (`ProjectCard`, `DetailBoard`, `components/parts`) only map props → overrides. Fix rendering there, once.
 - `src/components/stage/` — `Stage` (scaled 1440×1024), `Placed` (layout box, Figma scale), `LayoutPrimitive` (board/pegs/shelves/bins/props).
 - `src/data/projects.ts` — derived from `layouts/t1.json` + Detail Board specs; hand-written only: skills mapping, slugs.
+- `src/components/home/` — `HomeScene` builds the one DOM: T1 layers + the T0-only layers of the Animation A frame (copied from
+  `layouts/t0.json`), each in a `MotionLayer` pivot posed by `lib/motion/figma.ts` (`poseAt(node, t)`: Figma tracks + easings, springs
+  settle like Figma). `HomeState` = phase / clock / T0 hover. `HoverLayer` plays the T0 hovers as offsets from the T0 pose.
+  Hidden layers are `opacity: 0` + `inert`, never `visibility: hidden` (shared SVG mask ids — see MotionLayer).
 Wrong data → tell Zeyi what to change in Figma; Zeyi re-exports and you run `/figma-sync`. Use the Figma MCP (`get_design_context`, `get_screenshot`,
 `get_metadata`, `get_motion_context`) only for what the export lacks. Budget: **200 calls/day, 10/min**. Never loop screenshots.
 
@@ -106,16 +110,19 @@ Wrong data → tell Zeyi what to change in Figma; Zeyi re-exports and you run `/
 
 ## Page model (details in the brief)
 One React tree renders the **T1 layout**; every other state is a transform of it, exactly like the Figma motion frame:
+- **Two routes, one scene (Zeyi, 2026-10-29):** T0 is `/`, T1 is `/home`. Both pages live in `app/(home)/` and share its layout, which
+  keeps the scene mounted; the phase follows the route. Bin → `/home` plays Animation A forward; WORK on T1 → `/` plays it backward
+  (`styles/motion.ts → backToDeskSpeed`); browser back/forward do the same. `/home` loads straight into T1; `/?p=…|?skill=…` → `/home`.
 - `phase: 't0' | 'intro' | 't1'`. In `t0` every node sits at the **first keyframe** of `motion/animation-a.json` (T0 positions,
-  T1-only elements invisible). Clicking the bin plays Animation A (4.8 s) → `t1`. T0 hovers: `hover: 'hi' | 'bin' | null`.
+  T1-only elements invisible). T0 hovers: `hover: 'hi' | 'bin' | null`. Logo on T1 replays Animation A.
 - In `t1`: `{ hovered, opened, skill, held }` (T2–T5), then physics (M7).
-- Debug/visual params: `?phase=t0|intro|t1`, `?t=<seconds>` (freeze the intro at that time), `?hover=hi|bin`,
-  `?state=hover|open|filter&card=…&skill=…`, `?visual=1`.
+- Debug/visual params: `?t=<seconds>` (freeze Animation A, any route), `?hover=hi|bin` (on `/`),
+  `?state=hover|open|filter&card=…&skill=…` (on `/home`), `?visual=1`.
 
 ## Workflow for every task
 1. Read the brief section + the relevant JSON. 2. MCP only if the export lacks something. 3. Implement with tokens + generated assets.
 4. **Verify:** `npm run build` clean → `npm run dev` → `/visual-check <state>` (diff against `design/reference`), fix the biggest real
-   differences, re-run once (aim < 3 % for static states). For motion: compare `?phase=intro&t=…` with the `anim-a-*` storyboard PNGs.
+   differences, re-run once (aim < 3 % for static states). For motion: compare `?t=…` with the `anim-a-*` storyboard PNGs.
 5. Report in Chinese: what changed, visual % before/after, what you need from Figma. 6. Commit only when asked; never push unless asked.
 
 ## Commands

@@ -4,6 +4,15 @@ import { useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 
 const FRAME = { w: 1440, h: 1024 };
 
+/** Pointer position in stage px (Figma frame coordinates), whatever the current scale. */
+export function stagePoint(e: { clientX: number; clientY: number }): { x: number; y: number } | null {
+  const layer = document.querySelector<HTMLElement>('[data-stage-layer]');
+  if (!layer) return null;
+  const r = layer.getBoundingClientRect();
+  const s = r.width / FRAME.w;
+  return { x: (e.clientX - r.left) / s, y: (e.clientY - r.top) / s };
+}
+
 /**
  * The 1440×1024 Figma frame scaled uniformly to the container width (never above 1), centred when wider.
  * `?visual=1` forces scale 1 and marks the layer with `data-stage` for scripts/visual-check.mjs.
@@ -30,6 +39,7 @@ export function Stage({ children }: { children: ReactNode }) {
     <div ref={ref} className="w-full overflow-hidden" style={{ height: FRAME.h * s }}>
       <div
         data-stage={visual ? '' : undefined}
+        data-stage-layer=""
         className="relative mx-auto bg-surface-wall"
         style={{
           width: FRAME.w,
