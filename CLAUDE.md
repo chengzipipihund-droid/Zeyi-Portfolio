@@ -66,8 +66,29 @@ Link pattern: `https://www.figma.com/design/gFWtnlIFWIpwDxI1ZwHm9v/Portfolio?nod
 | `src/data/figma/motion/{animation-a,t0-hover-hi,t0-hover-bin}.json` | Figma-motion keyframes per node (time s, value, easing) + resting box — read its `_howTo` |
 | `src/data/figma/specs.json` | structure of each component and variant: auto-layout, padding, gap, radius, strokes, fills as `var(--…)`, text styles |
 | `src/data/figma/assets.json` | size, art box, collider, anchor of each SVG |
-| `src/assets/figma/**.svg` + `index.ts` | props (rest/held/slot), project icons, hooks, shelf, bins (label plate removed — rebuild it in React) — theme-aware |
+| `src/assets/figma/**.svg` + `index.ts` | props (rest/held/slot), project icons, hooks, shelf, bins (label plate removed — rebuild it in React), `art/` = vector illustrations inside Detail Boards — theme-aware |
+| `src/data/figma/images.json` + `public/figma/*.png` | image fills inside spec components (Detail Board photos) |
 | `design/reference/*.png` | 1440×1024 renders of every state frame and of the Animation A storyboard |
+
+**MCP supplement** — `design/figma-mcp/` (`supplement.json`, `art/*.svg`, `images/*.png`) holds data read from Figma with the MCP
+(read-only `use_figma` + `download_assets`) because the current export predates exporter v2.1. `figma-import` merges it by node id,
+never over exported values. Not generated — but don't hand-tune it either: re-read from Figma (see its `_note`) or re-export.
+
+**Verification without leftover servers** — Claude Code cannot stop servers it started on this machine (Windows denies it), so never
+run `npm run dev` / `next start` in the background. Instead: `NEXT_DIST_DIR=.next-verify npx next build`, then
+`NEXT_DIST_DIR=.next-verify node scripts/snap.mjs <out> "<route>|<selector>|<name>"` (in-process server, exits when done) and
+`node scripts/compare-crop.mjs <shot.png> <reference-key> <x> <y> <out>` for a component-sized diff against a reference region.
+
+Exporter v2.1 (2026-10-28) adds per node: `font` (text without a Pegboard style), `absolute` + `sizing` (auto-layout children),
+`layout.strokesInLayout`, `layout.counterGap`, `strokeSides`, `effectCss` (custom effects), `asset` + `artBox` (vector art) and `image` (image fills).
+Pure black (`#000000` / `black`) is mapped to `var(--line-strong)` by the importer (Zeyi's rule), except inside SVG masks/clip paths.
+
+### Code map
+- `src/components/figma/FigmaNode.tsx` — `FigmaComponent` renders any component/variant of `specs.json` like a Figma instance
+  (auto layout, fills, strokes, text styles, nested instances, art) with overrides by layer name (`texts`, `textList`, `visible`, `slots`).
+  Component wrappers (`ProjectCard`, `DetailBoard`, `components/parts`) only map props → overrides. Fix rendering there, once.
+- `src/components/stage/` — `Stage` (scaled 1440×1024), `Placed` (layout box, Figma scale), `LayoutPrimitive` (board/pegs/shelves/bins/props).
+- `src/data/projects.ts` — derived from `layouts/t1.json` + Detail Board specs; hand-written only: skills mapping, slugs.
 Wrong data → tell Zeyi what to change in Figma; Zeyi re-exports and you run `/figma-sync`. Use the Figma MCP (`get_design_context`, `get_screenshot`,
 `get_metadata`, `get_motion_context`) only for what the export lacks. Budget: **200 calls/day, 10/min**. Never loop screenshots.
 
@@ -131,8 +152,12 @@ Do not run `next dev --turbo`.
 
 **Fonts** — `.type-*` classes expect `--font-tilt-warp`, `--font-geist`, `--font-geist-mono`, `--font-gentium-book-basic`:
 Tilt Warp via `next/font/google` (`variable: '--font-tilt-warp'`); `npm i geist` → `GeistSans` / `GeistMono` and add
-`:root { --font-geist: var(--font-geist-sans); }`; Gentium Book Basic is not in Next 14's list → `Gentium_Book_Plus` with
-`variable: '--font-gentium-book-basic'` (tell Zeyi). Put all font `.variable` classes on `<html>`.
+`:root { --font-geist: var(--font-geist-sans); }`. Gentium Book Basic (`.type-tag`) — Zeyi's decision: **Helvetica first, Gentium Book
+Plus where Helvetica is missing** (`Gentium_Book_Plus` → `--font-gentium-book-plus`; `globals.css` sets
+`--font-gentium-book-basic: Helvetica, 'Helvetica Neue', var(--font-gentium-book-plus)`). Put all font `.variable` classes on `<html>`.
+
+**npm registry** — this machine's global `~/.npmrc` points at a corporate Artifactory behind SSO; the repo's `.npmrc` pins the public
+registry (the lockfile was always resolved there). Don't remove it.
 
 **Scripts** — `"figma:import": "node scripts/figma-import.mjs"`, `"visual": "node scripts/visual-check.mjs"`;
 `npm i -D playwright pixelmatch pngjs && npx playwright install chromium`. Runtime deps: `motion geist matter-js` (+ `@types/matter-js` dev).

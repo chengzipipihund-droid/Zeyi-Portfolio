@@ -37,8 +37,9 @@ offsets to the resting state. This is exactly how the Figma motion frame is buil
 T0-only nodes in the motion frame: `Bin · T0 label`, `Badge · hi (T0)`, `Nav · WORK (T0)`, `Fly · Mini · …` (cards in the bin), `Cursor · click` (demo only — do not render).
 
 ## 4. Layers
+**Nav (Zeyi, 2026-10-28):** the **LAB** tab is removed from the site (still in Figma — expect it in visual diffs); WORK, EXP, INFO keep their Figma positions.
 **T0 (`layouts/t0.json`):** Top rail · Logo · Nav ×4 (WORK *default*) · Rearrange (β) · Lang toggle · Shelf · desk (bin sits on it) ·
-4 Mini cards in the bin (01–04, rotated) · Project bin (label "HI, there / Hihihihihihi" — `TODO(zeyi)` final copy) ·
+4 Mini cards in the bin (01–04, rotated) · Project bin (label "HI, there / Hihihihihihi" — approved by Zeyi as is) ·
 Badge "hi ←" on Shelf · education · Footer. No board, no logo sub.
 **T1 (`layouts/t1.json`):** as before plus the **empty Project bin** at (395, 816) (it replaced the spirit level) — header, two boards,
 11 tools, pin on the pliers only, 2 shelves, archive bin + 3 archive minis, 4 project cards on hooks, timeline ruler, nameplate,
@@ -60,7 +61,16 @@ Build from `specs.json` + MCP `get_design_context` when unsure; every state in `
 ## 6. Data — `src/data/projects.ts`
 `slug, theme, number, meta, title, subtitle, focus, icon, showStatus, skills[], detail{kicker, pager, lead, from, to, facts[], chapters?, caseHref, pdfHref?}`
 from the card props (`layouts/t1.json`) and Detail Board texts (`specs.json`). Archive minis A1–A3 in a separate list.
-Skills → projects: HMI / SCADA → Ultra Bridge, CoreDS, SCADA+; the other six `TODO(zeyi)`.
+Skills → projects (Zeyi, 2026-10-28; 01 Ultra Bridge · 02 SeaTrial · 03 CoreDS · 04 SCADA+):
+| Skill tag | Projects |
+|---|---|
+| HMI / SCADA | 01, 03, 04 |
+| AI decision support | 01, 02 |
+| Design systems | 03 |
+| System architecture | 01, 02, 04 |
+| Front-end · React | 01, 02, 03, 04 |
+| B2B web tools | 02 |
+| Sustainable design | 01 |
 
 ## 7. Motion (all values from `src/data/figma/motion/*.json`)
 Use `motion/react`. For each animated node: `keyframes = track.map(k => cssValue(k.v))`, `times = track.map(k => k.t / duration)`,
@@ -109,7 +119,9 @@ Put back (Esc / button): reverse; the card drops back onto the hook and swings o
 Rearrange **on**: every tool can be picked up, dragged, thrown; they collide and pile up. Turning it off flies everything home (spring) and re-pins.
 **World** (stage px, gravity y = 1, `enableSleeping`, fixed 1000/60 ms steps, ≤ 3 per frame, paused when the tab is hidden):
 - Static: floor = bottom edge of the main board (inner), side walls, every shelf top, the two bins as U-shapes (things can fall in).
-- Tools: compound bodies from `assets.json` (`collider` if Figma has a `Collider` layer, else the `art` box; thin tools ≥ 8 px thick).
+- Tools: compound bodies from `assets.json` (`collider` if Figma has a `Collider` layer, else the shape of the art itself — Zeyi:
+  the drawing's own outline, never the frame; the `art` box is too loose for diagonal tools (wrench), so derive a convex hull
+  from the SVG geometry; thin tools ≥ 8 px thick).
   Hung tools: pinned by a zero-length constraint at their anchor (`anchor` or top-centre of the art box).
 - Cards: pendulum bodies pinned at their hook point (category CARD); collide with free tools only → a thrown hammer makes a card swing.
 - Pointer brush: kinematic circle r = 14 following the pointer; collides with hung tools and cards only while pointer speed > 600 px/s.
@@ -129,8 +141,8 @@ Keyboard (Rearrange on): Tab to a tool, Enter picks up, arrow keys move between 
 ## 9. Case pages (M9)
 Figma page **Pegboard v2 — Case pages**, frames 01 (1074-230), 02 (1079-3407), 03 (1082-23178). Build a shared case layout
 (Hero, Shift, MetaStrip, ChapterTabs, Chapter, Mount, NextTool) with MCP `get_design_context` per section, export images through
-the MCP asset URLs into `public/projects/<slug>/`, content in MDX. Open content gaps (Ultra Bridge observations, SeaTrial role and
-placeholder tolerances) stay `TODO(zeyi)`.
+the MCP asset URLs into `public/projects/<slug>/`, content in MDX. SeaTrial role (Zeyi): designer and front-end developer.
+Open content gaps (Ultra Bridge observations, SeaTrial placeholder tolerances) stay `TODO(zeyi)`.
 
 ## 10. Accessibility, performance, SEO
 Tab order header → bin / cards → skill tags → side board → footer; focus ring `2px solid var(--theme-accent)`. Cards and the bin are buttons
