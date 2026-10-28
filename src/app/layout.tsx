@@ -1,32 +1,24 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Gentium_Book_Plus, Tilt_Warp } from 'next/font/google';
+import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
+import './globals.css';
+
+const tiltWarp = Tilt_Warp({ subsets: ['latin'], variable: '--font-tilt-warp', display: 'swap' });
+// Stand-in for Figma's Gentium Book Basic (not in Next 14's font list); used when Helvetica is missing — see globals.css.
+const gentiumBookPlus = Gentium_Book_Plus({ subsets: ['latin'], weight: '400', variable: '--font-gentium-book-plus', display: 'swap' });
 
 export const metadata: Metadata = {
-  title: 'Zeyi Cheng — Portfolio',
-  description: 'Interdisciplinary designer based in Helsinki, Finland. Service design, system design, sustainability, architecture.',
-}
+  title: 'Zeyi Cheng — UI/UX & Product Designer',
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        {children}
-        <footer style={{
-          width: '100%',
-          textAlign: 'center',
-          padding: '20px',
-          fontSize: '11px',
-          color: '#aaa',
-          letterSpacing: '0.04em',
-          fontWeight: 500,
-        }}>
-          © 2026 Zeyi Cheng. All rights reserved. Non-commercial use only.
-        </footer>
-      </body>
+    <html
+      lang="en"
+      className={`${tiltWarp.variable} ${gentiumBookPlus.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
-  )
+  );
 }

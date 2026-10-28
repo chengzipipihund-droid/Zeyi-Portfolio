@@ -1,0 +1,2 @@
+# Keep LF everywhere so figma-import output (LF) never shows up as changed on Windows.
+* text=auto eol=lf

@@ -1,35 +1,20 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
+import { figmaTokens } from './src/styles/tailwind-tokens';
 
+// Every design value comes from Figma (src/styles/tailwind-tokens.ts, generated). Do not add hard-coded values here.
 const config: Config = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
-      colors: {
-        board: {
-          bg: '#ECEAE4',
-          hole: '#D8D6D0',
-          card: '#FDFCFA',
-          surface: '#FFFFFF',
-        },
-      },
-      fontFamily: {
-        display: ['"DM Sans"', 'Helvetica Neue', 'sans-serif'],
-        body: ['"DM Sans"', 'Helvetica Neue', 'sans-serif'],
-      },
-      borderRadius: {
-        card: '10px',
-        board: '16px',
-      },
-      boxShadow: {
-        card: '0 2px 8px rgba(0,0,0,0.06)',
-        'card-hover': '0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08)',
-        board: 'inset 0 1px 4px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.06)',
-      },
+      colors: figmaTokens.colors,
+      borderRadius: figmaTokens.borderRadius,
+      boxShadow: figmaTokens.boxShadow,
+      dropShadow: figmaTokens.dropShadow,
+      // `as const` makes the generated stacks readonly; Tailwind's type wants mutable arrays.
+      fontFamily: Object.fromEntries(Object.entries(figmaTokens.fontFamily).map(([name, stack]) => [name, [...stack]])),
     },
   },
   plugins: [],
-}
+};
 
-export default config
+export default config;

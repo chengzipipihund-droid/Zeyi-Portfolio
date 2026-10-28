@@ -1,48 +1,17 @@
+@import '../styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
-
+/* Font variables expected by the generated .type-* classes (next/font classes are on <html>, see layout.tsx). */
 :root {
-  --board-bg: #ECEAE4;
-  --board-hole: #D8D6D0;
-  --card-bg: #FDFCFA;
-  --surface-bg: #FFFFFF;
+  --font-geist: var(--font-geist-sans);
+  /* Zeyi's choice for .type-tag (Figma: Gentium Book Basic): Helvetica where installed, otherwise Gentium Book Plus. */
+  --font-gentium-book-basic: Helvetica, 'Helvetica Neue', var(--font-gentium-book-plus);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--surface-bg);
-  font-family: 'DM Sans', 'Helvetica Neue', Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 3px;
-}
-
-/* Smooth page transitions */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.4s ease-out;
+body {
+  background: var(--surface-wall);
+  color: var(--text-primary);
 }
