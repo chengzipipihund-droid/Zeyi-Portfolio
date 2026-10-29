@@ -10,8 +10,13 @@ export type Slug = string;
 export type SideFace = 'personal' | Slug;
 
 type BoardState = {
-  /** T1 interactions run only on the board at rest (not in T0, the intro, or with the cards stowed). */
+  /** T1 interactions run only on the board at rest (not in T0, the intro, with the cards stowed, or while rearranging). */
   active: boolean;
+  /** On the board (T1), whether or not Rearrange is on. */
+  onBoard: boolean;
+  /** Rearrange (β) — the physics toy (M7). */
+  rearrange: boolean;
+  setRearrange: (on: boolean) => void;
   hovered: Slug | null;
   opened: Slug | null;
   /** Active skill tag label (T4). */
@@ -40,7 +45,9 @@ function syncUrl(opened: Slug | null, skill: string | null) {
 /** T1 interactions (brief §7.4–7.5): hover → L (T2), click → Detail Board (T5), skill tag → filter (T4), Esc reverses. */
 export function BoardStateProvider({ skills, children }: { skills: string[]; children: ReactNode }) {
   const home = useHome();
-  const active = home.phase === 't1';
+  const onBoard = home.phase === 't1';
+  const [rearrange, setRearrangeState] = useState(false);
+  const active = onBoard && !rearrange;
   const reduced = useReducedMotion();
   const [hovered, setHovered] = useState<Slug | null>(null);
   const [opened, setOpened] = useState<Slug | null>(null);
@@ -67,7 +74,13 @@ export function BoardStateProvider({ skills, children }: { skills: string[]; chi
     else if (state === 'hover' && card) setHovered(card);
   }, [active, skills]);
 
-  // Leaving the board (WORK, stowing the cards) puts everything back.
+  // Rearrange only exists on the board.
+  useEffect(() => {
+    if (!onBoard) setRearrangeState(false);
+  }, [onBoard]);
+  const setRearrange = useCallback((on: boolean) => setRearrangeState(on), []);
+
+  // Leaving the board (WORK, stowing the cards, Rearrange) puts everything back.
   useEffect(() => {
     if (active) return;
     setHovered(null);
@@ -134,6 +147,9 @@ export function BoardStateProvider({ skills, children }: { skills: string[]; chi
   const value = useMemo<BoardState>(
     () => ({
       active,
+      onBoard,
+      rearrange,
+      setRearrange,
       hovered: active ? hovered : null,
       opened: active ? opened : null,
       skill: active ? skill : null,
@@ -145,7 +161,7 @@ export function BoardStateProvider({ skills, children }: { skills: string[]; chi
       close,
       toggleSkill,
     }),
-    [active, hovered, opened, skill, forced, side, flip, hover, open, close, toggleSkill],
+    [active, onBoard, rearrange, setRearrange, hovered, opened, skill, forced, side, flip, hover, open, close, toggleSkill],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

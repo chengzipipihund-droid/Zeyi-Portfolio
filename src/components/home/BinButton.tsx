@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { stagePoint } from '@/components/stage/Stage';
 import type { LayoutNode } from '@/lib/figma/types';
 import { HOME_MOTION } from '@/styles/motion';
+import { useBoard } from './BoardState';
 import { useHome } from './HomeState';
 import { HoverTarget } from './MotionLayer';
 
@@ -27,7 +28,9 @@ const inside = (p: { x: number; y: number }, b: typeof BOARD_BIN) => p.x >= b.le
  */
 export function BinButton({ children }: { children: ReactNode }) {
   const home = useHome();
-  const onBoard = home.phase === 't1' || home.phase === 'stowed';
+  const board = useBoard();
+  // Rearrange (M7): the bin is a physics obstacle, not a button.
+  const onBoard = (home.phase === 't1' && !board.rearrange) || home.phase === 'stowed';
   const [hot, setHot] = useState(false);
 
   // Last pointer position, so a board that settles under a still pointer already knows whether the bin is under it

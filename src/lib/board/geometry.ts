@@ -76,6 +76,30 @@ export function pushPose(tool: { name: string; box: Box }, card: { name: string;
   return { x: dir * NUDGE.px, y: 0, rotate: dir * NUDGE.deg, kind: 'nudge' };
 }
 
+// ---------------------------------------------------------------- M7 physics geometry (stage px)
+
+export type Pt = { x: number; y: number };
+
+/** Local SVG point of a placed prop → stage (same rule as <Placed>: uniform Figma scale, rotation about the box centre). */
+export function propToStage(box: Box, native: { w: number; h: number }, p: Pt): Pt {
+  const sx = box.width / native.w;
+  const sy = box.height / native.h;
+  const s = Math.abs(sx - 1) > 0.005 && Math.abs(sx - sy) < 0.01 ? sx : 1;
+  const lx = p.x * s - box.width / 2;
+  const ly = p.y * s - box.height / 2;
+  const t = ((box.rotate ?? 0) * Math.PI) / 180;
+  const c = boxCenter(box);
+  return { x: c.x + lx * Math.cos(t) - ly * Math.sin(t), y: c.y + lx * Math.sin(t) + ly * Math.cos(t) };
+}
+
+/** Peg holes of a Board/Panel: first hole at (20, 20) from the corner, 40 px grid; hole = 8 × 24 → its centre. */
+export function boardHoles(board: Box, hole: { w: number; h: number }): Pt[] {
+  const out: Pt[] = [];
+  for (let y = board.top + 20 + hole.h / 2; y < board.top + board.height - 12; y += 40)
+    for (let x = board.left + 20 + hole.w / 2; x < board.left + board.width - 12; x += 40) out.push({ x, y });
+  return out;
+}
+
 /** A tag's empty slot (T4): Figma drew it on the HMI / SCADA tag; other tags get the same insets from their own box. */
 export function emptySlotBox(tag: Box, hmiTag: Box): Box {
   const [x, y, w, h] = states.t4.emptySlot.box;

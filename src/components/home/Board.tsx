@@ -170,7 +170,22 @@ export function BoardOverlay() {
  * - otherwise the brief's nudge: shifted in place, staying under the card.
  * Dimmed by a skill filter.
  */
-export function BoardProp({ center, pushes, rest, held, slot }: { center: { x: number; y: number }; pushes: Record<Slug, Push | null>; rest: ReactNode; held: ReactNode; slot: ReactNode }) {
+export function BoardProp({
+  name,
+  center,
+  pushes,
+  rest,
+  held,
+  slot,
+}: {
+  /** Layer name — the M7 physics moves the `[data-tool]` layer. */
+  name: string;
+  center: { x: number; y: number };
+  pushes: Record<Slug, Push | null>;
+  rest: ReactNode;
+  held: ReactNode;
+  slot: ReactNode;
+}) {
   const board = useBoard();
   const reduced = useReducedMotion();
   const instant = board.forced || !!reduced;
@@ -194,7 +209,9 @@ export function BoardProp({ center, pushes, rest, held, slot }: { center: { x: n
   return (
     <div style={{ opacity: board.skill ? states.t4.toolOpacity : 1, transition: `opacity ${t}s ease-out` }}>
       <div aria-hidden style={fade(!!lifted, t)}>{slot}</div>
-      <div style={fade(!lifted, lifted ? 0 : t)}>{pivot(rest, nudge)}</div>
+      <div data-tool={name} className="outline-none focus-visible:[filter:var(--drop-shadow-lift)]" style={{ position: 'absolute', left: 0, top: 0, width: 0, height: 0 }}>
+        <div style={fade(!lifted, lifted ? 0 : t)}>{pivot(rest, nudge)}</div>
+      </div>
       {overlay && createPortal(<div aria-hidden style={{ pointerEvents: 'none' }}>{pivot(held, lifted, { opacity: lifted ? 1 : 0 })}</div>, overlay)}
     </div>
   );
@@ -335,6 +352,24 @@ export function SideFlip({ face, origin, children }: { face: SideFace; origin: {
     >
       {children}
     </motion.div>
+  );
+}
+
+/** Rearrange (β) in the header: toggles the physics toy on the board (M7). Pressed = an accent ring (no Figma "on" state). */
+export function RearrangeButton({ box, label, children }: { box: Box; label: string; children: ReactNode }) {
+  const board = useBoard();
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      aria-pressed={board.rearrange}
+      disabled={!board.onBoard}
+      onClick={() => board.setRearrange(!board.rearrange)}
+      className="absolute m-0 cursor-pointer appearance-none rounded-full border-0 bg-transparent p-0 text-left outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-theme-accent disabled:cursor-default aria-pressed:outline aria-pressed:outline-2 aria-pressed:outline-offset-2 aria-pressed:outline-theme-accent"
+      style={{ left: box.left, top: box.top, width: box.width, height: box.height }}
+    >
+      {children}
+    </button>
   );
 }
 

@@ -10,9 +10,11 @@ import { NavTab } from '@/components/parts/Parts';
 import { LayoutPrimitive } from '@/components/stage/LayoutPrimitive';
 import { Placed } from '@/components/stage/Placed';
 import { archive, projects, skills, type Project } from '@/data/projects';
-import { boxCenter, emptySlotBox, hoverBox, pushPose, states, type Box } from '@/lib/board/geometry';
+import assetsJson from '@/data/figma/assets.json';
+import { boardHoles, boxCenter, emptySlotBox, hoverBox, propToStage, pushPose, states, type Box, type Pt } from '@/lib/board/geometry';
 import { animationA, hoverBin, hoverHi, motionNode, type MotionNode } from '@/lib/motion/figma';
-import { componentTree } from '@/lib/figma/specs';
+import { componentTree, svgKeyFor } from '@/lib/figma/specs';
+import { METAL_TOOLS } from '@/styles/motion';
 import { fillCss, paintCss, radiusCss, shadowVar } from '@/lib/figma/style';
 import type { FigmaNode, LayoutNode } from '@/lib/figma/types';
 import { BinButton } from './BinButton';
@@ -26,9 +28,11 @@ import {
   DetailActions,
   FilterPillText,
   FilterStrings,
+  RearrangeButton,
   SideFlip,
   WhenFiltered,
 } from './Board';
+import { Physics, type PhysCard, type PhysTool, type PhysWorld } from './Physics';
 import { BoardStateProvider } from './BoardState';
 import { Greeting } from './Greeting';
 import { HoverFade, HoverLayer, HoverTarget, MotionLayer } from './MotionLayer';
@@ -46,6 +50,7 @@ const T0_COPY: Record<string, string> = { 'Nav · WORK (T0)': 'Nav · WORK', 'Bi
 const DEMO_ONLY = new Set(['Cursor · click']); // storyboard cursor, not rendered
 // T1 controls (Zeyi, 2026-10-29): WORK takes you back to the desk ("/"), the Logo replays Animation A (brief §7.3).
 const STAGE_BUTTONS: Record<string, 'backToDesk' | 'replay'> = { 'Nav · WORK': 'backToDesk', Logo: 'replay' };
+const REARRANGE = 'Rearrange (β)';
 const PRIMITIVES = new Set(['Board/Panel', 'Peg/Hook', 'Shelf', 'Object']);
 // Layers of the personal side board: they flip away when a project opens (T5).
 const SIDE = new Set(['Side board · personal', 'Nameplate', 'Status lamp', 'Tags label', 'Badge · Tongji', 'Badge · Aalto', 'Shelf · education', 'Clipboard · EXP', 'Hook · clipboard']);
@@ -134,6 +139,7 @@ function boardProp(n: LayoutNode) {
   );
   return (
     <BoardProp
+      name={n.name}
       center={boxCenter(cssBox(n))}
       pushes={pushes}
       rest={<Layer node={n} />}
@@ -141,6 +147,60 @@ function boardProp(n: LayoutNode) {
       slot={<Layer node={withVariant(n, { State: 'Slot' })} />}
     />
   );
+}
+
+// ---------------------------------------------------------------- M7 physics data (stage px, from the layout + assets)
+
+type AssetMeta = { w: number; h: number; art: { x: number; y: number; w: number; h: number } | null; hull: number[][] | null; anchor: Pt | null };
+const ASSETS = assetsJson as unknown as Record<string, AssetMeta>;
+
+function physicsData(): { tools: PhysTool[]; cards: PhysCard[]; world: PhysWorld } {
+  const tools: PhysTool[] = [];
+  for (const n of T1) {
+    if (!n.component?.startsWith('Prop/')) continue;
+    const key = svgKeyFor(n.component, n.variant);
+    const a = key && ASSETS[key];
+    if (!a?.hull || !a.art) continue;
+    const box = cssBox(n);
+    const toStage = (p: Pt) => propToStage(box, a, p);
+    const base = key!.replace(/-rest$/, '');
+    tools.push({
+      name: n.name,
+      label: n.name.replace(/^Prop · /, ''),
+      hull: a.hull.map(([x, y]) => toStage({ x, y })),
+      // hang point: Figma "Anchor" layer, else the top centre of the art (brief §8)
+      anchor: toStage(a.anchor ?? { x: a.art.x + a.art.w / 2, y: a.art.y }),
+      metal: METAL_TOOLS.has(base),
+      tapeRoll: base === 'tape-roll',
+    });
+  }
+  const cards: PhysCard[] = projects.map((p) => {
+    const hook = cssBox(hookLayer(p));
+    return { slug: p.slug, box: cssBox(cardLayer(p)), pivot: { x: hook.left + hook.width / 2, y: motionNode(animationA, `Hang · ${p.detailVariant}`)!.center.y } };
+  });
+  const board = cssBox(byName(T1, 'Main board')!);
+  const edge = 2; // Board/Panel inside stroke
+  const shelf = cssBox(byName(T1, 'Shelf · desk')!);
+  const plank = layerBoxOfSvgPlank();
+  const world: PhysWorld = {
+    statics: [
+      { left: board.left - 50 + edge, top: board.top, width: 50, height: board.height },
+      { left: board.left + board.width - edge, top: board.top, width: 50, height: board.height },
+      { left: board.left, top: board.top + board.height - edge, width: board.width, height: 50 },
+      { left: board.left, top: board.top - 50 + edge, width: board.width, height: 50 },
+      { left: shelf.left + plank.left, top: shelf.top + plank.top, width: plank.width, height: plank.height },
+      cssBox(byName(T1, 'Ruler · timeline')!),
+    ],
+    bins: [cssBox(byName(T1, 'Archive bin')!), cssBox(byName(T1, 'Project bin')!)],
+    holes: boardHoles(board, componentTree('Board/Hole')!),
+  };
+  return { tools, cards, world };
+}
+
+/** The shelf plank inside the Shelf SVG (its top bar, 1 → 319 × 1 → 11 in the 320 × 52 drawing). */
+function layerBoxOfSvgPlank(): Box {
+  const a = ASSETS.shelf;
+  return { left: 1, top: 1, width: a.w - 2, height: 10 };
 }
 
 type Entry = { key: string; motion?: MotionNode; el: ReactNode; side?: boolean };
@@ -189,6 +249,12 @@ function t1Entries(): Entry[] {
         <StageButton box={n.css!} action={action} label={n.texts?.[0]?.text ?? n.text ?? n.name}>
           <Layer node={at(n, { left: 0, top: 0 })} />
         </StageButton>
+      );
+    } else if (n.name === REARRANGE) {
+      el = (
+        <RearrangeButton box={n.css!} label={n.children?.find((c) => c.type === 'TEXT')?.text ?? n.name}>
+          <Layer node={at(n, { left: 0, top: 0 })} />
+        </RearrangeButton>
       );
     } else if (project) el = boardCard(n, project);
     else if (n.component?.startsWith('Prop/')) el = boardProp(n);
@@ -311,6 +377,7 @@ export function HomeScene() {
   return (
     <BoardStateProvider skills={skills}>
       {out}
+      <Physics {...physicsData()} />
       <BoardOverlay />
       {detailBoards()}
       <WhenFiltered>

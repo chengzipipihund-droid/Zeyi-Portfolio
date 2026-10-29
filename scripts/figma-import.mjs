@@ -289,13 +289,84 @@ function themeSvg(key, svg, tokens) {
   if (left) warnings.push(`${key}: unmapped sentinel colours ${[...new Set(left)].join(', ')}`);
   return out;
 }
+// ---------------------------------------------------------------- collision hulls (M7 physics, Zeyi: the drawing's own outline)
+// Convex hull of the visible geometry of an SVG (paths + rects, Figma's absolute commands; masks/clipPaths ignored).
+function svgHull(svg) {
+  const body = svg.replace(/<(mask|clipPath|defs)[\s\S]*?<\/\1>/g, '');
+  const pts = [];
+  const apply = (m, [x, y]) => [m[0] * x + m[2] * y + m[4], m[1] * x + m[3] * y + m[5]];
+  const transformOf = (attrs) => {
+    const t = attrs.match(/transform="([^"]+)"/)?.[1];
+    if (!t) return [1, 0, 0, 1, 0, 0];
+    const n = (s) => s.split(/[\s,]+/).filter(Boolean).map(Number);
+    const mm = t.match(/matrix\(([^)]+)\)/);
+    if (mm) return n(mm[1]);
+    const rm = t.match(/rotate\(([^)]+)\)/);
+    if (rm) {
+      const [deg, cx = 0, cy = 0] = n(rm[1]);
+      const a = (deg * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a);
+      return [c, s, -s, c, cx - c * cx + s * cy, cy - s * cx - c * cy];
+    }
+    const tm = t.match(/translate\(([^)]+)\)/);
+    if (tm) { const [tx, ty = 0] = n(tm[1]); return [1, 0, 0, 1, tx, ty]; }
+    return [1, 0, 0, 1, 0, 0];
+  };
+  for (const [, attrs] of body.matchAll(/<rect([^>]*)>/g)) {
+    const g = (k, d = 0) => +(attrs.match(new RegExp(`\\s${k}="([\\d.-]+)"`))?.[1] ?? d);
+    const [x, y, w, h] = [g('x'), g('y'), g('width'), g('height')];
+    const m = transformOf(attrs);
+    for (const p of [[x, y], [x + w, y], [x + w, y + h], [x, y + h]]) pts.push(apply(m, p));
+  }
+  for (const [, attrs] of body.matchAll(/<path([^>]*)>/g)) {
+    const d = attrs.match(/\sd="([^"]+)"/)?.[1];
+    if (!d) continue;
+    const m = transformOf(attrs);
+    const toks = d.match(/[a-zA-Z]|-?\d*\.?\d+(?:e-?\d+)?/g) ?? [];
+    let i = 0, cmd = 'M', cx = 0, cy = 0, sx = 0, sy = 0;
+    const num = () => +toks[i++];
+    const add = (x, y) => pts.push(apply(m, [x, y]));
+    while (i < toks.length) {
+      if (/[a-zA-Z]/.test(toks[i])) cmd = toks[i++];
+      const rel = cmd === cmd.toLowerCase();
+      const C = cmd.toUpperCase();
+      const ox = rel ? cx : 0, oy = rel ? cy : 0;
+      if (C === 'Z') { cx = sx; cy = sy; continue; }
+      if (C === 'M' || C === 'L' || C === 'T') { cx = ox + num(); cy = oy + num(); if (C === 'M') { sx = cx; sy = cy; cmd = rel ? 'l' : 'L'; } add(cx, cy); }
+      else if (C === 'H') { cx = ox + num(); add(cx, cy); }
+      else if (C === 'V') { cy = oy + num(); add(cx, cy); }
+      else if (C === 'C' || C === 'S' || C === 'Q') {
+        const n = C === 'C' ? 3 : 2;
+        const c = [[cx, cy]];
+        for (let k = 0; k < n; k++) c.push([ox + num(), oy + num()]);
+        if (C === 'S') c.splice(1, 0, [cx, cy]);
+        for (let s = 1; s <= 8; s++) { // sample the Bézier
+          const t = s / 8, u = 1 - t;
+          const p = c.length === 4
+            ? [u ** 3 * c[0][0] + 3 * u * u * t * c[1][0] + 3 * u * t * t * c[2][0] + t ** 3 * c[3][0], u ** 3 * c[0][1] + 3 * u * u * t * c[1][1] + 3 * u * t * t * c[2][1] + t ** 3 * c[3][1]]
+            : [u * u * c[0][0] + 2 * u * t * c[1][0] + t * t * c[2][0], u * u * c[0][1] + 2 * u * t * c[1][1] + t * t * c[2][1]];
+          add(p[0], p[1]);
+        }
+        [cx, cy] = c[c.length - 1];
+      } else if (C === 'A') { num(); num(); num(); num(); num(); cx = ox + num(); cy = oy + num(); add(cx, cy); }
+      else i++;
+    }
+  }
+  if (pts.length < 3) return null;
+  // monotone-chain convex hull
+  const P = pts.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cross = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const half = (list) => { const h = []; for (const p of list) { while (h.length >= 2 && cross(h[h.length - 2], h[h.length - 1], p) <= 0) h.pop(); h.push(p); } h.pop(); return h; };
+  return [...half(P), ...half([...P].reverse())];
+}
+
 const meta = {};
 const registry = [];
 fs.rmSync(abs(P.svgDir), { recursive: true, force: true });
 for (const [key, a] of Object.entries(data.assets || {})) {
   const rel = `${a.group}/${key}.svg`;
   write(path.join(P.svgDir, rel), themeSvg(key, a.svg, a.tokens));
-  meta[key] = { group: a.group, file: rel, source: a.source, w: a.w, h: a.h, art: a.art, collider: a.collider, anchor: a.anchor, cssVars: [...new Set(Object.values(a.tokens || {}))] };
+  const hull = a.group === 'props' && key.endsWith('-rest') && !a.collider ? svgHull(a.svg) : null;
+  meta[key] = { group: a.group, file: rel, source: a.source, w: a.w, h: a.h, art: a.art, collider: a.collider, anchor: a.anchor, hull, cssVars: [...new Set(Object.values(a.tokens || {}))] };
   registry.push({ key, rel, name: pascal(key) + 'Svg' });
 }
 write(P.assetsMeta, JSON.stringify({ _note: stamp, ...meta }, null, 2) + '\n');
