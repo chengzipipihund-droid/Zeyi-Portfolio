@@ -13,6 +13,7 @@ import { archive, projects, skills, type Project } from '@/data/projects';
 import assetsJson from '@/data/figma/assets.json';
 import { boardHoles, boxCenter, emptySlotBox, hoverBox, propToStage, pushPose, states, type Box, type Pt } from '@/lib/board/geometry';
 import { animationA, hoverBin, hoverHi, motionNode, type MotionNode } from '@/lib/motion/figma';
+import { caseSlugs } from '@/lib/figma/cases';
 import { componentTree, svgKeyFor } from '@/lib/figma/specs';
 import { METAL_TOOLS } from '@/styles/motion';
 import { fillCss, paintCss, radiusCss, shadowVar } from '@/lib/figma/style';
@@ -329,15 +330,23 @@ function layerBox(tree: FigmaNode, name: string, ox = 0, oy = 0): Box | null {
 /** T5: each project's Detail Board on the side board's place, with its "put back" button. */
 function detailBoards(): ReactNode[] {
   const [x, y] = states.t5.detailBoardBox;
+  const withCase = new Set(caseSlugs());
   return projects.map((p) => {
     const tree = componentTree('Detail Board', { Project: p.detailVariant })!;
     const put = layerBox(tree, 'Put back')!;
-    const label = (tree && JSON.stringify(tree).match(/"text":"(↩[^"]*)"/)?.[1]) ?? 'Put back';
+    const text = (re: RegExp, fallback: string) => JSON.stringify(tree).match(re)?.[1] ?? fallback;
     return (
       <SideFlip key={`detail-${p.slug}`} face={p.slug} origin={SIDE_ORIGIN}>
         <div style={{ position: 'absolute', left: x, top: y, pointerEvents: 'auto' }}>
           <DetailBoard project={p.slug} />
-          <DetailActions slug={p.slug} label={label} putBack={put} />
+          <DetailActions
+            slug={p.slug}
+            label={text(/"text":"(↩[^"]*)"/, 'Put back')}
+            putBack={put}
+            openCase={layerBox(tree, 'Open case page')}
+            caseHref={withCase.has(p.slug) ? `/work/${p.slug}` : undefined}
+            caseLabel={text(/"text":"(Open the case[^"]*)"/, 'Open the case')}
+          />
         </div>
       </SideFlip>
     );

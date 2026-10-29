@@ -49,6 +49,17 @@ const CONFIG = {
   // Spec components whose vector illustrations (pure-vector groups / vectors) and image fills are exported as assets
   specArt: ['Detail Board'],
   imageScale: 2,
+  // Case pages (M9): whole frames as layer trees (instances expanded), their vector art as SVG and photos as JPG
+  casePages: {
+    page: 'Pegboard v2 — Case pages',
+    frames: [
+      { key: 'ultra-bridge', prefix: 'Case · 01' },
+      { key: 'seatrial', prefix: 'Case · 02' },
+      { key: 'coreds', prefix: 'Case · 03' },
+    ],
+    imageFormat: 'JPG',
+    maxDepth: 16,
+  },
   pngScale: 1,
 };
 
@@ -276,7 +287,7 @@ async function describe(node, origin, depth, opts = {}) {
     if (modes) d.modes = modes;
     const texts = node.findAll((n) => n.type === 'TEXT' && n.visible).slice(0, 60).map((t) => ({ layer: t.name, text: t.characters }));
     if (texts.length) d.texts = texts;
-    if (opts.expandInstances && depth < 10) d.children = await kids(node, origin, depth, opts);
+    if (opts.expandInstances && depth < (opts.maxDepth || 10)) d.children = await kids(node, origin, depth, opts);
     return d;
   }
   if (opts.art && isVectorArt(node)) {
@@ -293,7 +304,7 @@ async function describe(node, origin, depth, opts = {}) {
     if (modes) d.modes = modes;
     // "Art" frames of pure vectors are collapsed; an Art frame holding an icon instance keeps it (size + which icon).
     if (opts.collapseArt && /^art$/i.test(node.name) && isVectorArt(node)) { d.note = 'vector art — use the exported SVG'; return d; }
-    if (depth < 10) d.children = await kids(node, origin, depth, opts);
+    if (depth < (opts.maxDepth || 10)) d.children = await kids(node, origin, depth, opts);
   }
   return d;
 }
@@ -352,9 +363,9 @@ async function exportSpecs(page, artJobs) {
   return out;
 }
 
-/** Spec art → SVG assets (group "art", theme-aware like the others) and PNG images. */
-async function exportSpecArt(artJobs, assets, onProgress) {
-  const counter = { i: 9000 }; // sentinel range distinct from exportAssets
+/** Spec / case art → SVG assets (group "art", theme-aware like the others) and images (PNG, or JPG for case photos). */
+async function exportSpecArt(artJobs, assets, onProgress, imageFormat = 'PNG', counterStart = 9000) {
+  const counter = { i: counterStart }; // sentinel range distinct from exportAssets
   const images = {};
   let done = 0;
   for (const job of artJobs) {
@@ -363,12 +374,35 @@ async function exportSpecArt(artJobs, assets, onProgress) {
       const { svg, tokens } = await exportSvg(job.node, counter);
       assets[job.key] = { group: 'art', source: job.node.name, componentId: job.node.id, w: round(b.width), h: round(b.height), art: null, collider: null, anchor: null, tokens, svg };
     } else {
-      const bytes = await job.node.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: CONFIG.imageScale } });
-      images[job.key] = { source: job.node.name, nodeId: job.node.id, w: round(b.width), h: round(b.height), scale: CONFIG.imageScale, png: figma.base64Encode(bytes) };
+      const bytes = await job.node.exportAsync({ format: imageFormat, constraint: { type: 'SCALE', value: CONFIG.imageScale } });
+      images[job.key] = { source: job.node.name, nodeId: job.node.id, w: round(b.width), h: round(b.height), scale: CONFIG.imageScale, format: imageFormat.toLowerCase(), png: figma.base64Encode(bytes) };
     }
     if (onProgress && ++done % 5 === 0) onProgress(`art ${done}/${artJobs.length}`);
   }
   return images;
+}
+
+/** Case pages (M9): each frame as a layer tree like the specs (instances expanded), plus its art and photos. */
+async function exportCasePages(assets, onProgress) {
+  const cfg = CONFIG.casePages;
+  const page = figma.root.children.find((p) => p.name === cfg.page);
+  const cases = {};
+  if (!page) return { cases, images: {} };
+  await page.loadAsync();
+  const jobs = [];
+  for (const cf of cfg.frames) {
+    const f = page.children.find((n) => n.type === 'FRAME' && n.name.startsWith(cf.prefix));
+    if (!f) { cases[cf.key] = { missing: cf.prefix }; continue; }
+    if (onProgress) onProgress(`case ${cf.key}…`);
+    const o = f.absoluteBoundingBox;
+    const art = artCollector(`case-${cf.key}`, jobs);
+    cases[cf.key] = {
+      frame: { id: f.id, name: f.name, w: f.width, h: f.height, fills: await paintsCss(f.fills) },
+      tree: await describe(f, { x: o.x, y: o.y }, 0, { collapseArt: true, art, expandInstances: true, maxDepth: cfg.maxDepth }),
+    };
+  }
+  const images = await exportSpecArt(jobs, assets, onProgress, cfg.imageFormat, 20000);
+  return { cases, images };
 }
 
 // Paints bound to variables are swapped for unique sentinel colours before export,
@@ -539,11 +573,15 @@ async function pegboardExport(opts = {}) {
   const assets = opts.svg === false ? {} : await exportAssets(page, log);
   log('spec art…');
   const images = opts.svg === false ? {} : await exportSpecArt(artJobs, assets, log);
+  log('case pages…');
+  const casePages = opts.svg === false ? { cases: {}, images: {} } : await exportCasePages(assets, log);
+  Object.assign(images, casePages.images);
+  await figma.setCurrentPageAsync(page);
   let references = {};
   if (opts.png) { log('reference PNGs…'); references = await exportReferences(section, log); }
   return {
-    meta: { version: 2, file: figma.root.name, fileKey: CONFIG.fileKey, page: page.name, section: section.name, exportedAt: new Date().toISOString() },
-    tokens, textStyles, effects, layouts, motion, specs, assets, images, references,
+    meta: { version: 2.1, file: figma.root.name, fileKey: CONFIG.fileKey, page: page.name, section: section.name, exportedAt: new Date().toISOString() },
+    tokens, textStyles, effects, layouts, motion, specs, assets, images, cases: casePages.cases, references,
   };
 }
 
@@ -555,7 +593,7 @@ if (typeof __html__ !== 'undefined') {
     try {
       const data = await pegboardExport({ png: !!msg.png, onProgress: (text) => figma.ui.postMessage({ type: 'progress', text }) });
       const n = Object.keys(data.assets).length;
-      figma.ui.postMessage({ type: 'done', json: JSON.stringify(data), summary: `${data.tokens.length} collections · ${Object.keys(data.layouts).length} layouts · ${Object.keys(data.motion).length} motion frames · ${n} SVGs · ${Object.keys(data.references).length} PNGs` });
+      figma.ui.postMessage({ type: 'done', json: JSON.stringify(data), summary: `${data.tokens.length} collections · ${Object.keys(data.layouts).length} layouts · ${Object.keys(data.motion).length} motion frames · ${n} SVGs · ${Object.keys(data.cases || {}).length} case pages · ${Object.keys(data.references).length} PNGs` });
     } catch (e) {
       figma.ui.postMessage({ type: 'error', text: String((e && e.stack) || e) });
     }

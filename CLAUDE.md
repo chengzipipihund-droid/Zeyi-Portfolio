@@ -97,6 +97,12 @@ Pure black (`#000000` / `black`) is mapped to `var(--line-strong)` by the import
   BoardTag, FilterStrings, pills, SideFlip, DetailActions), geometry in `lib/board/geometry.ts` from `src/data/figma/states.json`.
   All variants are rendered on the server and only toggled on the client (keeps SVG code out of the client bundle).
   Tests drive the real page through `[data-phase]` (t0 | intro | t1 | stowed) and `[data-card]`.
+- Physics (M7): `Physics.tsx` (Matter.js, lazy) moves the `[data-tool]` layers of `BoardProp`; collision shapes = convex hulls of
+  the prop SVGs (`assets.json → hull`, computed by figma-import). Matter quirk: create bodies dynamic, then `setStatic(true)`.
+- Case pages (M9): exporter v2.1 exports the three frames of "Pegboard v2 — Case pages" → `src/data/figma/cases/<slug>.json`
+  (+ art SVGs, JPG photos in public/figma); `/work/[slug]` renders the tree with `FigmaLayer` on a `Stage` sized to the frame.
+  Until Zeyi re-exports there are no case files and `/work/*` is 404 (the Detail Board "Open the case" link only appears with one).
+- Builds on this machine can take 5–8 min: use long timeouts and never pipe `next build` into `head` (a closed pipe hangs it).
 Wrong data → tell Zeyi what to change in Figma; Zeyi re-exports and you run `/figma-sync`. Use the Figma MCP (`get_design_context`, `get_screenshot`,
 `get_metadata`, `get_motion_context`) only for what the export lacks. Budget: **200 calls/day, 10/min**. Never loop screenshots.
 

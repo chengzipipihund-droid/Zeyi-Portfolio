@@ -17,7 +17,7 @@ export function stagePoint(e: { clientX: number; clientY: number }): { x: number
  * The 1440×1024 Figma frame scaled uniformly to the container width (never above 1), centred when wider.
  * `?visual=1` forces scale 1 and marks the layer with `data-stage` for scripts/visual-check.mjs.
  */
-export function Stage({ children }: { children: ReactNode }) {
+export function Stage({ children, width = FRAME.w, height = FRAME.h }: { children: ReactNode; width?: number; height?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
   const [visual, setVisual] = useState(false);
@@ -27,23 +27,23 @@ export function Stage({ children }: { children: ReactNode }) {
     setVisual(isVisual);
     const el = ref.current;
     if (!el || isVisual) return setScale(1);
-    const update = () => setScale(Math.min(el.clientWidth / FRAME.w, 1));
+    const update = () => setScale(Math.min(el.clientWidth / width, 1));
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [width]);
 
   const s = scale ?? 1;
   return (
-    <div ref={ref} className="w-full overflow-hidden" style={{ height: FRAME.h * s }}>
+    <div ref={ref} className="w-full overflow-hidden" style={{ height: height * s }}>
       <div
         data-stage={visual ? '' : undefined}
         data-stage-layer=""
         className="relative mx-auto bg-surface-wall"
         style={{
-          width: FRAME.w,
-          height: FRAME.h,
+          width: width,
+          height: height,
           transform: `scale(${s})`,
           transformOrigin: 'top left',
           visibility: scale === null ? 'hidden' : undefined,

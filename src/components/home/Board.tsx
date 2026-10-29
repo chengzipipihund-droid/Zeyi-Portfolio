@@ -2,6 +2,7 @@
 
 import { motion, useAnimate, useReducedMotion, useTransform, type Transition } from 'motion/react';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import Link from 'next/link';
 import { createPortal } from 'react-dom';
 import { stagePoint } from '@/components/stage/Stage';
 import { hookPoint, states, tagHole, type Box, type Pose, type Push } from '@/lib/board/geometry';
@@ -373,8 +374,11 @@ export function RearrangeButton({ box, label, children }: { box: Box; label: str
   );
 }
 
-/** Buttons on a Detail Board: "↩ PUT BACK · ESC" puts the card back. (Open the case / PDF: case pages are M9 — TODO(zeyi).) */
-export function DetailActions({ slug, putBack, label }: { slug: Slug; putBack: Box; label: string }) {
+/**
+ * Buttons on a Detail Board: "↩ PUT BACK · ESC" puts the card back; "Open the case →" goes to the case page (M9) when it
+ * has been exported. PDF: TODO(zeyi) — no file yet.
+ */
+export function DetailActions({ slug, putBack, label, openCase, caseHref, caseLabel }: { slug: Slug; putBack: Box; label: string; openCase: Box | null; caseHref?: string; caseLabel: string }) {
   const board = useBoard();
   const ref = useRef<HTMLButtonElement>(null);
   const shown = board.side === slug;
@@ -382,13 +386,23 @@ export function DetailActions({ slug, putBack, label }: { slug: Slug; putBack: B
     if (shown && !board.forced) ref.current?.focus({ preventScroll: true });
   }, [shown, board.forced]);
   return (
-    <button
-      ref={ref}
-      type="button"
-      aria-label={label}
-      onClick={board.close}
-      className="pointer-events-auto absolute m-0 cursor-pointer appearance-none rounded-full border-0 bg-transparent p-0 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-theme-accent"
-      style={box(putBack)}
-    />
+    <>
+      <button
+        ref={ref}
+        type="button"
+        aria-label={label}
+        onClick={board.close}
+        className="pointer-events-auto absolute m-0 cursor-pointer appearance-none rounded-full border-0 bg-transparent p-0 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-theme-accent"
+        style={box(putBack)}
+      />
+      {openCase && caseHref && (
+        <Link
+          href={caseHref}
+          aria-label={caseLabel}
+          className="pointer-events-auto absolute rounded-[8px] outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-theme-accent"
+          style={box(openCase)}
+        />
+      )}
+    </>
   );
 }
