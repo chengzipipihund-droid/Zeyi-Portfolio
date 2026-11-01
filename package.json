@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "figma:import": "node scripts/figma-import.mjs",
-    "visual": "node scripts/visual-check.mjs"
+    "visual": "node scripts/visual-check.mjs",
+    "figma:import-cases": "node scripts/figma-import-cases.mjs",
+    "visual:case": "node scripts/visual-check-case.mjs"
   },
   "dependencies": {
     "geist": "^1.8.2",
@@ -31,6 +33,7 @@
     "playwright": "^1.64.1",
     "pngjs": "^7.0.0",
     "postcss": "^8.4.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.0.0"
   }

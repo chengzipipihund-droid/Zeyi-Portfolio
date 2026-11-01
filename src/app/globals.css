@@ -15,3 +15,19 @@ body {
   background: var(--surface-wall);
   color: var(--text-primary);
 }
+
+/* Case pages: the film's play icon hides while the film plays (the button draws pause bars). */
+[data-playing] [data-layer='Play icon'] {
+  opacity: 0;
+}
+
+/* ?visual=1 on case pages: nothing sticks, so each section's screenshot shows only that section. */
+[data-visual] .sticky {
+  position: relative;
+}
+
+/* Case-page chapter tabs: both Nav/Tab states are drawn; [data-active] (scroll-spy) shows Current. */
+[data-tab]:not([data-active]) [data-tab-state='current'],
+[data-tab][data-active] [data-tab-state='default'] {
+  display: none;
+}

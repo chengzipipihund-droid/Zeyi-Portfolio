@@ -1,3 +1,4 @@
+import caseIndex from '@/data/figma/cases/index.json';
 import t1 from '@/data/figma/layouts/t1.json';
 import type { FigmaSvgKey } from '@/assets/figma';
 import { componentTree, svgKeyFor } from '@/lib/figma/specs';
@@ -36,7 +37,7 @@ export type ProjectDetail = {
   from?: string;
   to?: string;
   facts: { key: string; value: string }[];
-  /** TODO(zeyi): case page routes land in M9. */
+  /** Case page route (M9), when the project has one (matched by number in src/data/figma/cases/index.json). */
   caseHref?: string;
   pdfHref?: string;
 };
@@ -89,6 +90,9 @@ function detailOf(variant: string): ProjectDetail {
   return { kicker: text('Kicker'), pager: text('Pager'), lead: text('Lead'), from: text('From value'), to: text('To value'), facts };
 }
 
+const caseSlugByNumber = new Map(caseIndex.cases.map((c) => [c.number, c.slug]));
+const caseOf = (number: string) => (caseSlugByNumber.has(number) ? `/work/${caseSlugByNumber.get(number)}` : undefined);
+
 export const projects: Project[] = (Object.keys(FIGMA_NAME) as ProjectSlug[]).map((slug) => {
   const card = items.find((n) => n.name === `Card · ${FIGMA_NAME[slug]}`);
   if (!card) throw new Error(`T1 has no "Card · ${FIGMA_NAME[slug]}"`);
@@ -98,7 +102,7 @@ export const projects: Project[] = (Object.keys(FIGMA_NAME) as ProjectSlug[]).ma
     ...cardProps(card),
     skills: SKILLS[slug],
     detailVariant: FIGMA_NAME[slug],
-    detail: detailOf(FIGMA_NAME[slug]),
+    detail: { ...detailOf(FIGMA_NAME[slug]), caseHref: caseOf(cardProps(card).number) },
   };
 });
 

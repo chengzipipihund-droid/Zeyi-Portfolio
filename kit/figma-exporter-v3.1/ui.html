@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 12px/1.45 Inter, system-ui, sans-serif; margin: 0; padding: 16px; color: var(--figma-color-text, #111); background: var(--figma-color-bg, #fff); }
+  h1 { font-size: 13px; margin: 0 0 4px; }
+  p { margin: 0 0 12px; color: var(--figma-color-text-secondary, #666); }
+  label { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+  button { font: inherit; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--figma-color-border, #ccc); background: var(--figma-color-bg-secondary, #f5f5f5); color: inherit; cursor: pointer; }
+  button.primary { background: var(--figma-color-bg-brand, #0d99ff); color: var(--figma-color-text-onbrand, #fff); border-color: transparent; }
+  button:disabled { opacity: .5; cursor: default; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  #status { margin-top: 12px; white-space: pre-wrap; min-height: 36px; max-height: 150px; overflow: auto; }
+  textarea { position: absolute; left: -9999px; }
+</style>
+</head>
+<body>
+  <h1>Pegboard Exporter v3.1</h1>
+  <p><b>Home</b> → figma-export.json (tokens, layouts of T0 · T0 hovers · T0.5 · T1, Animation A keyframes, specs, SVGs).<br/>
+     <b>Case pages</b> → one figma-case-&lt;project&gt;.zip per case page (structure of every section, images, per-section reference PNGs).</p>
+  <label><input type="checkbox" id="png" checked /> Include reference PNGs (bigger file)</label>
+  <div class="row">
+    <button class="primary" id="run">Export home</button>
+    <button class="primary" id="cases">Export case pages</button>
+  </div>
+  <div class="row">
+    <button id="save" disabled>Download again</button>
+    <button id="copy" disabled>Copy JSON (home only)</button>
+  </div>
+  <div class="row" id="zips"></div>
+  <div id="status">Ready.</div>
+  <textarea id="buf"></textarea>
+<script>
+  const $ = (id) => document.getElementById(id);
+  let last = null; // { blob, filename, json }
+  function download() {
+    if (!last) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(last.blob);
+    a.download = last.filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+  }
+  function busy(on) { $('run').disabled = on; $('cases').disabled = on; }
+  $('run').onclick = () => { busy(true); $('status').textContent = 'Exporting home… (about 20–60 s)'; parent.postMessage({ pluginMessage: { type: 'export', png: $('png').checked } }, '*'); };
+  $('cases').onclick = () => { busy(true); $('zips').innerHTML = ''; $('status').textContent = 'Exporting case pages… (1–2 min per case, Figma may look frozen)'; parent.postMessage({ pluginMessage: { type: 'export-cases', png: $('png').checked } }, '*'); };
+  $('save').onclick = download;
+  $('copy').onclick = () => {
+    if (!last || !last.json) return;
+    const t = $('buf'); t.value = last.json; t.select();
+    const ok = document.execCommand('copy');
+    $('status').textContent = ok ? 'Copied. Paste it into design/figma-export.json in the repo.' : 'Copy failed — use Download.';
+  };
+  onmessage = (e) => {
+    const msg = e.data.pluginMessage;
+    if (!msg) return;
+    if (msg.type === 'progress') $('status').textContent = 'Exporting… ' + msg.text;
+    if (msg.type === 'error') { $('status').textContent = '✗ ' + msg.text; busy(false); }
+    const showWarnings = (w) => { if (w && w.length) $('status').textContent += '\n⚠ ' + w.length + ' item(s) skipped:\n· ' + w.slice(0, 8).join('\n· ') + (w.length > 8 ? '\n· …' : ''); };
+    if (msg.type === 'done') {
+      last = { blob: new Blob([msg.json], { type: 'application/json' }), filename: 'figma-export.json', json: msg.json };
+      $('status').textContent = '✓ ' + msg.summary + '\n' + (msg.json.length / 1024 / 1024).toFixed(2) + ' MB — saved as figma-export.json (check Downloads).';
+      showWarnings(msg.warnings);
+      busy(false); $('save').disabled = false; $('copy').disabled = false;
+      download();
+    }
+    if (msg.type === 'done-zip') {
+      // one zip per case page: auto-download + a button in case the app blocks repeated downloads
+      const entry = { blob: new Blob([msg.bytes], { type: 'application/zip' }), filename: msg.filename, json: null };
+      last = entry;
+      const b = document.createElement('button');
+      b.textContent = '⬇ ' + msg.filename + ' (' + (msg.bytes.length / 1024 / 1024).toFixed(1) + ' MB)';
+      b.onclick = () => { last = entry; download(); };
+      $('zips').appendChild(b);
+      $('status').textContent = '✓ ' + msg.summary + ' — downloading ' + msg.filename + '…';
+      showWarnings(msg.warnings);
+      download();
+    }
+    if (msg.type === 'all-done') {
+      busy(false); $('save').disabled = false; $('copy').disabled = true;
+      $('status').textContent += '\nAll case pages exported. If a zip did not land in Downloads, click its button above.';
+    }
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+{
+ "updatedAt": "2026-10-31T16:58:59.747Z",
+ "cases": [
+  {
+   "slug": "ultra-bridge",
+   "number": "01",
+   "title": "Ultra Bridge",
+   "theme": "ultra-bridge",
+   "nodeId": "1074:230",
+   "sections": [
+    {
+     "key": "00-site-header",
+     "kind": "header",
+     "reference": "design/reference/cases/ultra-bridge/00-site-header.png"
+    },
+    {
+     "key": "01-intro-film-video",
+     "kind": "film",
+     "reference": "design/reference/cases/ultra-bridge/01-intro-film-video.png",
+     "video": {
+      "src": "/projects/ultra-bridge/intro.mp4",
+      "note": "TODO(zeyi): put the film at public/projects/ultra-bridge/intro.mp4 (H.264, ≤ 15 MB) — the poster below is shown until it loads"
+     }
+    },
+    {
+     "key": "02-breadcrumb",
+     "kind": "breadcrumb",
+     "reference": "design/reference/cases/ultra-bridge/02-breadcrumb.png"
+    },
+    {
+     "key": "03-hero-wrap",
+     "kind": "hero",
+     "reference": "design/reference/cases/ultra-bridge/03-hero-wrap.png"
+    },
+    {
+     "key": "04-chapter-tabs",
+     "kind": "tabs",
+     "reference": "design/reference/cases/ultra-bridge/04-chapter-tabs.png"
+    },
+    {
+     "key": "05-chapter-01-context-research",
+     "kind": "chapter",
+     "number": "01",
+     "title": "Context & Research",
+     "anchor": "01-context-research",
+     "reference": "design/reference/cases/ultra-bridge/05-chapter-01-context-research.png"
+    },
+    {
+     "key": "06-chapter-02-energy",
+     "kind": "chapter",
+     "number": "02",
+     "title": "Energy",
+     "anchor": "02-energy",
+     "reference": "design/reference/cases/ultra-bridge/06-chapter-02-energy.png"
+    },
+    {
+     "key": "07-chapter-03-navigation",
+     "kind": "chapter",
+     "number": "03",
+     "title": "Navigation",
+     "anchor": "03-navigation",
+     "reference": "design/reference/cases/ultra-bridge/07-chapter-03-navigation.png"
+    },
+    {
+     "key": "08-chapter-04-alarm",
+     "kind": "chapter",
+     "number": "04",
+     "title": "Alarm",
+     "anchor": "04-alarm",
+     "reference": "design/reference/cases/ultra-bridge/08-chapter-04-alarm.png"
+    },
+    {
+     "key": "09-chapter-05-ai-architecture",
+     "kind": "chapter",
+     "number": "05",
+     "title": "AI Architecture",
+     "anchor": "05-ai-architecture",
+     "reference": "design/reference/cases/ultra-bridge/09-chapter-05-ai-architecture.png"
+    },
+    {
+     "key": "10-chapter-06-process-validation",
+     "kind": "chapter",
+     "number": "06",
+     "title": "Process & Validation",
+     "anchor": "06-process-validation",
+     "reference": "design/reference/cases/ultra-bridge/10-chapter-06-process-validation.png"
+    },
+    {
+     "key": "11-chapter-07-gala-materials",
+     "kind": "chapter",
+     "number": "07",
+     "title": "Gala & materials",
+     "anchor": "07-gala-materials",
+     "reference": "design/reference/cases/ultra-bridge/11-chapter-07-gala-materials.png"
+    },
+    {
+     "key": "12-next-tool",
+     "kind": "next",
+     "reference": "design/reference/cases/ultra-bridge/12-next-tool.png"
+    },
+    {
+     "key": "13-site-footer",
+     "kind": "footer",
+     "reference": "design/reference/cases/ultra-bridge/13-site-footer.png"
+    }
+   ]
+  },
+  {
+   "slug": "seatrial-explorer",
+   "number": "02",
+   "title": "SeaTrial Explorer",
+   "theme": "seatrial",
+   "nodeId": "1079:3407",
+   "sections": [
+    {
+     "key": "00-site-header",
+     "kind": "header",
+     "reference": "design/reference/cases/seatrial-explorer/00-site-header.png"
+    },
+    {
+     "key": "01-breadcrumb",
+     "kind": "breadcrumb",
+     "reference": "design/reference/cases/seatrial-explorer/01-breadcrumb.png"
+    },
+    {
+     "key": "02-hero-wrap",
+     "kind": "hero",
+     "reference": "design/reference/cases/seatrial-explorer/02-hero-wrap.png"
+    },
+    {
+     "key": "03-chapter-tabs",
+     "kind": "tabs",
+     "reference": "design/reference/cases/seatrial-explorer/03-chapter-tabs.png"
+    },
+    {
+     "key": "04-chapter-01-overview",
+     "kind": "chapter",
+     "number": "01",
+     "title": "Overview",
+     "anchor": "01-overview",
+     "reference": "design/reference/cases/seatrial-explorer/04-chapter-01-overview.png"
+    },
+    {
+     "key": "05-chapter-02-research",
+     "kind": "chapter",
+     "number": "02",
+     "title": "Research",
+     "anchor": "02-research",
+     "reference": "design/reference/cases/seatrial-explorer/05-chapter-02-research.png"
+    },
+    {
+     "key": "06-chapter-03-from-simulator-to-sketch",
+     "kind": "chapter",
+     "number": "03",
+     "title": "From simulator to sketch",
+     "anchor": "03-from-simulator-to-sketch",
+     "reference": "design/reference/cases/seatrial-explorer/06-chapter-03-from-simulator-to-sketch.png"
+    },
+    {
+     "key": "07-chapter-04-system",
+     "kind": "chapter",
+     "number": "04",
+     "title": "System",
+     "anchor": "04-system",
+     "reference": "design/reference/cases/seatrial-explorer/07-chapter-04-system.png"
+    },
+    {
+     "key": "08-chapter-05-compare",
+     "kind": "chapter",
+     "number": "05",
+     "title": "Compare",
+     "anchor": "05-compare",
+     "reference": "design/reference/cases/seatrial-explorer/08-chapter-05-compare.png"
+    },
+    {
+     "key": "09-chapter-06-flow-screens",
+     "kind": "chapter",
+     "number": "06",
+     "title": "Flow & screens",
+     "anchor": "06-flow-screens",
+     "reference": "design/reference/cases/seatrial-explorer/09-chapter-06-flow-screens.png"
+    },
+    {
+     "key": "10-chapter-07-report",
+     "kind": "chapter",
+     "number": "07",
+     "title": "Report",
+     "anchor": "07-report",
+     "reference": "design/reference/cases/seatrial-explorer/10-chapter-07-report.png"
+    },
+    {
+     "key": "11-next-tool",
+     "kind": "next",
+     "reference": "design/reference/cases/seatrial-explorer/11-next-tool.png"
+    },
+    {
+     "key": "12-site-footer",
+     "kind": "footer",
+     "reference": "design/reference/cases/seatrial-explorer/12-site-footer.png"
+    }
+   ]
+  },
+  {
+   "slug": "coreds",
+   "number": "03",
+   "title": "CoreDS",
+   "theme": "coreds",
+   "nodeId": "1082:23178",
+   "sections": [
+    {
+     "key": "00-site-header",
+     "kind": "header",
+     "reference": "design/reference/cases/coreds/00-site-header.png"
+    },
+    {
+     "key": "01-breadcrumb",
+     "kind": "breadcrumb",
+     "reference": "design/reference/cases/coreds/01-breadcrumb.png"
+    },
+    {
+     "key": "02-hero-wrap",
+     "kind": "hero",
+     "reference": "design/reference/cases/coreds/02-hero-wrap.png"
+    },
+    {
+     "key": "03-chapter-tabs",
+     "kind": "tabs",
+     "reference": "design/reference/cases/coreds/03-chapter-tabs.png"
+    },
+    {
+     "key": "04-chapter-01-one-guideline",
+     "kind": "chapter",
+     "number": "01",
+     "title": "One guideline",
+     "anchor": "01-one-guideline",
+     "reference": "design/reference/cases/coreds/04-chapter-01-one-guideline.png"
+    },
+    {
+     "key": "05-chapter-02-visual-language",
+     "kind": "chapter",
+     "number": "02",
+     "title": "Visual language",
+     "anchor": "02-visual-language",
+     "reference": "design/reference/cases/coreds/05-chapter-02-visual-language.png"
+    },
+    {
+     "key": "06-chapter-03-design-to-code",
+     "kind": "chapter",
+     "number": "03",
+     "title": "Design to code",
+     "anchor": "03-design-to-code",
+     "reference": "design/reference/cases/coreds/06-chapter-03-design-to-code.png"
+    },
+    {
+     "key": "07-chapter-04-pattern-library",
+     "kind": "chapter",
+     "number": "04",
+     "title": "Pattern library",
+     "anchor": "04-pattern-library",
+     "reference": "design/reference/cases/coreds/07-chapter-04-pattern-library.png"
+    },
+    {
+     "key": "08-next-tool",
+     "kind": "next",
+     "reference": "design/reference/cases/coreds/08-next-tool.png"
+    },
+    {
+     "key": "09-site-footer",
+     "kind": "footer",
+     "reference": "design/reference/cases/coreds/09-site-footer.png"
+    }
+   ]
+  }
+ ]
+}

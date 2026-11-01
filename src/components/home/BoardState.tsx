@@ -10,13 +10,13 @@ export type Slug = string;
 export type SideFace = 'personal' | Slug;
 
 type BoardState = {
-  /** T1 interactions run only on the board at rest (not in T0, the intro, with the cards stowed, or while rearranging). */
+  /** Card interactions run only with the projects hanging on the board at rest (not in T0, the intro, stowed, archive). */
   active: boolean;
-  /** On the board (T1), whether or not Rearrange is on. */
+  /** On the board (T1) — the physics toy runs (M7). */
   onBoard: boolean;
-  /** Rearrange (β) — the physics toy (M7). */
-  rearrange: boolean;
-  setRearrange: (on: boolean) => void;
+  /** Reset (Zeyi, 2026-10-29: replaces Rearrange): every tool back where it hangs at first. Bumps on each press. */
+  resetCount: number;
+  reset: () => void;
   hovered: Slug | null;
   opened: Slug | null;
   /** Active skill tag label (T4). */
@@ -46,8 +46,8 @@ function syncUrl(opened: Slug | null, skill: string | null) {
 export function BoardStateProvider({ skills, children }: { skills: string[]; children: ReactNode }) {
   const home = useHome();
   const onBoard = home.phase === 't1';
-  const [rearrange, setRearrangeState] = useState(false);
-  const active = onBoard && !rearrange;
+  const [resetCount, setResetCount] = useState(0);
+  const active = onBoard && home.cards === 'projects' && !home.swapping;
   const reduced = useReducedMotion();
   const [hovered, setHovered] = useState<Slug | null>(null);
   const [opened, setOpened] = useState<Slug | null>(null);
@@ -74,13 +74,9 @@ export function BoardStateProvider({ skills, children }: { skills: string[]; chi
     else if (state === 'hover' && card) setHovered(card);
   }, [active, skills]);
 
-  // Rearrange only exists on the board.
-  useEffect(() => {
-    if (!onBoard) setRearrangeState(false);
-  }, [onBoard]);
-  const setRearrange = useCallback((on: boolean) => setRearrangeState(on), []);
+  const reset = useCallback(() => setResetCount((n) => n + 1), []);
 
-  // Leaving the board (WORK, stowing the cards, Rearrange) puts everything back.
+  // Leaving the board (WORK, stowing the cards, the archive) puts everything back.
   useEffect(() => {
     if (active) return;
     setHovered(null);
@@ -148,8 +144,8 @@ export function BoardStateProvider({ skills, children }: { skills: string[]; chi
     () => ({
       active,
       onBoard,
-      rearrange,
-      setRearrange,
+      resetCount,
+      reset,
       hovered: active ? hovered : null,
       opened: active ? opened : null,
       skill: active ? skill : null,
@@ -161,7 +157,7 @@ export function BoardStateProvider({ skills, children }: { skills: string[]; chi
       close,
       toggleSkill,
     }),
-    [active, onBoard, rearrange, setRearrange, hovered, opened, skill, forced, side, flip, hover, open, close, toggleSkill],
+    [active, onBoard, resetCount, reset, hovered, opened, skill, forced, side, flip, hover, open, close, toggleSkill],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

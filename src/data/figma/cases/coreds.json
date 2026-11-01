@@ -1,0 +1,7517 @@
+{
+ "meta": {
+  "version": 3,
+  "exporter": "3.1",
+  "kind": "cases",
+  "file": "Portfolio",
+  "fileKey": "gFWtnlIFWIpwDxI1ZwHm9v",
+  "page": "Pegboard v2 — Case pages",
+  "exportedAt": "2026-10-29T19:54:51.381Z",
+  "warnings": []
+ },
+ "slug": "coreds",
+ "number": "03",
+ "title": "CoreDS",
+ "nodeId": "1082:23178",
+ "name": "Case · 03 CoreDS",
+ "w": 1440,
+ "h": 7444.46,
+ "modes": {
+  "theme": "coreds"
+ },
+ "fills": [
+  "var(--surface-wall)"
+ ],
+ "sections": [
+  {
+   "key": "00-site-header",
+   "kind": "header",
+   "name": "Site/Header",
+   "nodeId": "1082:23179",
+   "y": 0,
+   "w": 1440,
+   "h": 112,
+   "tree": {
+    "id": "1082:23179",
+    "name": "Site/Header",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 112,
+    "sizing": [
+     "FILL",
+     "FIXED"
+    ],
+    "kind": "component",
+    "component": "Site/Header",
+    "texts": [
+     {
+      "layer": "Logo",
+      "text": "Fangen wir an."
+     },
+     {
+      "layer": "Logo sub",
+      "text": "SHADOW-BOARD PORTFOLIO · 2025—26"
+     },
+     {
+      "layer": "Label",
+      "text": "WORK"
+     },
+     {
+      "layer": "Label",
+      "text": "EXP"
+     },
+     {
+      "layer": "Label",
+      "text": "INFO"
+     },
+     {
+      "layer": "Label",
+      "text": "LAB"
+     },
+     {
+      "layer": "EN",
+      "text": "EN"
+     },
+     {
+      "layer": "ZH",
+      "text": "中"
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/00-site-header.png"
+  },
+  {
+   "key": "01-breadcrumb",
+   "kind": "breadcrumb",
+   "name": "Breadcrumb",
+   "nodeId": "1082:23208",
+   "y": 112,
+   "w": 1440,
+   "h": 55,
+   "tree": {
+    "id": "1082:23208",
+    "name": "Breadcrumb",
+    "type": "FRAME",
+    "x": 0,
+    "y": 112,
+    "w": 1440,
+    "h": 55,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "HORIZONTAL",
+     "gap": 0,
+     "padding": [
+      8,
+      40,
+      16,
+      40
+     ],
+     "primaryAlign": "SPACE_BETWEEN",
+     "counterAlign": "CENTER",
+     "primarySizing": "FIXED",
+     "counterSizing": "AUTO",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      8,
+      40,
+      16,
+      40
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1082:23209",
+      "name": "Back to board",
+      "type": "FRAME",
+      "x": 40,
+      "y": 8,
+      "w": 165,
+      "h": 31,
+      "sizing": [
+       "HUG",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 0,
+       "padding": [
+        7,
+        12,
+        7,
+        12
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "AUTO",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "strokes": [
+        "var(--line-strong)"
+       ],
+       "strokeWeight": 1.5,
+       "strokeAlign": "INSIDE",
+       "radius": 999,
+       "padding": [
+        7,
+        12,
+        7,
+        12
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1082:23210",
+        "name": "↩ BACK TO THE BOARD",
+        "type": "TEXT",
+        "x": 13.5,
+        "y": 8.5,
+        "w": 138,
+        "h": 14,
+        "sizing": [
+         "HUG",
+         "HUG"
+        ],
+        "kind": "text",
+        "text": "↩ BACK TO THE BOARD",
+        "textStyle": "Pegboard/Label",
+        "fills": [
+         "var(--text-primary)"
+        ],
+        "align": "LEFT",
+        "autoResize": "WIDTH_AND_HEIGHT"
+       }
+      ]
+     },
+     {
+      "id": "1082:23211",
+      "name": "Path",
+      "type": "TEXT",
+      "x": 632.5,
+      "y": 16.5,
+      "w": 130,
+      "h": 14,
+      "sizing": [
+       "HUG",
+       "HUG"
+      ],
+      "kind": "text",
+      "text": "WORK / 03 · COREDS",
+      "textStyle": "Pegboard/Label",
+      "fills": [
+       "var(--text-secondary)"
+      ],
+      "align": "LEFT",
+      "autoResize": "WIDTH_AND_HEIGHT"
+     },
+     {
+      "id": "1082:23212",
+      "name": "Next",
+      "type": "TEXT",
+      "x": 1190,
+      "y": 16.5,
+      "w": 210,
+      "h": 14,
+      "sizing": [
+       "HUG",
+       "HUG"
+      ],
+      "kind": "text",
+      "text": "03 / 04 · NEXT TOOL: SCADA+ →",
+      "textStyle": "Pegboard/Label",
+      "fills": [
+       "var(--text-primary)"
+      ],
+      "align": "LEFT",
+      "autoResize": "WIDTH_AND_HEIGHT"
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/01-breadcrumb.png"
+  },
+  {
+   "key": "02-hero-wrap",
+   "kind": "hero",
+   "name": "Hero wrap",
+   "nodeId": "1082:23213",
+   "y": 167,
+   "w": 1440,
+   "h": 802,
+   "tree": {
+    "id": "1082:23213",
+    "name": "Hero wrap",
+    "type": "FRAME",
+    "x": 0,
+    "y": 167,
+    "w": 1440,
+    "h": 802,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 0,
+     "padding": [
+      0,
+      40,
+      0,
+      40
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      0,
+      40,
+      0,
+      40
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1082:23214",
+      "name": "Hero · card",
+      "type": "FRAME",
+      "x": 40,
+      "y": 0,
+      "w": 1360,
+      "h": 802,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "NONE",
+       "clips": true
+      },
+      "style": {
+       "fills": [
+        "var(--board-fill)"
+       ],
+       "strokes": [
+        "var(--board-stroke)"
+       ],
+       "strokeWeight": 2,
+       "strokeAlign": "INSIDE",
+       "radius": 24,
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1082:24191",
+        "name": "Title plate",
+        "type": "FRAME",
+        "x": 48,
+        "y": 48,
+        "w": 620,
+        "h": 186,
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 6,
+         "padding": [
+          22,
+          28,
+          24,
+          28
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 10,
+         "padding": [
+          22,
+          28,
+          24,
+          28
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24192",
+          "name": "Kicker",
+          "type": "TEXT",
+          "x": 28,
+          "y": 22,
+          "w": 564,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "DESIGN SYSTEM · VISUAL DESIGN · FRONT-END · WÄRTSILÄ",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1082:24193",
+          "name": "Title",
+          "type": "TEXT",
+          "x": 28,
+          "y": 42,
+          "w": 564,
+          "h": 80,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "CoreDS",
+          "textStyle": "Pegboard/Case H1",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1082:24194",
+          "name": "Subtitle",
+          "type": "TEXT",
+          "x": 28,
+          "y": 128,
+          "w": 564,
+          "h": 34,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Unified Design System & Guideline",
+          "textStyle": null,
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1082:24197",
+        "name": "Lead",
+        "type": "TEXT",
+        "x": 48,
+        "y": 262,
+        "w": 600,
+        "h": 204,
+        "kind": "text",
+        "text": "Wärtsilä’s digital products run on two tracks: web portals for customers and employees, and machinery UI for crews and plant operators. Each track kept its own libraries and rules. CoreDS unites both under one guideline — shared usability principles, token naming and component specs — delivered as React components in Storybook.",
+        "textStyle": "Pegboard/Case lead",
+        "fills": [
+         "var(--board-ink)"
+        ],
+        "align": "LEFT",
+        "autoResize": "HEIGHT"
+       },
+       {
+        "id": "1082:24198",
+        "name": "Shift",
+        "type": "FRAME",
+        "x": 48,
+        "y": 492,
+        "w": 551,
+        "h": 45,
+        "kind": "frame",
+        "layout": {
+         "mode": "HORIZONTAL",
+         "gap": 14,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "CENTER",
+         "primarySizing": "AUTO",
+         "counterSizing": "AUTO",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24199",
+          "name": "FROM",
+          "type": "TEXT",
+          "x": 0,
+          "y": 15.5,
+          "w": 29,
+          "h": 14,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "FROM",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--board-ink-soft)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1082:24200",
+          "name": "4 LIBRARIES",
+          "type": "TEXT",
+          "x": 43,
+          "y": 0,
+          "w": 198,
+          "h": 45,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "4 LIBRARIES",
+          "textStyle": null,
+          "fills": [
+           "var(--board-ink)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1082:24201",
+          "name": "Rectangle",
+          "type": "RECTANGLE",
+          "x": 255,
+          "y": 21,
+          "w": 56,
+          "h": 3,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "shape",
+          "shape": "rectangle",
+          "style": {
+           "fills": [
+            "var(--board-ink)"
+           ],
+           "radius": 0
+          }
+         },
+         {
+          "id": "1082:24202",
+          "name": "TO",
+          "type": "TEXT",
+          "x": 325,
+          "y": 15.5,
+          "w": 14,
+          "h": 14,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "TO",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--board-ink-soft)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1082:24203",
+          "name": "1 GUIDELINE",
+          "type": "TEXT",
+          "x": 353,
+          "y": 0,
+          "w": 198,
+          "h": 45,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "1 GUIDELINE",
+          "textStyle": null,
+          "fills": [
+           "var(--board-ink)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1082:24204",
+        "name": "Tagline",
+        "type": "FRAME",
+        "x": 48,
+        "y": 559,
+        "w": 241,
+        "h": 33,
+        "kind": "frame",
+        "layout": {
+         "mode": "HORIZONTAL",
+         "gap": 0,
+         "padding": [
+          8,
+          14,
+          8,
+          14
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "AUTO",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "strokes": [
+          "var(--board-ink)"
+         ],
+         "strokeWeight": 1.5,
+         "strokeAlign": "INSIDE",
+         "radius": 999,
+         "padding": [
+          8,
+          14,
+          8,
+          14
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24205",
+          "name": "1 GUIDELINE · 1 DESIGN SYSTEM",
+          "type": "TEXT",
+          "x": 15.5,
+          "y": 9.5,
+          "w": 210,
+          "h": 14,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "1 GUIDELINE · 1 DESIGN SYSTEM",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--board-ink)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1082:24206",
+        "name": "Mount · visual",
+        "type": "FRAME",
+        "x": 712,
+        "y": 48,
+        "w": 600,
+        "h": 433.33,
+        "kind": "mount",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 10,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24207",
+          "name": "Image frame",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 600,
+          "h": 433.33,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "media-frame",
+          "frame": "image",
+          "style": {
+           "radius": 16,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "clips": true
+          },
+          "pins": [],
+          "media": {
+           "src": "/projects/coreds/001-visual.jpg",
+           "w": 600,
+           "h": 433.33,
+           "x": 0,
+           "y": 0,
+           "format": "jpg"
+          }
+         }
+        ]
+       },
+       {
+        "id": "1082:24218",
+        "name": "Meta strip",
+        "type": "FRAME",
+        "x": 48,
+        "y": 624,
+        "w": 1264,
+        "h": 96,
+        "kind": "frame",
+        "layout": {
+         "mode": "HORIZONTAL",
+         "gap": 16,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "AUTO",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24219",
+          "name": "Meta · PERIOD",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 240,
+          "h": 64,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 6,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "radius": 8,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24220",
+            "name": "Key",
+            "type": "TEXT",
+            "x": 16,
+            "y": 14,
+            "w": 208,
+            "h": 14,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "PERIOD",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-secondary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24221",
+            "name": "Value",
+            "type": "TEXT",
+            "x": 16,
+            "y": 34,
+            "w": 208,
+            "h": 16,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "May — Sep 2026 · individual project",
+            "textStyle": "Pegboard/Small",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24222",
+          "name": "Meta · SCOPE",
+          "type": "FRAME",
+          "x": 256,
+          "y": 0,
+          "w": 240,
+          "h": 96,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 6,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "radius": 8,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24223",
+            "name": "Key",
+            "type": "TEXT",
+            "x": 16,
+            "y": 14,
+            "w": 208,
+            "h": 14,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "SCOPE",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-secondary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24224",
+            "name": "Value",
+            "type": "TEXT",
+            "x": 16,
+            "y": 34,
+            "w": 208,
+            "h": 48,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "Web portals & dashboards · Machinery UI · Marine · Energy · Local Control Unit",
+            "textStyle": "Pegboard/Small",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24225",
+          "name": "Meta · OUTPUT",
+          "type": "FRAME",
+          "x": 512,
+          "y": 0,
+          "w": 240,
+          "h": 80,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 6,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "radius": 8,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24226",
+            "name": "Key",
+            "type": "TEXT",
+            "x": 16,
+            "y": 14,
+            "w": 208,
+            "h": 14,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "OUTPUT",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-secondary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24227",
+            "name": "Value",
+            "type": "TEXT",
+            "x": 16,
+            "y": 34,
+            "w": 208,
+            "h": 32,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "7-chapter guideline · 8 UX patterns · React components in Storybook",
+            "textStyle": "Pegboard/Small",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24228",
+          "name": "Meta · FOCUS",
+          "type": "FRAME",
+          "x": 768,
+          "y": 0,
+          "w": 240,
+          "h": 80,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 6,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "radius": 8,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24229",
+            "name": "Key",
+            "type": "TEXT",
+            "x": 16,
+            "y": 14,
+            "w": 208,
+            "h": 14,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "FOCUS",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-secondary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24230",
+            "name": "Value",
+            "type": "TEXT",
+            "x": 16,
+            "y": 34,
+            "w": 208,
+            "h": 32,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "Design system build (front-end) · Brand & visual design",
+            "textStyle": "Pegboard/Small",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24231",
+          "name": "Meta · MY ROLE",
+          "type": "FRAME",
+          "x": 1024,
+          "y": 0,
+          "w": 240,
+          "h": 80,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 6,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "radius": 8,
+           "padding": [
+            14,
+            16,
+            14,
+            16
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24232",
+            "name": "Key",
+            "type": "TEXT",
+            "x": 16,
+            "y": 14,
+            "w": 208,
+            "h": 14,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "MY ROLE",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-secondary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24233",
+            "name": "Value",
+            "type": "TEXT",
+            "x": 16,
+            "y": 34,
+            "w": 208,
+            "h": 32,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "Visual language · Tokens & code · UX documentation · Governance",
+            "textStyle": "Pegboard/Small",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         }
+        ]
+       }
+      ],
+      "modes": {
+       "surface": "light"
+      }
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/02-hero-wrap.png"
+  },
+  {
+   "key": "03-chapter-tabs",
+   "kind": "tabs",
+   "name": "Chapter tabs",
+   "nodeId": "1082:24234",
+   "y": 969,
+   "w": 1440,
+   "h": 130,
+   "tree": {
+    "id": "1082:24234",
+    "name": "Chapter tabs",
+    "type": "FRAME",
+    "x": 0,
+    "y": 969,
+    "w": 1440,
+    "h": 130,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 0,
+     "padding": [
+      40,
+      40,
+      0,
+      40
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      40,
+      40,
+      0,
+      40
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1082:24235",
+      "name": "Tab rail",
+      "type": "FRAME",
+      "x": 40,
+      "y": 40,
+      "w": 1360,
+      "h": 90,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "NONE",
+       "clips": false
+      },
+      "style": {
+       "radius": 0,
+       "clips": false
+      },
+      "children": [
+       {
+        "id": "1082:24236",
+        "name": "Rail",
+        "type": "RECTANGLE",
+        "x": 0,
+        "y": 4,
+        "w": 1360,
+        "h": 5,
+        "kind": "shape",
+        "shape": "rectangle",
+        "style": {
+         "fills": [
+          "var(--line-strong)"
+         ],
+         "radius": 3
+        }
+       },
+       {
+        "id": "1082:24237",
+        "name": "Tab · 01 ONE GUIDELINE",
+        "type": "INSTANCE",
+        "x": 0,
+        "y": 0,
+        "w": 148,
+        "h": 64,
+        "kind": "component",
+        "component": "Nav/Tab",
+        "variant": {
+         "State": "Current"
+        },
+        "props": {
+         "Label": "01 ONE GUIDELINE"
+        },
+        "texts": [
+         {
+          "layer": "Label",
+          "text": "01 ONE GUIDELINE"
+         }
+        ]
+       },
+       {
+        "id": "1082:24242",
+        "name": "Tab · 02 VISUAL LANGUAGE",
+        "type": "INSTANCE",
+        "x": 164,
+        "y": 0,
+        "w": 162,
+        "h": 52,
+        "kind": "component",
+        "component": "Nav/Tab",
+        "variant": {
+         "State": "Default"
+        },
+        "props": {
+         "Label": "02 VISUAL LANGUAGE"
+        },
+        "texts": [
+         {
+          "layer": "Label",
+          "text": "02 VISUAL LANGUAGE"
+         }
+        ]
+       },
+       {
+        "id": "1082:24247",
+        "name": "Tab · 03 DESIGN TO CODE",
+        "type": "INSTANCE",
+        "x": 342,
+        "y": 0,
+        "w": 155,
+        "h": 52,
+        "kind": "component",
+        "component": "Nav/Tab",
+        "variant": {
+         "State": "Default"
+        },
+        "props": {
+         "Label": "03 DESIGN TO CODE"
+        },
+        "texts": [
+         {
+          "layer": "Label",
+          "text": "03 DESIGN TO CODE"
+         }
+        ]
+       },
+       {
+        "id": "1082:24252",
+        "name": "Tab · 04 PATTERN LIBRARY",
+        "type": "INSTANCE",
+        "x": 513,
+        "y": 0,
+        "w": 162,
+        "h": 52,
+        "kind": "component",
+        "component": "Nav/Tab",
+        "variant": {
+         "State": "Default"
+        },
+        "props": {
+         "Label": "04 PATTERN LIBRARY"
+        },
+        "texts": [
+         {
+          "layer": "Label",
+          "text": "04 PATTERN LIBRARY"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/03-chapter-tabs.png"
+  },
+  {
+   "key": "04-chapter-01-one-guideline",
+   "kind": "chapter",
+   "name": "Chapter 01 · One guideline",
+   "nodeId": "1082:24257",
+   "y": 1099,
+   "w": 1440,
+   "h": 1313.64,
+   "number": "01",
+   "title": "One guideline",
+   "anchor": "01-one-guideline",
+   "tree": {
+    "id": "1082:24257",
+    "name": "Chapter 01 · One guideline",
+    "type": "FRAME",
+    "x": 0,
+    "y": 1099,
+    "w": 1440,
+    "h": 1313.64,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 32,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1082:24258",
+      "name": "Chapter head",
+      "type": "FRAME",
+      "x": 80,
+      "y": 120,
+      "w": 1280,
+      "h": 130,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 56,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MAX",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1082:24259",
+        "name": "Number + title",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 440,
+        "h": 130,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 4,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24260",
+          "name": "Number",
+          "type": "TEXT",
+          "x": 0,
+          "y": 0,
+          "w": 74,
+          "h": 72,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "01",
+          "textStyle": "Pegboard/Case number",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1082:24261",
+          "name": "Title",
+          "type": "TEXT",
+          "x": 0,
+          "y": 76,
+          "w": 440,
+          "h": 54,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "One guideline",
+          "textStyle": "Pegboard/Case H2",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1082:24262",
+        "name": "Lead",
+        "type": "TEXT",
+        "x": 496,
+        "y": 62,
+        "w": 784,
+        "h": 68,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "text",
+        "text": "Existing libraries stay with their teams. CoreDS acts as steward: one shared layer of rules and reviews for web portals and equipment screens alike.",
+        "textStyle": "Pegboard/Case lead",
+        "fills": [
+         "var(--text-primary)"
+        ],
+        "align": "LEFT",
+        "autoResize": "HEIGHT"
+       }
+      ]
+     },
+     {
+      "id": "1082:24263",
+      "name": "Rule",
+      "type": "RECTANGLE",
+      "x": 80,
+      "y": 282,
+      "w": 1280,
+      "h": 2,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "shape",
+      "shape": "rectangle",
+      "style": {
+       "fills": [
+        "var(--line-strong)"
+       ],
+       "radius": 0
+      }
+     },
+     {
+      "id": "1082:24264",
+      "name": "Owns + transformation",
+      "type": "FRAME",
+      "x": 80,
+      "y": 316,
+      "w": 1280,
+      "h": 461.93,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 24,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1082:24265",
+        "name": "What CoreDS owns",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 420,
+        "h": 411,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24266",
+          "name": "k",
+          "type": "TEXT",
+          "x": 0,
+          "y": 0,
+          "w": 420,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "WHAT COREDS OWNS",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1082:24267",
+          "name": "Owns · PRINCIPLES",
+          "type": "FRAME",
+          "x": 0,
+          "y": 14,
+          "w": 420,
+          "h": 57,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 16,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24268",
+            "name": "k",
+            "type": "TEXT",
+            "x": 0,
+            "y": 15,
+            "w": 110,
+            "h": 14,
+            "sizing": [
+             "FIXED",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "PRINCIPLES",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24269",
+            "name": "v",
+            "type": "TEXT",
+            "x": 126,
+            "y": 15,
+            "w": 294,
+            "h": 28,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "Shared usability and safety baselines",
+            "textStyle": "Pegboard/Case body",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24270",
+          "name": "Owns · NAMING",
+          "type": "FRAME",
+          "x": 0,
+          "y": 71,
+          "w": 420,
+          "h": 85,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 16,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24271",
+            "name": "k",
+            "type": "TEXT",
+            "x": 0,
+            "y": 15,
+            "w": 110,
+            "h": 14,
+            "sizing": [
+             "FIXED",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "NAMING",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24272",
+            "name": "v",
+            "type": "TEXT",
+            "x": 126,
+            "y": 15,
+            "w": 294,
+            "h": 56,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "Names first; implementation swaps values",
+            "textStyle": "Pegboard/Case body",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24273",
+          "name": "Owns · PATTERNS",
+          "type": "FRAME",
+          "x": 0,
+          "y": 156,
+          "w": 420,
+          "h": 85,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 16,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24274",
+            "name": "k",
+            "type": "TEXT",
+            "x": 0,
+            "y": 15,
+            "w": 110,
+            "h": 14,
+            "sizing": [
+             "FIXED",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "PATTERNS",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24275",
+            "name": "v",
+            "type": "TEXT",
+            "x": 126,
+            "y": 15,
+            "w": 294,
+            "h": 56,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "8 patterns, rules in MUST / SHOULD / MAY",
+            "textStyle": "Pegboard/Case body",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24276",
+          "name": "Owns · QUALITY",
+          "type": "FRAME",
+          "x": 0,
+          "y": 241,
+          "w": 420,
+          "h": 85,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 16,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24277",
+            "name": "k",
+            "type": "TEXT",
+            "x": 0,
+            "y": 15,
+            "w": 110,
+            "h": 14,
+            "sizing": [
+             "FIXED",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "QUALITY",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24278",
+            "name": "v",
+            "type": "TEXT",
+            "x": 126,
+            "y": 15,
+            "w": 294,
+            "h": 56,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "DQD as entry evidence at both reviews",
+            "textStyle": "Pegboard/Case body",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         },
+         {
+          "id": "1082:24279",
+          "name": "Owns · CHANGE",
+          "type": "FRAME",
+          "x": 0,
+          "y": 326,
+          "w": 420,
+          "h": 85,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 16,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            14,
+            0,
+            14,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1082:24280",
+            "name": "k",
+            "type": "TEXT",
+            "x": 0,
+            "y": 15,
+            "w": 110,
+            "h": 14,
+            "sizing": [
+             "FIXED",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "CHANGE",
+            "textStyle": "Pegboard/Label",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           },
+           {
+            "id": "1082:24281",
+            "name": "v",
+            "type": "TEXT",
+            "x": 126,
+            "y": 15,
+            "w": 294,
+            "h": 56,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "text",
+            "text": "Deviations logged as ADRs, one change flow",
+            "textStyle": "Pegboard/Case body",
+            "fills": [
+             "var(--text-primary)"
+            ],
+            "align": "LEFT",
+            "autoResize": "HEIGHT"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "1082:24282",
+        "name": "Mount · TRANSFORMATION — from separate",
+        "type": "FRAME",
+        "x": 444,
+        "y": 0,
+        "w": 836,
+        "h": 461.93,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "mount",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 10,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1082:24283",
+          "name": "Board",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 836,
+          "h": 419.93,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "media-frame",
+          "frame": "board",
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeWeight": 2,
+           "strokeAlign": "INSIDE",
+           "radius": 16,
+           "padding": [
+            22,
+            14,
+            14,
+            14
+           ],
+           "clips": true
+          },
+          "pins": [
+           {
+            "x": 18,
+            "y": -2,
+            "w": 22.4,
+            "h": 22.4
+           },
+           {
+            "x": 796,
+            "y": -2,
+            "w": 22.4,
+            "h": 22.4
+           }
+          ],
+          "media": {
+           "src": "/projects/coreds/002-transformation-from-separate.png",
+           "w": 808,
+           "h": 379.93,
+           "x": 16,
+           "y": 24,
+           "format": "png",
+           "alt": "TRANSFORMATION — FROM SEPARATE LIBRARIES TO ONE GUIDELINE · Today · Tomorrow: Value for · Machinery\nLibrary · Product\nLibrary · CoreDS\nGuideline · Web\nEvolved · Product\nEvolved · Machinery\nEvolved · Project\nLibraries · Web\nLibrary · CoreDS · Same Look & Feel · Separate Component Libraries · Library Alignment · Common Usability Principles · ... · Foundations & Tokens · Pattern Library · Component Specs · Quality Gate · DQD · CoreDS owns shared principles, token naming, the pattern library, component specs and DQD quality reviews. Each library evolves under one guideline; implementation stays wi"
+          }
+         }
+        ],
+        "caption": {
+         "text": "TRANSFORMATION — from separate component libraries (web, product, machinery, project) to one CoreDS guideline: foundations & tokens, pattern library, component specs and the DQD quality gate keep the same look & feel across web, product and machinery tracks.",
+         "textStyle": "Pegboard/Small",
+         "fills": [
+          "var(--text-secondary)"
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "id": "1082:24360",
+      "name": "Mount · DESIGN DELIVERY CHAIN — where ",
+      "type": "FRAME",
+      "x": 80,
+      "y": 809.93,
+      "w": 1280,
+      "h": 479.71,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "mount",
+      "layout": {
+       "mode": "VERTICAL",
+       "gap": 10,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "AUTO",
+       "counterSizing": "FIXED",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1082:24361",
+        "name": "Board",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 437.71,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "media-frame",
+        "frame": "board",
+        "style": {
+         "fills": [
+          "var(--surface-board)"
+         ],
+         "strokes": [
+          "var(--line-strong)"
+         ],
+         "strokeWeight": 2,
+         "strokeAlign": "INSIDE",
+         "radius": 16,
+         "padding": [
+          22,
+          14,
+          14,
+          14
+         ],
+         "clips": true
+        },
+        "pins": [],
+        "media": {
+         "src": "/projects/coreds/003-design-delivery-chain-where.png",
+         "w": 1252,
+         "h": 397.71,
+         "x": 16,
+         "y": 24,
+         "format": "png",
+         "alt": "DESIGN DELIVERY CHAIN — WHERE COREDS ENTERS THE PRODUCT GATES · Intake · Concept Design · Detailed Design · Alignment · Delivery · Request · Need submission or project collaboration started here. · 1 · Conceptualize · Ideating, two to three checkpoints keep direction aligned. · 4 · In-Depth  · Full screen set, states and edge cases, mapped to CoreDS. · 6 · Classification · Define engagement type: scope, depth of design and constraints. · 2 · Concept Review · Look & feel is decided with Concept Design Quality Document. · 5 · Quality Review · UI, Style Guideline and Usability Document  confirmed"
+        }
+       }
+      ],
+      "caption": {
+       "text": "DESIGN DELIVERY CHAIN — where CoreDS enters the product gates: Intake → Alignment → Concept Design → Detailed Design → Delivery. Reviews 5 and 7 use the Design Quality Document as entry evidence; new projects enter via Conceptualize, renewing projects go from Correspond straight to In-Depth; failed reviews loop back.",
+       "textStyle": "Pegboard/Small",
+       "fills": [
+        "var(--text-secondary)"
+       ]
+      }
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/04-chapter-01-one-guideline.png"
+  },
+  {
+   "key": "05-chapter-02-visual-language",
+   "kind": "chapter",
+   "name": "Chapter 02 · Visual language",
+   "nodeId": "1083:24199",
+   "y": 2412.64,
+   "w": 1440,
+   "h": 1951.08,
+   "number": "02",
+   "title": "Visual language",
+   "anchor": "02-visual-language",
+   "tree": {
+    "id": "1083:24199",
+    "name": "Chapter 02 · Visual language",
+    "type": "FRAME",
+    "x": 0,
+    "y": 2412.64,
+    "w": 1440,
+    "h": 1951.08,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 32,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1083:24200",
+      "name": "Chapter head",
+      "type": "FRAME",
+      "x": 80,
+      "y": 120,
+      "w": 1280,
+      "h": 130,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 56,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MAX",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24201",
+        "name": "Number + title",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 440,
+        "h": 130,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 4,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24202",
+          "name": "Number",
+          "type": "TEXT",
+          "x": 0,
+          "y": 0,
+          "w": 85,
+          "h": 72,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "02",
+          "textStyle": "Pegboard/Case number",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24203",
+          "name": "Title",
+          "type": "TEXT",
+          "x": 0,
+          "y": 76,
+          "w": 440,
+          "h": 54,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Visual language",
+          "textStyle": "Pegboard/Case H2",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24204",
+        "name": "Lead",
+        "type": "TEXT",
+        "x": 496,
+        "y": 28,
+        "w": 784,
+        "h": 102,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "text",
+        "text": "One illustration grammar for every Brand Hub reader: real UI laid flat and tilted, with one orange accent per image. The illustrations are modular, so new chapters reuse parts instead of redrawing them.",
+        "textStyle": "Pegboard/Case lead",
+        "fills": [
+         "var(--text-primary)"
+        ],
+        "align": "LEFT",
+        "autoResize": "HEIGHT"
+       }
+      ]
+     },
+     {
+      "id": "1083:24205",
+      "name": "Rule",
+      "type": "RECTANGLE",
+      "x": 80,
+      "y": 282,
+      "w": 1280,
+      "h": 2,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "shape",
+      "shape": "rectangle",
+      "style": {
+       "fills": [
+        "var(--line-strong)"
+       ],
+       "radius": 0
+      }
+     },
+     {
+      "id": "1083:24206",
+      "name": "Four rules",
+      "type": "FRAME",
+      "x": 80,
+      "y": 316,
+      "w": 1280,
+      "h": 390,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 16,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24207",
+        "name": "Rule · Projection",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 308,
+        "h": 377,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "fills": [
+          "var(--surface-board)"
+         ],
+         "strokes": [
+          "var(--line-strong)"
+         ],
+         "strokeWeight": 2,
+         "strokeAlign": "INSIDE",
+         "radius": 16,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24208",
+          "name": "Mini",
+          "type": "FRAME",
+          "x": 20,
+          "y": 26,
+          "w": 268,
+          "h": 170,
+          "sizing": [
+           "FILL",
+           "FIXED"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 0,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "primaryAlign": "CENTER",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "radius": 10,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24209",
+            "name": "Visual",
+            "type": "FRAME",
+            "x": 19,
+            "y": 1.5,
+            "w": 230,
+            "h": 161,
+            "sizing": [
+             "FIXED",
+             "FIXED"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "NONE",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "#E6F3FF"
+             ],
+             "radius": 14,
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24210",
+              "name": "Flat",
+              "type": "RECTANGLE",
+              "x": 27.6,
+              "y": 53.67,
+              "w": 58.27,
+              "h": 58.27,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#B9DAFA"
+               ],
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24211",
+              "name": "Frame",
+              "type": "FRAME",
+              "x": 180.93,
+              "y": 44.47,
+              "w": 69,
+              "h": 69,
+              "rotation": -34.01,
+              "kind": "frame",
+              "layout": {
+               "mode": "NONE",
+               "clips": true
+              },
+              "style": {
+               "fills": [
+                "#8DC2F6"
+               ],
+               "radius": 7.666666507720947,
+               "clips": true
+              },
+              "children": []
+             },
+             {
+              "id": "1083:24212",
+              "name": "±34°",
+              "type": "TEXT",
+              "x": 150.27,
+              "y": 127.27,
+              "w": 33,
+              "h": 18,
+              "kind": "text",
+              "text": "±34°",
+              "textStyle": null,
+              "fills": [
+               "#004A6B"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             },
+             {
+              "id": "1083:24213",
+              "name": "→",
+              "type": "TEXT",
+              "x": 99.67,
+              "y": 65.93,
+              "w": 25,
+              "h": 31,
+              "kind": "text",
+              "text": "→",
+              "textStyle": null,
+              "fills": [
+               "#53575A"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24214",
+          "name": "01",
+          "type": "TEXT",
+          "x": 20,
+          "y": 204,
+          "w": 21,
+          "h": 25,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "01",
+          "textStyle": null,
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24215",
+          "name": "t",
+          "type": "TEXT",
+          "x": 20,
+          "y": 237,
+          "w": 268,
+          "h": 30,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Projection",
+          "textStyle": "Pegboard/Case H3",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24216",
+          "name": "spec",
+          "type": "TEXT",
+          "x": 20,
+          "y": 275,
+          "w": 268,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "scale(1, 0.675) · rotate(45°)",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24217",
+          "name": "b",
+          "type": "TEXT",
+          "x": 20,
+          "y": 297,
+          "w": 268,
+          "h": 60,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Both axes sit at ±34°; the same CSS transform drives Figma and web illustrations.",
+          "textStyle": "Pegboard/Body",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24218",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 18,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         },
+         {
+          "id": "1083:24222",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 260,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         }
+        ]
+       },
+       {
+        "id": "1083:24226",
+        "name": "Rule · One blue",
+        "type": "FRAME",
+        "x": 324,
+        "y": 0,
+        "w": 308,
+        "h": 390,
+        "sizing": [
+         "FILL",
+         "FIXED"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "FIXED",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "fills": [
+          "var(--surface-board)"
+         ],
+         "strokes": [
+          "var(--line-strong)"
+         ],
+         "strokeWeight": 2,
+         "strokeAlign": "INSIDE",
+         "radius": 16,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24227",
+          "name": "Mini",
+          "type": "FRAME",
+          "x": 20,
+          "y": 26,
+          "w": 268,
+          "h": 170,
+          "sizing": [
+           "FILL",
+           "FIXED"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 0,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "primaryAlign": "CENTER",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "radius": 10,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24228",
+            "name": "Visual",
+            "type": "FRAME",
+            "x": 19,
+            "y": 1.5,
+            "w": 230,
+            "h": 161,
+            "sizing": [
+             "FIXED",
+             "FIXED"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "NONE",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "#E6F3FF"
+             ],
+             "radius": 14,
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24229",
+              "name": "#8DC2F6",
+              "type": "RECTANGLE",
+              "x": 16.87,
+              "y": 32.2,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#8DC2F6"
+               ],
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24230",
+              "name": "#B9DAFA",
+              "type": "RECTANGLE",
+              "x": 67.47,
+              "y": 32.2,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#B9DAFA"
+               ],
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24231",
+              "name": "#C6E1FB",
+              "type": "RECTANGLE",
+              "x": 118.07,
+              "y": 32.2,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#C6E1FB"
+               ],
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24232",
+              "name": "#E6F3FF",
+              "type": "RECTANGLE",
+              "x": 168.67,
+              "y": 32.2,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#E6F3FF"
+               ],
+               "strokes": [
+                "#C6E1FB"
+               ],
+               "strokeWeight": 0.7666666507720947,
+               "strokeAlign": "INSIDE",
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24233",
+              "name": "#E6EAED",
+              "type": "RECTANGLE",
+              "x": 16.87,
+              "y": 90.47,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#E6EAED"
+               ],
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24234",
+              "name": "#53575A",
+              "type": "RECTANGLE",
+              "x": 67.47,
+              "y": 90.47,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#53575A"
+               ],
+               "radius": 6.133333206176758
+              }
+             },
+             {
+              "id": "1083:24235",
+              "name": "#FF7321",
+              "type": "RECTANGLE",
+              "x": 118.07,
+              "y": 90.47,
+              "w": 41.4,
+              "h": 41.4,
+              "kind": "shape",
+              "shape": "rectangle",
+              "style": {
+               "fills": [
+                "#FF7321"
+               ],
+               "radius": 6.133333206176758
+              }
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24236",
+          "name": "02",
+          "type": "TEXT",
+          "x": 20,
+          "y": 204,
+          "w": 24,
+          "h": 25,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "02",
+          "textStyle": null,
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24237",
+          "name": "t",
+          "type": "TEXT",
+          "x": 20,
+          "y": 237,
+          "w": 268,
+          "h": 30,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "One blue",
+          "textStyle": "Pegboard/Case H3",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24238",
+          "name": "spec",
+          "type": "TEXT",
+          "x": 20,
+          "y": 275,
+          "w": 268,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "#8DC2F6 @ 100 / 60 / 50 / 25%",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24239",
+          "name": "b",
+          "type": "TEXT",
+          "x": 20,
+          "y": 297,
+          "w": 268,
+          "h": 80,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "One blue plus its opacities. Orange #FF7321 keeps its Foundations meaning — action and active state — and appears once per image.",
+          "textStyle": "Pegboard/Body",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24240",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 18,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         },
+         {
+          "id": "1083:24244",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 260,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         }
+        ]
+       },
+       {
+        "id": "1083:24248",
+        "name": "Rule · Constant geometry",
+        "type": "FRAME",
+        "x": 648,
+        "y": 0,
+        "w": 308,
+        "h": 357,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "fills": [
+          "var(--surface-board)"
+         ],
+         "strokes": [
+          "var(--line-strong)"
+         ],
+         "strokeWeight": 2,
+         "strokeAlign": "INSIDE",
+         "radius": 16,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24249",
+          "name": "Mini",
+          "type": "FRAME",
+          "x": 20,
+          "y": 26,
+          "w": 268,
+          "h": 170,
+          "sizing": [
+           "FILL",
+           "FIXED"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 0,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "primaryAlign": "CENTER",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "radius": 10,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24250",
+            "name": "Visual",
+            "type": "FRAME",
+            "x": 19,
+            "y": 1.5,
+            "w": 230,
+            "h": 161,
+            "sizing": [
+             "FIXED",
+             "FIXED"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "NONE",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "#E6F3FF"
+             ],
+             "radius": 14,
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24251",
+              "name": "Frame",
+              "type": "FRAME",
+              "x": 115,
+              "y": 4.6,
+              "w": 199.33,
+              "h": 138,
+              "rotation": -34.01,
+              "kind": "frame",
+              "layout": {
+               "mode": "NONE",
+               "clips": false
+              },
+              "style": {
+               "radius": 0,
+               "clips": false
+              },
+              "children": [
+               {
+                "id": "1083:24252",
+                "name": "Rect",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 0,
+                "w": 53.67,
+                "h": 53.67,
+                "kind": "shape",
+                "shape": "rectangle",
+                "style": {
+                 "fills": [
+                  "#8DC2F6"
+                 ],
+                 "radius": 6.133333206176758
+                }
+               },
+               {
+                "id": "1083:24253",
+                "name": "Rect",
+                "type": "RECTANGLE",
+                "x": 59.8,
+                "y": 0,
+                "w": 53.67,
+                "h": 53.67,
+                "kind": "shape",
+                "shape": "rectangle",
+                "style": {
+                 "fills": [
+                  "#8DC2F6"
+                 ],
+                 "radius": 6.133333206176758
+                }
+               },
+               {
+                "id": "1083:24254",
+                "name": "Rect",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 59.8,
+                "w": 113.47,
+                "h": 53.67,
+                "kind": "shape",
+                "shape": "rectangle",
+                "style": {
+                 "fills": [
+                  "#B9DAFA"
+                 ],
+                 "radius": 6.133333206176758
+                }
+               },
+               {
+                "id": "1083:24255",
+                "name": "Rect",
+                "type": "RECTANGLE",
+                "x": 119.6,
+                "y": 0,
+                "w": 53.67,
+                "h": 113.47,
+                "kind": "shape",
+                "shape": "rectangle",
+                "style": {
+                 "fills": [
+                  "#8DC2F6"
+                 ],
+                 "radius": 6.133333206176758
+                }
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24256",
+          "name": "03",
+          "type": "TEXT",
+          "x": 20,
+          "y": 204,
+          "w": 24,
+          "h": 25,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "03",
+          "textStyle": null,
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24257",
+          "name": "t",
+          "type": "TEXT",
+          "x": 20,
+          "y": 237,
+          "w": 268,
+          "h": 30,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Constant geometry",
+          "textStyle": "Pegboard/Case H3",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24258",
+          "name": "spec",
+          "type": "TEXT",
+          "x": 20,
+          "y": 275,
+          "w": 268,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "gap = radius = 16",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24259",
+          "name": "b",
+          "type": "TEXT",
+          "x": 20,
+          "y": 297,
+          "w": 268,
+          "h": 40,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Gap and radius fixed at 16, like a token, whether a module spans one cell or three.",
+          "textStyle": "Pegboard/Body",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24260",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 18,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         },
+         {
+          "id": "1083:24264",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 260,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         }
+        ]
+       },
+       {
+        "id": "1083:24268",
+        "name": "Rule · Four layers",
+        "type": "FRAME",
+        "x": 972,
+        "y": 0,
+        "w": 308,
+        "h": 357,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "fills": [
+          "var(--surface-board)"
+         ],
+         "strokes": [
+          "var(--line-strong)"
+         ],
+         "strokeWeight": 2,
+         "strokeAlign": "INSIDE",
+         "radius": 16,
+         "padding": [
+          24,
+          18,
+          18,
+          18
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24269",
+          "name": "Mini",
+          "type": "FRAME",
+          "x": 20,
+          "y": 26,
+          "w": 268,
+          "h": 170,
+          "sizing": [
+           "FILL",
+           "FIXED"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 0,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "primaryAlign": "CENTER",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "radius": 10,
+           "padding": [
+            0,
+            0,
+            6,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24270",
+            "name": "Visual",
+            "type": "FRAME",
+            "x": 19,
+            "y": 1.5,
+            "w": 230,
+            "h": 161,
+            "sizing": [
+             "FIXED",
+             "FIXED"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "NONE",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "#E6F3FF"
+             ],
+             "radius": 14,
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24271",
+              "name": "Frame",
+              "type": "FRAME",
+              "x": 79.73,
+              "y": 90.47,
+              "w": 73.6,
+              "h": 73.6,
+              "rotation": -34.01,
+              "kind": "frame",
+              "layout": {
+               "mode": "NONE",
+               "clips": true
+              },
+              "style": {
+               "fills": [
+                "#E6EAED"
+               ],
+               "radius": 6.133333206176758,
+               "clips": true
+              },
+              "children": []
+             },
+             {
+              "id": "1083:24272",
+              "name": "Frame",
+              "type": "FRAME",
+              "x": 79.73,
+              "y": 59.8,
+              "w": 73.6,
+              "h": 73.6,
+              "rotation": -34.01,
+              "kind": "frame",
+              "layout": {
+               "mode": "NONE",
+               "clips": true
+              },
+              "style": {
+               "fills": [
+                "#8DC2F6"
+               ],
+               "radius": 6.133333206176758,
+               "clips": true
+              },
+              "children": []
+             },
+             {
+              "id": "1083:24273",
+              "name": "Frame",
+              "type": "FRAME",
+              "x": 79.73,
+              "y": 29.13,
+              "w": 73.6,
+              "h": 73.6,
+              "rotation": -34.01,
+              "kind": "frame",
+              "layout": {
+               "mode": "NONE",
+               "clips": true
+              },
+              "style": {
+               "fills": [
+                "#FFFFFF"
+               ],
+               "radius": 6.133333206176758,
+               "clips": true
+              },
+              "children": [],
+              "effect": "custom"
+             },
+             {
+              "id": "1083:24274",
+              "name": "Hands/Touch",
+              "type": "INSTANCE",
+              "x": 131.87,
+              "y": 10.73,
+              "w": 38.03,
+              "h": 57.11,
+              "kind": "art",
+              "component": "Hands/Touch",
+              "media": {
+               "src": "/projects/coreds/004-hands-touch.svg",
+               "w": 38.03,
+               "h": 57.11,
+               "format": "svg"
+              }
+             },
+             {
+              "id": "1083:24275",
+              "name": "Ground",
+              "type": "TEXT",
+              "x": 174.8,
+              "y": 122.67,
+              "w": 38,
+              "h": 13,
+              "kind": "text",
+              "text": "Ground",
+              "textStyle": null,
+              "fills": [
+               "#004A6B"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             },
+             {
+              "id": "1083:24276",
+              "name": "Plane",
+              "type": "TEXT",
+              "x": 174.8,
+              "y": 88.93,
+              "w": 29,
+              "h": 13,
+              "kind": "text",
+              "text": "Plane",
+              "textStyle": null,
+              "fills": [
+               "#004A6B"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             },
+             {
+              "id": "1083:24277",
+              "name": "Lift",
+              "type": "TEXT",
+              "x": 174.8,
+              "y": 55.2,
+              "w": 17,
+              "h": 13,
+              "kind": "text",
+              "text": "Lift",
+              "textStyle": null,
+              "fills": [
+               "#004A6B"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             },
+             {
+              "id": "1083:24278",
+              "name": "Overlay",
+              "type": "TEXT",
+              "x": 174.8,
+              "y": 21.47,
+              "w": 40,
+              "h": 13,
+              "kind": "text",
+              "text": "Overlay",
+              "textStyle": null,
+              "fills": [
+               "#004A6B"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24279",
+          "name": "04",
+          "type": "TEXT",
+          "x": 20,
+          "y": 204,
+          "w": 25,
+          "h": 25,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "04",
+          "textStyle": null,
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24280",
+          "name": "t",
+          "type": "TEXT",
+          "x": 20,
+          "y": 237,
+          "w": 268,
+          "h": 30,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Four layers",
+          "textStyle": "Pegboard/Case H3",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24281",
+          "name": "spec",
+          "type": "TEXT",
+          "x": 20,
+          "y": 275,
+          "w": 268,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Ground · Plane · Lift · Overlay",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24282",
+          "name": "b",
+          "type": "TEXT",
+          "x": 20,
+          "y": 297,
+          "w": 268,
+          "h": 40,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Layers map to z-index: ground, plane, lifted focus card, upright cursor and hand.",
+          "textStyle": "Pegboard/Body",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24283",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 18,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         },
+         {
+          "id": "1083:24287",
+          "name": "Peg/Hook",
+          "type": "INSTANCE",
+          "x": 260,
+          "y": -2,
+          "w": 22.4,
+          "h": 22.4,
+          "absolute": true,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "component",
+          "component": "Peg/Hook",
+          "variant": {
+           "Type": "Pin"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "id": "1083:24291",
+      "name": "Mount · MODULAR DESIGN — the same KPI ",
+      "type": "FRAME",
+      "x": 80,
+      "y": 738,
+      "w": 1280,
+      "h": 950.44,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "mount",
+      "layout": {
+       "mode": "VERTICAL",
+       "gap": 10,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "AUTO",
+       "counterSizing": "FIXED",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24292",
+        "name": "Image frame",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 924.44,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "media-frame",
+        "frame": "image",
+        "style": {
+         "radius": 16,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "pins": [],
+        "media": {
+         "src": "/projects/coreds/005-modular-design-the-same-kpi.jpg",
+         "w": 1280,
+         "h": 924.44,
+         "x": 0,
+         "y": 0,
+         "format": "jpg"
+        }
+       }
+      ],
+      "caption": {
+       "text": "MODULAR DESIGN — the same KPI modules recombine from process page to plant dashboard, as defined in the Modular Dashboard pattern.",
+       "textStyle": "Pegboard/Small",
+       "fills": [
+        "var(--text-secondary)"
+       ]
+      }
+     },
+     {
+      "id": "1083:24304",
+      "name": "Covers label",
+      "type": "TEXT",
+      "x": 80,
+      "y": 1720.44,
+      "w": 1280,
+      "h": 14,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "text",
+      "text": "7 CHAPTER COVERS · BRAND HUB",
+      "textStyle": "Pegboard/Label",
+      "fills": [
+       "var(--theme-accent)"
+      ],
+      "align": "LEFT",
+      "autoResize": "HEIGHT"
+     },
+     {
+      "id": "1083:24305",
+      "name": "Chapter covers",
+      "type": "FRAME",
+      "x": 80,
+      "y": 1766.44,
+      "w": 1280,
+      "h": 160.63,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 12,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24306",
+        "name": "Cover · 01 Get Started",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 172.57,
+        "h": 146.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24307",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/006-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24308",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "01 Get Started",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24309",
+        "name": "Cover · 02 Foundations",
+        "type": "FRAME",
+        "x": 184.57,
+        "y": 0,
+        "w": 172.57,
+        "h": 146.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24310",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/007-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24311",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "02 Foundations",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24312",
+        "name": "Cover · 03 Accessibility & Safety",
+        "type": "FRAME",
+        "x": 369.14,
+        "y": 0,
+        "w": 172.57,
+        "h": 160.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24313",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/008-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24314",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 28,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "03 Accessibility & Safety",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24315",
+        "name": "Cover · 04 Pattern",
+        "type": "FRAME",
+        "x": 553.71,
+        "y": 0,
+        "w": 172.57,
+        "h": 146.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24316",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/009-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24317",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "04 Pattern",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24318",
+        "name": "Cover · 05 Cases",
+        "type": "FRAME",
+        "x": 738.29,
+        "y": 0,
+        "w": 172.57,
+        "h": 146.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24319",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/010-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24320",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "05 Cases",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24321",
+        "name": "Cover · 06 Components",
+        "type": "FRAME",
+        "x": 922.86,
+        "y": 0,
+        "w": 172.57,
+        "h": 146.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24322",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/011-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24323",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "06 Components",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24324",
+        "name": "Cover · 07 Governance",
+        "type": "FRAME",
+        "x": 1107.43,
+        "y": 0,
+        "w": 172.57,
+        "h": 146.63,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 8,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24325",
+          "name": "Cover",
+          "type": "RECTANGLE",
+          "x": 0,
+          "y": 0,
+          "w": 172.57,
+          "h": 124.63,
+          "sizing": [
+           "FIXED",
+           "FIXED"
+          ],
+          "kind": "image",
+          "style": {
+           "radius": 10
+          },
+          "media": {
+           "src": "/projects/coreds/012-cover.jpg",
+           "w": 172.57,
+           "h": 124.63,
+           "format": "jpg",
+           "fit": "FILL"
+          }
+         },
+         {
+          "id": "1083:24326",
+          "name": "l",
+          "type": "TEXT",
+          "x": 0,
+          "y": 132.63,
+          "w": 172.57,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "07 Governance",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/05-chapter-02-visual-language.png"
+  },
+  {
+   "key": "06-chapter-03-design-to-code",
+   "kind": "chapter",
+   "name": "Chapter 03 · Design to code",
+   "nodeId": "1083:24327",
+   "y": 4363.72,
+   "w": 1440,
+   "h": 1243.01,
+   "number": "03",
+   "title": "Design to code",
+   "anchor": "03-design-to-code",
+   "tree": {
+    "id": "1083:24327",
+    "name": "Chapter 03 · Design to code",
+    "type": "FRAME",
+    "x": 0,
+    "y": 4363.72,
+    "w": 1440,
+    "h": 1243.01,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 32,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1083:24328",
+      "name": "Chapter head",
+      "type": "FRAME",
+      "x": 80,
+      "y": 120,
+      "w": 1280,
+      "h": 130,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 56,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MAX",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24329",
+        "name": "Number + title",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 440,
+        "h": 130,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 4,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24330",
+          "name": "Number",
+          "type": "TEXT",
+          "x": 0,
+          "y": 0,
+          "w": 84,
+          "h": 72,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "03",
+          "textStyle": "Pegboard/Case number",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24331",
+          "name": "Title",
+          "type": "TEXT",
+          "x": 0,
+          "y": 76,
+          "w": 440,
+          "h": 54,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Design to code",
+          "textStyle": "Pegboard/Case H2",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24332",
+        "name": "Lead",
+        "type": "TEXT",
+        "x": 496,
+        "y": 28,
+        "w": 784,
+        "h": 102,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "text",
+        "text": "Example: the Advanced Vertical Linear Gauge of a local control unit. Auto Layout maps to Flexbox, every visual value is a token, states come from UX rules, and I built it in React + TypeScript with one story per state.",
+        "textStyle": "Pegboard/Case lead",
+        "fills": [
+         "var(--text-primary)"
+        ],
+        "align": "LEFT",
+        "autoResize": "HEIGHT"
+       }
+      ]
+     },
+     {
+      "id": "1083:24333",
+      "name": "Rule",
+      "type": "RECTANGLE",
+      "x": 80,
+      "y": 282,
+      "w": 1280,
+      "h": 2,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "shape",
+      "shape": "rectangle",
+      "style": {
+       "fills": [
+        "var(--line-strong)"
+       ],
+       "radius": 0
+      }
+     },
+     {
+      "id": "1083:24334",
+      "name": "Stack + cards",
+      "type": "FRAME",
+      "x": 80,
+      "y": 316,
+      "w": 1280,
+      "h": 903.01,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 24,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24335",
+        "name": "Mount · EXPLODED STACK — Figma layers ",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 647.13,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "mount",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 10,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24336",
+          "name": "Board",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 400,
+          "h": 605.13,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "media-frame",
+          "frame": "board",
+          "style": {
+           "fills": [
+            "var(--surface-board)"
+           ],
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeWeight": 2,
+           "strokeAlign": "INSIDE",
+           "radius": 16,
+           "padding": [
+            22,
+            14,
+            14,
+            14
+           ],
+           "clips": true
+          },
+          "pins": [
+           {
+            "x": 18,
+            "y": -2,
+            "w": 22.4,
+            "h": 22.4
+           },
+           {
+            "x": 360,
+            "y": -2,
+            "w": 22.4,
+            "h": 22.4
+           }
+          ],
+          "media": {
+           "src": "/projects/coreds/013-exploded-stack-figma-layers.png",
+           "w": 372,
+           "h": 565.13,
+           "x": 16,
+           "y": 24,
+           "format": "png",
+           "alt": "04 · React · Storybook · 03 · Tokens · gauge.track · gauge.bar · gauge.surface · gauge.zone.alarm · 02 · CSS · 1 · 2 · 3 · 4 · 5 · 6 · 7 · 01 · Figma Auto Layout · 0 · 20 · 60 · 100 · 50 · °C · Indicator · 16 · Auto layout · Direction · Vertical · Gap · 8 · Padding · 16 · Align · Center · Width · Hug"
+          }
+         }
+        ],
+        "caption": {
+         "text": "EXPLODED STACK — Figma layers → tokens → React component → Storybook story.",
+         "textStyle": "Pegboard/Small",
+         "fills": [
+          "var(--text-secondary)"
+         ]
+        }
+       },
+       {
+        "id": "1083:24468",
+        "name": "Four steps",
+        "type": "FRAME",
+        "x": 424,
+        "y": 0,
+        "w": 856,
+        "h": 903.01,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "HORIZONTAL",
+         "gap": 24,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "FIXED",
+         "counterSizing": "AUTO",
+         "wrap": "WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24469",
+          "name": "Mount · 01 · Auto Layout → Flexbox",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 416,
+          "h": 441.36,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "mount",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 10,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24470",
+            "name": "Board",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "w": 416,
+            "h": 415.36,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "media-frame",
+            "frame": "board",
+            "style": {
+             "fills": [
+              "var(--surface-board)"
+             ],
+             "strokes": [
+              "var(--line-strong)"
+             ],
+             "strokeWeight": 2,
+             "strokeAlign": "INSIDE",
+             "radius": 16,
+             "padding": [
+              22,
+              14,
+              14,
+              14
+             ],
+             "clips": true
+            },
+            "pins": [
+             {
+              "x": 18,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             },
+             {
+              "x": 376,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             }
+            ],
+            "media": {
+             "src": "/projects/coreds/014-01-auto-layout-flexbox.png",
+             "w": 388,
+             "h": 375.36,
+             "x": 16,
+             "y": 24,
+             "format": "png",
+             "alt": "01 · AUTO LAYOUT → FLEXBOX · 0 · 20 · 60 · 100 · 50 · °C · Indicator · 24 · 12 · 1 · 2 · 3 · 6 · 4 · 5 · 1 · Scale · Ticks and labels · scale[] · 2 · Value bar · Live reading · valueActual · 3 · Demand pointer · Target value marker · — · 4 · Readout · Value + unit · unit · 5 · Label · Component name · gaugeName · 6 · Zones · Special / alarm zones · — · FIGMA · CSS · Auto layout · Vertical · → · display: flex; flex-direction: column; · Gap · 12 · → · gap: var(--space-3); · Padding · 24 · → · padding: var(--space-6); · Align · Center · → · align-items: center; · Width · Hug contents · → · width:"
+            }
+           }
+          ],
+          "caption": {
+           "text": "01 · Auto Layout → Flexbox",
+           "textStyle": "Pegboard/Small",
+           "fills": [
+            "var(--text-secondary)"
+           ]
+          }
+         },
+         {
+          "id": "1083:24571",
+          "name": "Mount · 02 · Token tiers × track theme",
+          "type": "FRAME",
+          "x": 440,
+          "y": 0,
+          "w": 416,
+          "h": 441.36,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "mount",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 10,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24572",
+            "name": "Board",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "w": 416,
+            "h": 415.36,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "media-frame",
+            "frame": "board",
+            "style": {
+             "fills": [
+              "var(--surface-board)"
+             ],
+             "strokes": [
+              "var(--line-strong)"
+             ],
+             "strokeWeight": 2,
+             "strokeAlign": "INSIDE",
+             "radius": 16,
+             "padding": [
+              22,
+              14,
+              14,
+              14
+             ],
+             "clips": true
+            },
+            "pins": [
+             {
+              "x": 18,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             },
+             {
+              "x": 376,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             }
+            ],
+            "media": {
+             "src": "/projects/coreds/015-02-token-tiers-track-theme.png",
+             "w": 388,
+             "h": 375.36,
+             "x": 16,
+             "y": 24,
+             "format": "png",
+             "alt": "02 · TOKEN TIERS × TRACK THEMES · primitive · grey.200 · → · semantic · surface.instrument · → · component · gauge.surface · COMPONENT TOKEN · SEMANTIC TOKEN · WEB · MACHINERY · gauge.surface · surface.instrument · #F3F5F7 · #E6EAED · gauge.track · border.track · #C9CDD1 · #C9CDD1 · gauge.bar · content.primary · #1A1D21 · #1A1A1A · gauge.zone.alarm · status.alarm · #D32F2F · #FF0000 · :root { --surface-instrument: var(--grey-100); } · [data-track=\"machinery\"] { ·   --surface-instrument: var(--grey-200); · } · .gauge { ·   --gauge-surface: var(--surface-instrument); ·   background: var(--gauge-"
+            }
+           }
+          ],
+          "caption": {
+           "text": "02 · Token tiers × track themes",
+           "textStyle": "Pegboard/Small",
+           "fills": [
+            "var(--text-secondary)"
+           ]
+          }
+         },
+         {
+          "id": "1083:24637",
+          "name": "Mount · 03 · State model — from UX rul",
+          "type": "FRAME",
+          "x": 0,
+          "y": 465.36,
+          "w": 416,
+          "h": 437.65,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "mount",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 10,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24638",
+            "name": "Board",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "w": 416,
+            "h": 411.65,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "media-frame",
+            "frame": "board",
+            "style": {
+             "fills": [
+              "var(--surface-board)"
+             ],
+             "strokes": [
+              "var(--line-strong)"
+             ],
+             "strokeWeight": 2,
+             "strokeAlign": "INSIDE",
+             "radius": 16,
+             "padding": [
+              22,
+              14,
+              14,
+              14
+             ],
+             "clips": true
+            },
+            "pins": [
+             {
+              "x": 18,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             },
+             {
+              "x": 376,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             }
+            ],
+            "media": {
+             "src": "/projects/coreds/016-03-state-model-from-ux-rul.png",
+             "w": 388,
+             "h": 371.65,
+             "x": 16,
+             "y": 24,
+             "format": "png",
+             "alt": "03 · STATE MODEL — FROM UX RULES · Simple · Live value · in range · Value Demand Set · Operator sets target · Special Zones · Value enters a zone · Out Of Bounds · Value beyond scale · Alarms · Alarm limit exceeded · set · zone · out · limit · ANY STATE → Error · Signal lost or stale: show Error, never the last value · GUIDELINE RULE · STATE / STORY · Data validity · stale values must never look live · Error · Colour + shape · alarms change colour and icon together · Alarms · Scale · out-of-range values must be visibly flagged · Out Of Bounds · States and user flows live in Confluence; each st"
+            }
+           }
+          ],
+          "caption": {
+           "text": "03 · State model — from UX rules",
+           "textStyle": "Pegboard/Small",
+           "fills": [
+            "var(--text-secondary)"
+           ]
+          }
+         },
+         {
+          "id": "1083:24689",
+          "name": "Mount · 04 · React + TypeScript · Stor",
+          "type": "FRAME",
+          "x": 440,
+          "y": 465.36,
+          "w": 416,
+          "h": 437.65,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "mount",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 10,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24690",
+            "name": "Board",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "w": 416,
+            "h": 411.65,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "media-frame",
+            "frame": "board",
+            "style": {
+             "fills": [
+              "var(--surface-board)"
+             ],
+             "strokes": [
+              "var(--line-strong)"
+             ],
+             "strokeWeight": 2,
+             "strokeAlign": "INSIDE",
+             "radius": 16,
+             "padding": [
+              22,
+              14,
+              14,
+              14
+             ],
+             "clips": true
+            },
+            "pins": [
+             {
+              "x": 18,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             },
+             {
+              "x": 376,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             }
+            ],
+            "media": {
+             "src": "/projects/coreds/017-04-react-plus-typescript-stor.png",
+             "w": 388,
+             "h": 371.65,
+             "x": 16,
+             "y": 24,
+             "format": "png",
+             "alt": "04 · REACT + TYPESCRIPT · STORYBOOK CSF 3 · 1 · // AdvancedVerticalLinearGauge.tsx · 2 · export interface AdvancedVerticalLinearGaugeProps { · 3 ·   gaugeName: string; · 4 ·   valueActual: number; · 5 ·   unit: string; · 6 ·   scale: number[]; · 7 · } · 8 · 9 · // AdvancedVerticalLinearGauge.stories.tsx · 10 · const meta = { · 11 ·   component: AdvancedVerticalLinearGauge, · 12 ·   tags: ['autodocs'], · 13 · } satisfies Meta<typeof AdvancedVerticalLinearGauge>; · 14 · export default meta; · 15 · type Story = StoryObj<typeof meta>; · 16 · 17 · export const Simple: Story = { · 18 ·   args: { gau"
+            }
+           }
+          ],
+          "caption": {
+           "text": "04 · React + TypeScript · Storybook CSF 3",
+           "textStyle": "Pegboard/Small",
+           "fills": [
+            "var(--text-secondary)"
+           ]
+          }
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/06-chapter-03-design-to-code.png"
+  },
+  {
+   "key": "07-chapter-04-pattern-library",
+   "kind": "chapter",
+   "name": "Chapter 04 · Pattern library",
+   "nodeId": "1083:24757",
+   "y": 5606.73,
+   "w": 1440,
+   "h": 1205.73,
+   "number": "04",
+   "title": "Pattern library",
+   "anchor": "04-pattern-library",
+   "tree": {
+    "id": "1083:24757",
+    "name": "Chapter 04 · Pattern library",
+    "type": "FRAME",
+    "x": 0,
+    "y": 5606.73,
+    "w": 1440,
+    "h": 1205.73,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 32,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      120,
+      80,
+      24,
+      80
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1083:24758",
+      "name": "Chapter head",
+      "type": "FRAME",
+      "x": 80,
+      "y": 120,
+      "w": 1280,
+      "h": 130,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 56,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MAX",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24759",
+        "name": "Number + title",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 440,
+        "h": 130,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 4,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24760",
+          "name": "Number",
+          "type": "TEXT",
+          "x": 0,
+          "y": 0,
+          "w": 89,
+          "h": 72,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "04",
+          "textStyle": "Pegboard/Case number",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "WIDTH_AND_HEIGHT"
+         },
+         {
+          "id": "1083:24761",
+          "name": "Title",
+          "type": "TEXT",
+          "x": 0,
+          "y": 76,
+          "w": 440,
+          "h": 54,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Pattern library",
+          "textStyle": "Pegboard/Case H2",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         }
+        ]
+       },
+       {
+        "id": "1083:24762",
+        "name": "Lead",
+        "type": "TEXT",
+        "x": 496,
+        "y": 28,
+        "w": 784,
+        "h": 102,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "text",
+        "text": "Patterns before tokens: behaviour becomes checkable rules, and the rules decide which tokens, components and states exist. All 8 patterns share one structure and a Storybook docs page.",
+        "textStyle": "Pegboard/Case lead",
+        "fills": [
+         "var(--text-primary)"
+        ],
+        "align": "LEFT",
+        "autoResize": "HEIGHT"
+       }
+      ]
+     },
+     {
+      "id": "1083:24763",
+      "name": "Rule",
+      "type": "RECTANGLE",
+      "x": 80,
+      "y": 282,
+      "w": 1280,
+      "h": 2,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "shape",
+      "shape": "rectangle",
+      "style": {
+       "fills": [
+        "var(--line-strong)"
+       ],
+       "radius": 0
+      }
+     },
+     {
+      "id": "1083:24764",
+      "name": "Template + docs",
+      "type": "FRAME",
+      "x": 80,
+      "y": 316,
+      "w": 1280,
+      "h": 703.64,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "HORIZONTAL",
+       "gap": 24,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "primaryAlign": "MIN",
+       "counterAlign": "MIN",
+       "primarySizing": "FIXED",
+       "counterSizing": "AUTO",
+       "wrap": "NO_WRAP",
+       "clips": true
+      },
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:24765",
+        "name": "How a pattern is organised",
+        "type": "FRAME",
+        "x": 0,
+        "y": 0,
+        "w": 420,
+        "h": 532.76,
+        "sizing": [
+         "FIXED",
+         "HUG"
+        ],
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 16,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24766",
+          "name": "Mount · HOW A PATTERN IS ORGANISED — o",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 420,
+          "h": 202.76,
+          "sizing": [
+           "FIXED",
+           "HUG"
+          ],
+          "kind": "mount",
+          "layout": {
+           "mode": "VERTICAL",
+           "gap": 10,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "FIXED",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24767",
+            "name": "Board",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "w": 420,
+            "h": 176.76,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "media-frame",
+            "frame": "board",
+            "style": {
+             "fills": [
+              "var(--surface-board)"
+             ],
+             "strokes": [
+              "var(--line-strong)"
+             ],
+             "strokeWeight": 2,
+             "strokeAlign": "INSIDE",
+             "radius": 16,
+             "padding": [
+              22,
+              14,
+              14,
+              14
+             ],
+             "clips": true
+            },
+            "pins": [
+             {
+              "x": 18,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             },
+             {
+              "x": 380,
+              "y": -2,
+              "w": 22.4,
+              "h": 22.4
+             }
+            ],
+            "media": {
+             "src": "/projects/coreds/018-how-a-pattern-is-organised-o.png",
+             "w": 392,
+             "h": 136.76,
+             "x": 16,
+             "y": 24,
+             "format": "png",
+             "alt": "01 · Context · Where it applies — and where it doesn't · 02 · Anatomy · Parts and consistent naming · 03 · Rules · MUST / SHOULD / MAY, numbered · 04 · Tracks · Web vs. Machinery, side by side · 05 · Tokens & components · Tokens and components referenced · 06 · Stories · A live example for every key rule"
+            }
+           }
+          ],
+          "caption": {
+           "text": "HOW A PATTERN IS ORGANISED — one template for all eight patterns.",
+           "textStyle": "Pegboard/Small",
+           "fills": [
+            "var(--text-secondary)"
+           ]
+          }
+         },
+         {
+          "id": "1083:24803",
+          "name": "k",
+          "type": "TEXT",
+          "x": 0,
+          "y": 218.76,
+          "w": 420,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "IN STORYBOOK",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--theme-accent)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:24804",
+          "name": "Step · PATTERNS section",
+          "type": "FRAME",
+          "x": 0,
+          "y": 248.76,
+          "w": 420,
+          "h": 59,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 12,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24805",
+            "name": "n",
+            "type": "FRAME",
+            "x": 0,
+            "y": 18,
+            "w": 24,
+            "h": 24,
+            "sizing": [
+             "HUG",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "HORIZONTAL",
+             "gap": 0,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "AUTO",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "var(--theme-accent)"
+             ],
+             "radius": 999,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24806",
+              "name": "1",
+              "type": "TEXT",
+              "x": 9,
+              "y": 3,
+              "w": 6,
+              "h": 18,
+              "sizing": [
+               "HUG",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "1",
+              "textStyle": null,
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           },
+           {
+            "id": "1083:24807",
+            "name": "t",
+            "type": "FRAME",
+            "x": 36,
+            "y": 11,
+            "w": 384,
+            "h": 38,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "VERTICAL",
+             "gap": 2,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "FIXED",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "radius": 0,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24808",
+              "name": "t",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "w": 384,
+              "h": 20,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "PATTERNS section",
+              "textStyle": "Pegboard/Body",
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             },
+             {
+              "id": "1083:24809",
+              "name": "b",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "w": 384,
+              "h": 16,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Each pattern lives in its own section of the sidebar.",
+              "textStyle": "Pegboard/Small",
+              "fills": [
+               "var(--text-secondary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24810",
+          "name": "Step · Docs page",
+          "type": "FRAME",
+          "x": 0,
+          "y": 323.76,
+          "w": 420,
+          "h": 59,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 12,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24811",
+            "name": "n",
+            "type": "FRAME",
+            "x": 0,
+            "y": 18,
+            "w": 26,
+            "h": 24,
+            "sizing": [
+             "HUG",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "HORIZONTAL",
+             "gap": 0,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "AUTO",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "var(--theme-accent)"
+             ],
+             "radius": 999,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24812",
+              "name": "2",
+              "type": "TEXT",
+              "x": 9,
+              "y": 3,
+              "w": 8,
+              "h": 18,
+              "sizing": [
+               "HUG",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "2",
+              "textStyle": null,
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           },
+           {
+            "id": "1083:24813",
+            "name": "t",
+            "type": "FRAME",
+            "x": 38,
+            "y": 11,
+            "w": 382,
+            "h": 38,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "VERTICAL",
+             "gap": 2,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "FIXED",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "radius": 0,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24814",
+              "name": "t",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "w": 382,
+              "h": 20,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Docs page",
+              "textStyle": "Pegboard/Body",
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             },
+             {
+              "id": "1083:24815",
+              "name": "b",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "w": 382,
+              "h": 16,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Rules are written as MUST / SHOULD / MAY.",
+              "textStyle": "Pegboard/Small",
+              "fills": [
+               "var(--text-secondary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24816",
+          "name": "Step · Rule → Story",
+          "type": "FRAME",
+          "x": 0,
+          "y": 398.76,
+          "w": 420,
+          "h": 59,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 12,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24817",
+            "name": "n",
+            "type": "FRAME",
+            "x": 0,
+            "y": 18,
+            "w": 26,
+            "h": 24,
+            "sizing": [
+             "HUG",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "HORIZONTAL",
+             "gap": 0,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "AUTO",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "var(--theme-accent)"
+             ],
+             "radius": 999,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24818",
+              "name": "3",
+              "type": "TEXT",
+              "x": 9,
+              "y": 3,
+              "w": 8,
+              "h": 18,
+              "sizing": [
+               "HUG",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "3",
+              "textStyle": null,
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           },
+           {
+            "id": "1083:24819",
+            "name": "t",
+            "type": "FRAME",
+            "x": 38,
+            "y": 11,
+            "w": 382,
+            "h": 38,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "VERTICAL",
+             "gap": 2,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "FIXED",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "radius": 0,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24820",
+              "name": "t",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "w": 382,
+              "h": 20,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Rule → Story",
+              "textStyle": "Pegboard/Body",
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             },
+             {
+              "id": "1083:24821",
+              "name": "b",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "w": 382,
+              "h": 16,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Every rule links to a story that shows it.",
+              "textStyle": "Pegboard/Small",
+              "fills": [
+               "var(--text-secondary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             }
+            ]
+           }
+          ]
+         },
+         {
+          "id": "1083:24822",
+          "name": "Step · Related",
+          "type": "FRAME",
+          "x": 0,
+          "y": 473.76,
+          "w": 420,
+          "h": 59,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 12,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "CENTER",
+           "primarySizing": "FIXED",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "strokes": [
+            "var(--line-strong)"
+           ],
+           "strokeAlign": "INSIDE",
+           "radius": 0,
+           "padding": [
+            10,
+            0,
+            10,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:24823",
+            "name": "n",
+            "type": "FRAME",
+            "x": 0,
+            "y": 18,
+            "w": 27,
+            "h": 24,
+            "sizing": [
+             "HUG",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "HORIZONTAL",
+             "gap": 0,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "AUTO",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "var(--theme-accent)"
+             ],
+             "radius": 999,
+             "padding": [
+              3,
+              9,
+              3,
+              9
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24824",
+              "name": "4",
+              "type": "TEXT",
+              "x": 9,
+              "y": 3,
+              "w": 9,
+              "h": 18,
+              "sizing": [
+               "HUG",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "4",
+              "textStyle": null,
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           },
+           {
+            "id": "1083:24825",
+            "name": "t",
+            "type": "FRAME",
+            "x": 39,
+            "y": 11,
+            "w": 381,
+            "h": 38,
+            "sizing": [
+             "FILL",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "VERTICAL",
+             "gap": 2,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "FIXED",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "radius": 0,
+             "padding": [
+              0,
+              0,
+              0,
+              0
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:24826",
+              "name": "t",
+              "type": "TEXT",
+              "x": 0,
+              "y": 0,
+              "w": 381,
+              "h": 20,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Related",
+              "textStyle": "Pegboard/Body",
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             },
+             {
+              "id": "1083:24827",
+              "name": "b",
+              "type": "TEXT",
+              "x": 0,
+              "y": 22,
+              "w": 381,
+              "h": 16,
+              "sizing": [
+               "FILL",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Tokens, components and other patterns it depends on.",
+              "textStyle": "Pegboard/Small",
+              "fills": [
+               "var(--text-secondary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "HEIGHT"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "1083:24828",
+        "name": "Mount · STORYBOOK · PATTERN DOCS — Ala",
+        "type": "FRAME",
+        "x": 444,
+        "y": 0,
+        "w": 836,
+        "h": 703.64,
+        "sizing": [
+         "FILL",
+         "HUG"
+        ],
+        "kind": "mount",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 10,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:24829",
+          "name": "Image frame",
+          "type": "FRAME",
+          "x": 0,
+          "y": 0,
+          "w": 836,
+          "h": 661.64,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "media-frame",
+          "frame": "image",
+          "style": {
+           "radius": 16,
+           "padding": [
+            0,
+            0,
+            0,
+            0
+           ],
+           "clips": true
+          },
+          "pins": [],
+          "media": {
+           "src": "/projects/coreds/019-storybook-pattern-docs-ala.png",
+           "w": 836,
+           "h": 661.64,
+           "x": 0,
+           "y": 0,
+           "format": "png",
+           "alt": "localhost:6006/?path=/docs/patterns-alarm-management--docs · Find components · ⌘ K · INTRO · ▤ · Introduction · FOUNDATIONS · ▸ · Colour · ▸ · Tokens · PATTERNS · ▾ · Alarm Management · ▤ · Docs · ◇ · Severity Levels · ◇ · Alarm in Component · ◇ · Stale Data · ▸ · Modality · ▸ · Navigation · ▸ · Confirming Actions · ▸ · Touch Interaction · ▸ · Configuration · ▸ · Charting · ▸ · Modular Dashboard · COMPONENTS · ▸ · Hardware UI · ▸ · Web App · Alarm Management · PATTERN · TRACK A · WEB · TRACK B · MACHINERY · ISA-18.2 · Alarms must be seen, understood and handled. This pattern defines severity e"
+          }
+         }
+        ],
+        "caption": {
+         "text": "STORYBOOK · PATTERN DOCS — Alarm Management: alarms must be seen, understood and handled. The pattern defines severity encoding, how alarms appear inside components, and what happens when data becomes invalid.",
+         "textStyle": "Pegboard/Small",
+         "fills": [
+          "var(--text-secondary)"
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "id": "1083:25011",
+      "name": "Strips label",
+      "type": "TEXT",
+      "x": 80,
+      "y": 1051.64,
+      "w": 1280,
+      "h": 14,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "text",
+      "text": "8 PATTERNS · 8 DOC PAGES",
+      "textStyle": "Pegboard/Label",
+      "fills": [
+       "var(--theme-accent)"
+      ],
+      "align": "LEFT",
+      "autoResize": "HEIGHT"
+     },
+     {
+      "id": "1083:25012",
+      "name": "Pattern strips",
+      "type": "FRAME",
+      "x": 80,
+      "y": 1097.64,
+      "w": 1280,
+      "h": 84.09,
+      "sizing": [
+       "FILL",
+       "HUG"
+      ],
+      "kind": "art",
+      "style": {
+       "radius": 0,
+       "padding": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "clips": true
+      },
+      "media": {
+       "src": "/projects/coreds/020-pattern-strips.svg",
+       "w": 1280,
+       "h": 84.09,
+       "format": "svg"
+      }
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/07-chapter-04-pattern-library.png"
+  },
+  {
+   "key": "08-next-tool",
+   "kind": "next",
+   "name": "Next tool",
+   "nodeId": "1083:25092",
+   "y": 6812.46,
+   "w": 1440,
+   "h": 560,
+   "tree": {
+    "id": "1083:25092",
+    "name": "Next tool",
+    "type": "FRAME",
+    "x": 0,
+    "y": 6812.46,
+    "w": 1440,
+    "h": 560,
+    "sizing": [
+     "FILL",
+     "HUG"
+    ],
+    "kind": "frame",
+    "layout": {
+     "mode": "VERTICAL",
+     "gap": 0,
+     "padding": [
+      120,
+      40,
+      40,
+      40
+     ],
+     "primaryAlign": "MIN",
+     "counterAlign": "MIN",
+     "primarySizing": "AUTO",
+     "counterSizing": "FIXED",
+     "wrap": "NO_WRAP",
+     "clips": true
+    },
+    "style": {
+     "radius": 0,
+     "padding": [
+      120,
+      40,
+      40,
+      40
+     ],
+     "clips": true
+    },
+    "children": [
+     {
+      "id": "1083:25093",
+      "name": "Next tool · card",
+      "type": "FRAME",
+      "x": 40,
+      "y": 120,
+      "w": 1360,
+      "h": 400,
+      "sizing": [
+       "FILL",
+       "FIXED"
+      ],
+      "kind": "frame",
+      "layout": {
+       "mode": "NONE",
+       "clips": true
+      },
+      "style": {
+       "fills": [
+        "var(--board-fill)"
+       ],
+       "strokes": [
+        "var(--board-stroke)"
+       ],
+       "strokeWeight": 2,
+       "strokeAlign": "INSIDE",
+       "radius": 24,
+       "clips": true
+      },
+      "children": [
+       {
+        "id": "1083:26070",
+        "name": "Next text",
+        "type": "FRAME",
+        "x": 72,
+        "y": 88,
+        "w": 560,
+        "h": 213,
+        "kind": "frame",
+        "layout": {
+         "mode": "VERTICAL",
+         "gap": 12,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "primaryAlign": "MIN",
+         "counterAlign": "MIN",
+         "primarySizing": "AUTO",
+         "counterSizing": "FIXED",
+         "wrap": "NO_WRAP",
+         "clips": true
+        },
+        "style": {
+         "radius": 0,
+         "padding": [
+          0,
+          0,
+          0,
+          0
+         ],
+         "clips": true
+        },
+        "children": [
+         {
+          "id": "1083:26071",
+          "name": "k",
+          "type": "TEXT",
+          "x": 0,
+          "y": 0,
+          "w": 560,
+          "h": 14,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "NEXT TOOL ON THE BOARD · 04 / 04 · IN PROGRESS",
+          "textStyle": "Pegboard/Label",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:26072",
+          "name": "Title",
+          "type": "TEXT",
+          "x": 0,
+          "y": 26,
+          "w": 560,
+          "h": 54,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "SCADA+",
+          "textStyle": "Pegboard/Case H2",
+          "fills": [
+           "var(--text-primary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:26073",
+          "name": "Line",
+          "type": "TEXT",
+          "x": 0,
+          "y": 92,
+          "w": 560,
+          "h": 56,
+          "sizing": [
+           "FILL",
+           "HUG"
+          ],
+          "kind": "text",
+          "text": "Energy SCADA for a fuel-cell powered data center — from site overview down to a single cabinet, prototyped in React.",
+          "textStyle": "Pegboard/Case body",
+          "fills": [
+           "var(--text-secondary)"
+          ],
+          "align": "LEFT",
+          "autoResize": "HEIGHT"
+         },
+         {
+          "id": "1083:26074",
+          "name": "Buttons",
+          "type": "FRAME",
+          "x": 0,
+          "y": 160,
+          "w": 318,
+          "h": 53,
+          "sizing": [
+           "HUG",
+           "HUG"
+          ],
+          "kind": "frame",
+          "layout": {
+           "mode": "HORIZONTAL",
+           "gap": 12,
+           "padding": [
+            8,
+            0,
+            0,
+            0
+           ],
+           "primaryAlign": "MIN",
+           "counterAlign": "MIN",
+           "primarySizing": "AUTO",
+           "counterSizing": "AUTO",
+           "wrap": "NO_WRAP",
+           "clips": true
+          },
+          "style": {
+           "radius": 0,
+           "padding": [
+            8,
+            0,
+            0,
+            0
+           ],
+           "clips": true
+          },
+          "children": [
+           {
+            "id": "1083:26075",
+            "name": "Take it off",
+            "type": "FRAME",
+            "x": 0,
+            "y": 8,
+            "w": 133,
+            "h": 45,
+            "sizing": [
+             "HUG",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "HORIZONTAL",
+             "gap": 0,
+             "padding": [
+              12,
+              18,
+              12,
+              18
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "AUTO",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "fills": [
+              "var(--line-strong)"
+             ],
+             "radius": 10,
+             "padding": [
+              12,
+              18,
+              12,
+              18
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:26076",
+              "name": "Take it off →",
+              "type": "TEXT",
+              "x": 18,
+              "y": 12,
+              "w": 97,
+              "h": 21,
+              "sizing": [
+               "HUG",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "Take it off →",
+              "textStyle": null,
+              "fills": [
+               "var(--surface-board)"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           },
+           {
+            "id": "1083:26077",
+            "name": "Back",
+            "type": "FRAME",
+            "x": 145,
+            "y": 8,
+            "w": 173,
+            "h": 41,
+            "sizing": [
+             "HUG",
+             "HUG"
+            ],
+            "kind": "frame",
+            "layout": {
+             "mode": "HORIZONTAL",
+             "gap": 0,
+             "padding": [
+              12,
+              16,
+              12,
+              16
+             ],
+             "primaryAlign": "MIN",
+             "counterAlign": "MIN",
+             "primarySizing": "AUTO",
+             "counterSizing": "AUTO",
+             "wrap": "NO_WRAP",
+             "clips": true
+            },
+            "style": {
+             "strokes": [
+              "var(--line-strong)"
+             ],
+             "strokeWeight": 1.5,
+             "strokeAlign": "INSIDE",
+             "radius": 10,
+             "padding": [
+              12,
+              16,
+              12,
+              16
+             ],
+             "clips": true
+            },
+            "children": [
+             {
+              "id": "1083:26078",
+              "name": "l",
+              "type": "TEXT",
+              "x": 17.5,
+              "y": 13.5,
+              "w": 138,
+              "h": 14,
+              "sizing": [
+               "HUG",
+               "HUG"
+              ],
+              "kind": "text",
+              "text": "↩ BACK TO THE BOARD",
+              "textStyle": "Pegboard/Label",
+              "fills": [
+               "var(--text-primary)"
+              ],
+              "align": "LEFT",
+              "autoResize": "WIDTH_AND_HEIGHT"
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "id": "1083:26079",
+        "name": "Card · SCADA+",
+        "type": "INSTANCE",
+        "x": 780,
+        "y": 60,
+        "w": 240,
+        "h": 300,
+        "kind": "component",
+        "component": "Project Card",
+        "variant": {
+         "State": "Rest"
+        },
+        "props": {
+         "Title": "SCADA+",
+         "Meta": "2026 —",
+         "Subtitle": "Edge AI Advisory System",
+         "Number": "04",
+         "Show status": true,
+         "Focus": "MANUAL → GUIDED · MARITIME HMI",
+         "Icon": "Icon/Project/SCADA+"
+        },
+        "texts": [
+         {
+          "layer": "Number",
+          "text": "04"
+         },
+         {
+          "layer": "Label",
+          "text": "WIP"
+         },
+         {
+          "layer": "Meta",
+          "text": "2026 —"
+         },
+         {
+          "layer": "Title",
+          "text": "SCADA+"
+         },
+         {
+          "layer": "CTA",
+          "text": "View case"
+         },
+         {
+          "layer": "Arrow",
+          "text": "→"
+         }
+        ],
+        "modes": {
+         "theme": "scada-plus"
+        }
+       },
+       {
+        "id": "1083:26121",
+        "name": "Peg/Hook",
+        "type": "INSTANCE",
+        "x": 886,
+        "y": 30,
+        "w": 28,
+        "h": 46,
+        "kind": "component",
+        "component": "Peg/Hook",
+        "variant": {
+         "Type": "Hook"
+        }
+       },
+       {
+        "id": "1103:109223",
+        "name": "Shelf · mug",
+        "type": "INSTANCE",
+        "x": 1052,
+        "y": 296,
+        "w": 320,
+        "h": 52,
+        "kind": "component",
+        "component": "Shelf"
+       },
+       {
+        "id": "1083:26126",
+        "name": "Prop/Mug",
+        "type": "INSTANCE",
+        "x": 1100,
+        "y": 207,
+        "w": 114,
+        "h": 106,
+        "kind": "component",
+        "component": "Prop/Mug",
+        "variant": {
+         "State": "Rest"
+        }
+       }
+      ],
+      "modes": {
+       "theme": "neutral",
+       "surface": "light"
+      }
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/08-next-tool.png"
+  },
+  {
+   "key": "09-site-footer",
+   "kind": "footer",
+   "name": "Site/Footer",
+   "nodeId": "1083:26143",
+   "y": 7372.46,
+   "w": 1440,
+   "h": 72,
+   "tree": {
+    "id": "1083:26143",
+    "name": "Site/Footer",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 7372.46,
+    "w": 1440,
+    "h": 72,
+    "sizing": [
+     "FILL",
+     "FIXED"
+    ],
+    "kind": "component",
+    "component": "Site/Footer",
+    "texts": [
+     {
+      "layer": "Left",
+      "text": "© 2026 ZEYI CHENG · ZEYI-CHENG.ORG · ZEYI.CHENG@AALTO.FI"
+     },
+     {
+      "layer": "Right",
+      "text": "BUILT WITH NEXT.JS · DESIGNED ON A PEGBOARD"
+     }
+    ]
+   },
+   "reference": "design/reference/cases/coreds/09-site-footer.png"
+  }
+ ],
+ "media": {
+  "001-visual.jpg": {
+   "nodeId": "1082:24208",
+   "name": "Visual",
+   "w": 600,
+   "h": 433.33,
+   "format": "jpg",
+   "bytes": 554019
+  },
+  "002-transformation-from-separate.png": {
+   "nodeId": "1082:24284",
+   "name": "Visual",
+   "w": 808,
+   "h": 379.93,
+   "format": "png",
+   "alt": "TRANSFORMATION — FROM SEPARATE LIBRARIES TO ONE GUIDELINE · Today · Tomorrow: Value for · Machinery\nLibrary · Product\nLibrary · CoreDS\nGuideline · Web\nEvolved · Product\nEvolved · Machinery\nEvolved · Project\nLibraries · Web\nLibrary · CoreDS · Same Look & Feel · Separate Component Libraries · Library Alignment · Common Usability Principles · ... · Foundations & Tokens · Pattern Library · Component Specs · Quality Gate · DQD · CoreDS owns shared principles, token naming, the pattern library, component specs and DQD quality reviews. Each library evolves under one guideline; implementation stays wi",
+   "bytes": 136367
+  },
+  "003-design-delivery-chain-where.png": {
+   "nodeId": "1082:24362",
+   "name": "Visual",
+   "w": 1252,
+   "h": 397.71,
+   "format": "png",
+   "alt": "DESIGN DELIVERY CHAIN — WHERE COREDS ENTERS THE PRODUCT GATES · Intake · Concept Design · Detailed Design · Alignment · Delivery · Request · Need submission or project collaboration started here. · 1 · Conceptualize · Ideating, two to three checkpoints keep direction aligned. · 4 · In-Depth  · Full screen set, states and edge cases, mapped to CoreDS. · 6 · Classification · Define engagement type: scope, depth of design and constraints. · 2 · Concept Review · Look & feel is decided with Concept Design Quality Document. · 5 · Quality Review · UI, Style Guideline and Usability Document  confirmed",
+   "bytes": 125394
+  },
+  "004-hands-touch.svg": {
+   "nodeId": "1083:24274",
+   "name": "Hands/Touch",
+   "w": 38.03,
+   "h": 57.11,
+   "format": "svg",
+   "bytes": 5368
+  },
+  "005-modular-design-the-same-kpi.jpg": {
+   "nodeId": "1083:24293",
+   "name": "Visual",
+   "w": 1280,
+   "h": 924.44,
+   "format": "jpg",
+   "bytes": 820695
+  },
+  "006-cover.jpg": {
+   "nodeId": "1083:24307",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 78674
+  },
+  "007-cover.jpg": {
+   "nodeId": "1083:24310",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 94396
+  },
+  "008-cover.jpg": {
+   "nodeId": "1083:24313",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 97534
+  },
+  "009-cover.jpg": {
+   "nodeId": "1083:24316",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 111248
+  },
+  "010-cover.jpg": {
+   "nodeId": "1083:24319",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 107756
+  },
+  "011-cover.jpg": {
+   "nodeId": "1083:24322",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 80020
+  },
+  "012-cover.jpg": {
+   "nodeId": "1083:24325",
+   "name": "Cover",
+   "w": 172.57,
+   "h": 124.63,
+   "format": "jpg",
+   "bytes": 100310
+  },
+  "013-exploded-stack-figma-layers.png": {
+   "nodeId": "1083:24337",
+   "name": "Visual",
+   "w": 372,
+   "h": 565.13,
+   "format": "png",
+   "alt": "04 · React · Storybook · 03 · Tokens · gauge.track · gauge.bar · gauge.surface · gauge.zone.alarm · 02 · CSS · 1 · 2 · 3 · 4 · 5 · 6 · 7 · 01 · Figma Auto Layout · 0 · 20 · 60 · 100 · 50 · °C · Indicator · 16 · Auto layout · Direction · Vertical · Gap · 8 · Padding · 16 · Align · Center · Width · Hug",
+   "bytes": 230543
+  },
+  "014-01-auto-layout-flexbox.png": {
+   "nodeId": "1083:24471",
+   "name": "Visual",
+   "w": 388,
+   "h": 375.36,
+   "format": "png",
+   "alt": "01 · AUTO LAYOUT → FLEXBOX · 0 · 20 · 60 · 100 · 50 · °C · Indicator · 24 · 12 · 1 · 2 · 3 · 6 · 4 · 5 · 1 · Scale · Ticks and labels · scale[] · 2 · Value bar · Live reading · valueActual · 3 · Demand pointer · Target value marker · — · 4 · Readout · Value + unit · unit · 5 · Label · Component name · gaugeName · 6 · Zones · Special / alarm zones · — · FIGMA · CSS · Auto layout · Vertical · → · display: flex; flex-direction: column; · Gap · 12 · → · gap: var(--space-3); · Padding · 24 · → · padding: var(--space-6); · Align · Center · → · align-items: center; · Width · Hug contents · → · width:",
+   "bytes": 70819
+  },
+  "015-02-token-tiers-track-theme.png": {
+   "nodeId": "1083:24573",
+   "name": "Visual",
+   "w": 388,
+   "h": 375.36,
+   "format": "png",
+   "alt": "02 · TOKEN TIERS × TRACK THEMES · primitive · grey.200 · → · semantic · surface.instrument · → · component · gauge.surface · COMPONENT TOKEN · SEMANTIC TOKEN · WEB · MACHINERY · gauge.surface · surface.instrument · #F3F5F7 · #E6EAED · gauge.track · border.track · #C9CDD1 · #C9CDD1 · gauge.bar · content.primary · #1A1D21 · #1A1A1A · gauge.zone.alarm · status.alarm · #D32F2F · #FF0000 · :root { --surface-instrument: var(--grey-100); } · [data-track=\"machinery\"] { ·   --surface-instrument: var(--grey-200); · } · .gauge { ·   --gauge-surface: var(--surface-instrument); ·   background: var(--gauge-",
+   "bytes": 67519
+  },
+  "016-03-state-model-from-ux-rul.png": {
+   "nodeId": "1083:24639",
+   "name": "Visual",
+   "w": 388,
+   "h": 371.65,
+   "format": "png",
+   "alt": "03 · STATE MODEL — FROM UX RULES · Simple · Live value · in range · Value Demand Set · Operator sets target · Special Zones · Value enters a zone · Out Of Bounds · Value beyond scale · Alarms · Alarm limit exceeded · set · zone · out · limit · ANY STATE → Error · Signal lost or stale: show Error, never the last value · GUIDELINE RULE · STATE / STORY · Data validity · stale values must never look live · Error · Colour + shape · alarms change colour and icon together · Alarms · Scale · out-of-range values must be visibly flagged · Out Of Bounds · States and user flows live in Confluence; each st",
+   "bytes": 63459
+  },
+  "017-04-react-plus-typescript-stor.png": {
+   "nodeId": "1083:24691",
+   "name": "Visual",
+   "w": 388,
+   "h": 371.65,
+   "format": "png",
+   "alt": "04 · REACT + TYPESCRIPT · STORYBOOK CSF 3 · 1 · // AdvancedVerticalLinearGauge.tsx · 2 · export interface AdvancedVerticalLinearGaugeProps { · 3 ·   gaugeName: string; · 4 ·   valueActual: number; · 5 ·   unit: string; · 6 ·   scale: number[]; · 7 · } · 8 · 9 · // AdvancedVerticalLinearGauge.stories.tsx · 10 · const meta = { · 11 ·   component: AdvancedVerticalLinearGauge, · 12 ·   tags: ['autodocs'], · 13 · } satisfies Meta<typeof AdvancedVerticalLinearGauge>; · 14 · export default meta; · 15 · type Story = StoryObj<typeof meta>; · 16 · 17 · export const Simple: Story = { · 18 ·   args: { gau",
+   "bytes": 73887
+  },
+  "018-how-a-pattern-is-organised-o.png": {
+   "nodeId": "1083:24768",
+   "name": "Visual",
+   "w": 392,
+   "h": 136.76,
+   "format": "png",
+   "alt": "01 · Context · Where it applies — and where it doesn't · 02 · Anatomy · Parts and consistent naming · 03 · Rules · MUST / SHOULD / MAY, numbered · 04 · Tracks · Web vs. Machinery, side by side · 05 · Tokens & components · Tokens and components referenced · 06 · Stories · A live example for every key rule",
+   "bytes": 41113
+  },
+  "019-storybook-pattern-docs-ala.png": {
+   "nodeId": "1083:24830",
+   "name": "Visual",
+   "w": 836,
+   "h": 661.64,
+   "format": "png",
+   "alt": "localhost:6006/?path=/docs/patterns-alarm-management--docs · Find components · ⌘ K · INTRO · ▤ · Introduction · FOUNDATIONS · ▸ · Colour · ▸ · Tokens · PATTERNS · ▾ · Alarm Management · ▤ · Docs · ◇ · Severity Levels · ◇ · Alarm in Component · ◇ · Stale Data · ▸ · Modality · ▸ · Navigation · ▸ · Confirming Actions · ▸ · Touch Interaction · ▸ · Configuration · ▸ · Charting · ▸ · Modular Dashboard · COMPONENTS · ▸ · Hardware UI · ▸ · Web App · Alarm Management · PATTERN · TRACK A · WEB · TRACK B · MACHINERY · ISA-18.2 · Alarms must be seen, understood and handled. This pattern defines severity e",
+   "bytes": 177513
+  },
+  "020-pattern-strips.svg": {
+   "nodeId": "1083:25012",
+   "name": "Pattern strips",
+   "w": 1280,
+   "h": 84.09,
+   "format": "svg",
+   "bytes": 83480
+  }
+ }
+}

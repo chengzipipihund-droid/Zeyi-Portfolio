@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { FigmaLayer } from '@/components/figma/FigmaNode';
-import { Stage } from '@/components/stage/Stage';
-import { projectBySlug } from '@/data/projects';
+import { CasePage } from '@/components/case/CasePage';
+import { findNode } from '@/components/case/CaseNode';
 import { caseSlugs, loadCase } from '@/lib/figma/cases';
-import { fillCss } from '@/lib/figma/style';
 
-// Case pages 01–03 (M9): the Figma frame rendered as it is (same renderer as the home), scaled to the window width.
+// Case pages 01–03 (M9, docs/case-pages-brief.md): statically generated from src/data/figma/cases/<slug>.json.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -14,19 +12,24 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const p = projectBySlug(params.slug);
-  return p ? { title: `${p.title} — Zeyi Cheng`, description: p.subtitle } : {};
+  const data = loadCase(params.slug);
+  const hero = data?.sections.find((s) => s.kind === 'hero')?.tree;
+  if (!data || !hero) return {};
+  const text = (name: string) => findNode(hero, (n) => n.kind === 'text' && n.name === name)?.text;
+  const subtitle = text('Subtitle');
+  const lead = text('Lead');
+  const visual = findNode(hero, (n) => !!n.media)?.media;
+  const title = `${data.title}${subtitle ? ` — ${subtitle}` : ''} · Zeyi Cheng`;
+  return {
+    title: { absolute: title },
+    description: lead,
+    alternates: { canonical: `/work/${data.slug}` },
+    openGraph: { title, description: lead, url: `/work/${data.slug}`, images: visual ? [{ url: visual.src, width: Math.round(visual.w), height: Math.round(visual.h) }] : undefined },
+  };
 }
 
 export default function CasePageRoute({ params }: { params: { slug: string } }) {
-  const page = loadCase(params.slug);
-  if (!page) notFound();
-  const { frame, tree } = page;
-  return (
-    <main className="min-h-screen" style={{ background: fillCss(frame.fills) ?? 'var(--surface-wall)' }}>
-      <Stage width={frame.w} height={frame.h}>
-        <FigmaLayer node={tree} />
-      </Stage>
-    </main>
-  );
+  const data = loadCase(params.slug);
+  if (!data) notFound();
+  return <CasePage data={data} />;
 }

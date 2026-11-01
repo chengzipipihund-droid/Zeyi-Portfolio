@@ -109,7 +109,6 @@ for (const spec of Object.values(data.specs || {})) {
   enrich(spec.tree);
 }
 for (const lay of Object.values(data.layouts || {})) (lay.items || []).forEach(enrich);
-for (const c of Object.values(data.cases || {})) if (c.tree) enrich(c.tree);
 
 // Art SVGs downloaded with the MCP become theme-aware assets: the board's accent colour → var(--theme-accent).
 const tokenValue = (css, mode) => {
@@ -260,13 +259,7 @@ for (const [key, m] of Object.entries(data.motion || {})) {
   motionCounts[key] = `${m.nodes.length} nodes · ${m.duration}s`;
 }
 write(P.specs, JSON.stringify({ _note: stamp, ...data.specs }, null, 2) + '\n');
-// Case pages (M9): one layer tree per project page (exporter v2.1).
-const caseCounts = {};
-for (const [key, c] of Object.entries(data.cases || {})) {
-  if (c.missing) { warnings.push(`case page "${key}": frame "${c.missing}…" not found in Figma`); continue; }
-  write(`src/data/figma/cases/${key}.json`, JSON.stringify({ _note: stamp, frame: c.frame, tree: c.tree }) + '\n');
-  caseCounts[key] = `${Math.round(c.frame.h)} px`;
-}
+// Case pages are imported by scripts/figma-import-cases.mjs ("Export case pages" zips), not from figma-export.json.
 // T2/T4/T5 differences from T1 (interaction states), read from Figma with the MCP until the exporter exports state frames.
 if (sup?.states) write('src/data/figma/states.json', JSON.stringify({ _generated: stamp, ...sup.states }, null, 2) + '\n');
 
@@ -413,7 +406,6 @@ for (const [key, r] of Object.entries(refs)) {
 const slim = {
   ...data,
   images: Object.fromEntries(Object.entries(images).map(([k, img]) => [k, { source: img.source, w: img.w, h: img.h, file: `${P.images}/${k}.${img.format || 'png'}` }])),
-  cases: Object.fromEntries(Object.entries(data.cases || {}).map(([k, c]) => [k, { file: `src/data/figma/cases/${k}.json`, frame: c.frame }])),
   references: Object.fromEntries(Object.entries(refs).map(([k, r]) => [k, { name: r.name, w: r.w, h: r.h, file: `${P.refs}/${k}.png` }])),
 };
 const hasBinary = Object.keys(refs).some((k) => refs[k].png) || Object.keys(images).some((k) => images[k].png);
@@ -430,7 +422,6 @@ console.log(`  layouts:  ${Object.entries(layoutCounts).map(([k, n]) => `${k}(${
 console.log(`  motion:   ${Object.entries(motionCounts).map(([k, n]) => `${k}: ${n}`).join(', ') || 'none'} → ${P.motion}/`);
 console.log(`  specs:    ${Object.keys(data.specs || {}).length} components → ${P.specs}`);
 console.log(`  svg:      ${registry.length} assets → ${P.svgDir}/`);
-console.log(`  cases:    ${Object.entries(caseCounts).map(([k, v]) => `${k}(${v})`).join(', ') || 'none (exporter < v2.1)'} → src/data/figma/cases/`);
 console.log(`  images:   ${Object.keys(images).length} image fills → ${P.images}/`);
 console.log(`  refs:     ${Object.keys(refs).length} reference PNGs → ${P.refs}/`);
 if (warnings.length) {

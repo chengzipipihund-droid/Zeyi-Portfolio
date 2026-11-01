@@ -69,6 +69,11 @@ Link pattern: `https://www.figma.com/design/gFWtnlIFWIpwDxI1ZwHm9v/Portfolio?nod
 | `src/assets/figma/**.svg` + `index.ts` | props (rest/held/slot), project icons, hooks, shelf, bins (label plate removed — rebuild it in React), `art/` = vector illustrations inside Detail Boards — theme-aware |
 | `src/data/figma/images.json` + `public/figma/*.png` | image fills inside spec components (Detail Board photos) |
 | `design/reference/*.png` | 1440×1024 renders of every state frame and of the Animation A storyboard |
+| `src/data/figma/cases/<slug>.json` + `index.json` | case pages (`npm run figma:import-cases`): every section as a tree — `kind` = mount / media-frame / image / image-bg / art / component / text / shape / frame, with layout, styles as var(--…), texts, links and media.src |
+| `public/projects/<slug>/NNN-*.{jpg,png,svg}` | every visual of the case pages; intro.mp4 and other hand-added files are never touched by the importer |
+| `design/reference/cases/<slug>/<section>.png` | 1× render of each case-page section, for `npm run visual:case` |
+Case pages: read `docs/case-pages-brief.md` before touching them. Never redraw a visual that exists in public/projects/<slug>;
+never invent copy; keep TODO(zeyi) where Figma says "to fill in" / "TO CONFIRM".
 
 **MCP supplement** — `design/figma-mcp/` (`supplement.json`, `art/*.svg`, `images/*.png`) holds data read from Figma with the MCP
 (read-only `use_figma` + `download_assets`) because the current export predates exporter v2.1. `figma-import` merges it by node id,
@@ -99,9 +104,20 @@ Pure black (`#000000` / `black`) is mapped to `var(--line-strong)` by the import
   Tests drive the real page through `[data-phase]` (t0 | intro | t1 | stowed) and `[data-card]`.
 - Physics (M7): `Physics.tsx` (Matter.js, lazy) moves the `[data-tool]` layers of `BoardProp`; collision shapes = convex hulls of
   the prop SVGs (`assets.json → hull`, computed by figma-import). Matter quirk: create bodies dynamic, then `setStatic(true)`.
-- Case pages (M9): exporter v2.1 exports the three frames of "Pegboard v2 — Case pages" → `src/data/figma/cases/<slug>.json`
-  (+ art SVGs, JPG photos in public/figma); `/work/[slug]` renders the tree with `FigmaLayer` on a `Stage` sized to the frame.
-  Until Zeyi re-exports there are no case files and `/work/*` is 404 (the Detail Board "Open the case" link only appears with one).
+  Tools always draggable; Reset (`BoardState.reset`) flies them home; a tool hangs back only within `PHYSICS.hang` of its own place.
+  Cards and bins are pendulums (never lifted). Archive swap: `HomeState.toggleArchive` tweens `cardsClock` (project cards,
+  sampled at min(main, cards)) and `archiveClock` (A1–A3, nodes from `lib/motion/archive.ts`); `MotionLayer timeline=…` picks one.
+  The Archive bin also works with the projects collected (stowed). Jitter threshold: `PHYSICS.jitter` (moves below it are not
+  drawn; the larger `still` one while the hand holds still or a loose tool barely moves). Bin / WORK start Animation A on the
+  click and push the route after (the route effect skips a run already heading there); both routes prefetch each other.
+  Taken card with a case page: its dashed place reads "(click to jump)" and opens the case page.
+- Case pages (M9): `components/case/` — `CasePage` (sections → landmarks with `data-figma-section`, links, headings), `CaseNode`
+  (generic tree renderer), `SiteChrome` (header from the T1 layers, footer), `Film` (UB intro film). Data: `lib/figma/cases.ts`
+  merges `design/figma-mcp/cases-supplement.json` (fonts of unstyled texts, per-side strokes, shadows, footer — exporter v3.1
+  lacks them). "Strokes included in layout" is not exported either: `strokeInset` reads it from the first child's offset.
+  `projects.ts → detail.caseHref` links a project to its case page by number. Visual check against the build:
+  `npm run visual:case -- <slug>` with `VISUAL_URL` pointing at an in-process server (references are composited onto the wall colour).
+  Scale: the page column is laid out at 1440 and `zoom: var(--case-zoom)` = min(1, window / 1440), like the home stage (`CaseZoom`).
 - Builds on this machine can take 5–8 min: use long timeouts and never pipe `next build` into `head` (a closed pipe hangs it).
 Wrong data → tell Zeyi what to change in Figma; Zeyi re-exports and you run `/figma-sync`. Use the Figma MCP (`get_design_context`, `get_screenshot`,
 `get_metadata`, `get_motion_context`) only for what the export lacks. Budget: **200 calls/day, 10/min**. Never loop screenshots.
@@ -126,6 +142,12 @@ One React tree renders the **T1 layout**; every other state is a transform of it
 - `phase: 't0' | 'intro' | 't1'`. In `t0` every node sits at the **first keyframe** of `motion/animation-a.json` (T0 positions,
   T1-only elements invisible). T0 hovers: `hover: 'hi' | 'bin' | null`. Logo on T1 replays Animation A.
 - In `t1`: `{ hovered, opened, skill, held }` (T2–T5), then physics (M7).
+- **Site header (Zeyi, 2026-11-01):** one header bar on every page, sticky at the top. Home: the header layers (`HEADER` in
+  HomeScene) are drawn by `<HomeHeader />` in a sticky `Stage band` strip over the scene (same frame coordinates and clock;
+  `BoardStateProvider` lives in the home layout so Reset works there). WORK on T0 opens the board like the Project bin.
+  Case pages: `SiteHeader` (sticky), its Logo sub line = the project, in the theme colour. `?visual=1` makes it static.
+  Chapter tabs (`ChapterTabs`): sticky under the header as one bar (top = header − tab padding + `CASE_MOTION.tabsGap`), back in
+  place above it; scroll-spy flips `[data-active]` (both Nav/Tab states drawn); chapters get a matching scroll-margin.
 - Debug/visual params: `?t=<seconds>` (freeze Animation A, any route), `?hover=hi|bin` (on `/`),
   `?state=hover|open|filter&card=…&skill=…` (on `/home`), `?visual=1`.
 

@@ -3,11 +3,14 @@
 import { motion, useAnimate, useReducedMotion, useTransform, type Transition } from 'motion/react';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { createPortal } from 'react-dom';
 import { stagePoint } from '@/components/stage/Stage';
 import { hookPoint, states, tagHole, type Box, type Pose, type Push } from '@/lib/board/geometry';
 import { BOARD_MOTION } from '@/styles/motion';
 import { useBoard, type SideFace, type Slug } from './BoardState';
+import { useHome } from './HomeState';
+import { useDisplaced } from './toolStore';
 
 // T1 interactions. Every visual variant (card states, tool rest/held/slot, tag default/active) is rendered on the server
 // and passed in as nodes; these client components only switch opacity / transforms (no SVG code in the client bundle).
@@ -25,7 +28,11 @@ function useRaise(ref: React.RefObject<HTMLElement>, z: number | null, extra?: s
   }, [ref, z, extra]);
 }
 
-/** A project card on its hook: rest ⇄ L (T2), Match / Dim (T4), pulled off → Taken (T5), put back with a swing. */
+/**
+ * A project card on its hook: rest ⇄ L (T2), Match / Dim (T4), pulled off → Taken (T5), put back with a swing.
+ * Taken + a case page (Zeyi, 2026-10-31): the dashed place says "(click to jump)" and opens the case page; Esc or the
+ * Detail Board's "Put back" puts the card back.
+ */
 export function BoardCard({
   slug,
   label,
@@ -36,6 +43,7 @@ export function BoardCard({
   pivotY,
   shell,
   variants,
+  caseHref,
 }: {
   slug: Slug;
   label: string;
@@ -48,8 +56,10 @@ export function BoardCard({
   /** Hover variant frame (fill, stroke, radius, shadow) for the growing box. */
   shell: CSSProperties;
   variants: Record<CardState, ReactNode>;
+  caseHref?: string;
 }) {
   const board = useBoard();
+  const router = useRouter();
   const reduced = useReducedMotion();
   const instant = board.forced || !!reduced;
   const state: CardState =
@@ -93,7 +103,7 @@ export function BoardCard({
   const enabled = board.active;
   const activate = () => {
     if (!enabled) return;
-    if (state === 'taken') return board.close();
+    if (state === 'taken') return caseHref ? router.push(caseHref) : board.close();
     // Touch: the first tap shows the L card, the second opens it.
     if (pointer.current === 'touch' && board.hovered !== slug && !board.skill) return board.hover(slug);
     board.open(slug);
@@ -108,16 +118,21 @@ export function BoardCard({
     if (board.hovered === slug && !board.forced) board.hover(null);
   };
 
+  const jump = state === 'taken' && !!caseHref;
+  useEffect(() => {
+    if (jump) router.prefetch(caseHref!);
+  }, [jump, caseHref, router]);
+
   const colour = instant ? 0 : BOARD_MOTION.colour;
   const grow: Transition = instant ? { duration: 0 } : BOARD_MOTION.grow;
   return (
     <motion.div
       ref={scope}
       data-card={slug}
-      role={enabled ? 'button' : undefined}
+      role={enabled ? (jump ? 'link' : 'button') : undefined}
       tabIndex={enabled ? 0 : -1}
-      aria-label={state === 'taken' ? `${label}. Put it back` : `${label}. Open details`}
-      aria-pressed={enabled ? state === 'taken' : undefined}
+      aria-label={jump ? `${label}. Open the case page` : state === 'taken' ? `${label}. Put it back` : `${label}. Open details`}
+      aria-pressed={enabled && !jump ? state === 'taken' : undefined}
       className="outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-theme-accent"
       style={{ ...box(rest), borderRadius: 16, transformOrigin: `${rest.width / 2}px ${pivotY - rest.top}px`, cursor: enabled ? 'pointer' : undefined }}
       onPointerDown={(e) => (pointer.current = e.pointerType)}
@@ -155,7 +170,13 @@ export function BoardCard({
       </div>
       <div aria-hidden style={{ position: 'absolute', inset: 0, ...fade(state === 'match', colour) }}>{variants.match}</div>
       <div aria-hidden style={{ position: 'absolute', inset: 0, ...fade(state === 'dim', colour) }}>{variants.dim}</div>
-      <div ref={takenLayer} aria-hidden style={{ position: 'absolute', inset: 0, opacity: 0 }}>{variants.taken}</div>
+      <div ref={takenLayer} aria-hidden style={{ position: 'absolute', inset: 0, opacity: 0 }}>
+        {variants.taken}
+        {caseHref && (
+          // Zeyi's copy (not in Figma).
+          <span className="type-label absolute inset-0 flex items-center justify-center text-text-secondary">(click to jump)</span>
+        )}
+      </div>
     </motion.div>
   );
 }
@@ -190,7 +211,8 @@ export function BoardProp({
   const board = useBoard();
   const reduced = useReducedMotion();
   const instant = board.forced || !!reduced;
-  const push = board.hovered ? pushes[board.hovered] ?? null : null;
+  const moved = useDisplaced(name);
+  const push = board.hovered && !moved ? pushes[board.hovered] ?? null : null;
   const lifted = push?.kind === 'figma' ? push : null;
   const nudge = push?.kind === 'nudge' ? push : null;
   const [overlay, setOverlay] = useState<HTMLElement | null>(null);
@@ -356,17 +378,17 @@ export function SideFlip({ face, origin, children }: { face: SideFace; origin: {
   );
 }
 
-/** Rearrange (β) in the header: toggles the physics toy on the board (M7). Pressed = an accent ring (no Figma "on" state). */
-export function RearrangeButton({ box, label, children }: { box: Box; label: string; children: ReactNode }) {
+/** Reset in the header (Zeyi, 2026-10-29; was Rearrange): every tool flies back to where it hangs at first. */
+export function ResetButton({ box, label, children }: { box: Box; label: string; children: ReactNode }) {
   const board = useBoard();
+  const home = useHome();
   return (
     <button
       type="button"
       aria-label={label}
-      aria-pressed={board.rearrange}
-      disabled={!board.onBoard}
-      onClick={() => board.setRearrange(!board.rearrange)}
-      className="absolute m-0 cursor-pointer appearance-none rounded-full border-0 bg-transparent p-0 text-left outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-theme-accent disabled:cursor-default aria-pressed:outline aria-pressed:outline-2 aria-pressed:outline-offset-2 aria-pressed:outline-theme-accent"
+      disabled={home.phase !== 't1' && home.phase !== 'stowed'}
+      onClick={board.reset}
+      className="absolute m-0 cursor-pointer appearance-none rounded-full border-0 bg-transparent p-0 text-left outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-theme-accent disabled:cursor-default"
       style={{ left: box.left, top: box.top, width: box.width, height: box.height }}
     >
       {children}

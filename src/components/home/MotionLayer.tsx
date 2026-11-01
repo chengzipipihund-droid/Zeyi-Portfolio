@@ -43,15 +43,29 @@ function applyPose(el: HTMLDivElement, pose: Pose) {
  * A layer of Animation A, posed by the clock (T0 = first keyframes, T1 = resting state). The pose is written to the DOM
  * on every clock tick, so playing the 4.8 s timeline never re-renders React.
  */
-export function MotionLayer({ node, children }: { node: MotionNode; children: ReactNode }) {
-  const { clock } = useHome();
+export function MotionLayer({
+  node,
+  timeline = 'main',
+  children,
+}: {
+  node: MotionNode;
+  /** `cards`: the project cards (min of Animation A and the cards clock); `archive`: the archive cards' clock. */
+  timeline?: 'main' | 'cards' | 'archive';
+  children: ReactNode;
+}) {
+  const { clock, cardsClock, archiveClock } = useHome();
   const ref = useRef<HTMLDivElement>(null);
-  const pose = poseAt(node, clock.get());
+  const time = () => (timeline === 'cards' ? Math.min(clock.get(), cardsClock.get()) : timeline === 'archive' ? archiveClock.get() : clock.get());
+  const pose = poseAt(node, time());
   useLayoutEffect(() => {
     const el = ref.current!;
-    applyPose(el, poseAt(node, clock.get()));
-    return clock.subscribe((t) => applyPose(el, poseAt(node, t)));
-  }, [clock, node]);
+    const update = () => applyPose(el, poseAt(node, time()));
+    update();
+    const subs = timeline === 'cards' ? [clock, cardsClock] : timeline === 'archive' ? [archiveClock] : [clock];
+    const offs = subs.map((c) => c.subscribe(update));
+    return () => offs.forEach((off) => off());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `time` reads the same clocks
+  }, [clock, cardsClock, archiveClock, node, timeline]);
   return (
     <Pivot at={node.center} data-motion={node.name} nodeRef={ref} style={{ transform: poseTransform(pose), opacity: pose.opacity }}>
       {children}

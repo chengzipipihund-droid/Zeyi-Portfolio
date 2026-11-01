@@ -11,9 +11,8 @@ import { LayoutPrimitive } from '@/components/stage/LayoutPrimitive';
 import { Placed } from '@/components/stage/Placed';
 import { archive, projects, skills, type Project } from '@/data/projects';
 import assetsJson from '@/data/figma/assets.json';
-import { boardHoles, boxCenter, emptySlotBox, hoverBox, propToStage, pushPose, states, type Box, type Pt } from '@/lib/board/geometry';
+import { boxCenter, emptySlotBox, hoverBox, propToStage, pushPose, states, type Box, type Pt } from '@/lib/board/geometry';
 import { animationA, hoverBin, hoverHi, motionNode, type MotionNode } from '@/lib/motion/figma';
-import { caseSlugs } from '@/lib/figma/cases';
 import { componentTree, svgKeyFor } from '@/lib/figma/specs';
 import { METAL_TOOLS } from '@/styles/motion';
 import { fillCss, paintCss, radiusCss, shadowVar } from '@/lib/figma/style';
@@ -29,12 +28,12 @@ import {
   DetailActions,
   FilterPillText,
   FilterStrings,
-  RearrangeButton,
+  ResetButton,
   SideFlip,
   WhenFiltered,
 } from './Board';
 import { Physics, type PhysCard, type PhysTool, type PhysWorld } from './Physics';
-import { BoardStateProvider } from './BoardState';
+import { archiveFlight } from '@/lib/motion/archive';
 import { Greeting } from './Greeting';
 import { HoverFade, HoverLayer, HoverTarget, MotionLayer } from './MotionLayer';
 import { StageButton } from './StageButton';
@@ -52,6 +51,10 @@ const DEMO_ONLY = new Set(['Cursor · click']); // storyboard cursor, not render
 // T1 controls (Zeyi, 2026-10-29): WORK takes you back to the desk ("/"), the Logo replays Animation A (brief §7.3).
 const STAGE_BUTTONS: Record<string, 'backToDesk' | 'replay'> = { 'Nav · WORK': 'backToDesk', Logo: 'replay' };
 const REARRANGE = 'Rearrange (β)';
+// The site header band (Zeyi, 2026-11-01: one header on every page, always at the top). These layers are drawn in the
+// sticky header strip (<HomeHeader />, app/(home)/layout.tsx) instead of the scene; same frame coordinates and clock.
+const HEADER = new Set(['Top rail', 'Logo', 'Logo sub', 'Nav · WORK', 'Nav · WORK (T0)', 'Nav · EXP', 'Nav · INFO', REARRANGE, 'Lang toggle']);
+const inHeader = (e: Entry) => HEADER.has(e.motion?.name ?? e.name ?? '');
 const PRIMITIVES = new Set(['Board/Panel', 'Peg/Hook', 'Shelf', 'Object']);
 // Layers of the personal side board: they flip away when a project opens (T5).
 const SIDE = new Set(['Side board · personal', 'Nameplate', 'Status lamp', 'Tags label', 'Badge · Tongji', 'Badge · Aalto', 'Shelf · education', 'Clipboard · EXP', 'Hook · clipboard']);
@@ -106,6 +109,45 @@ const projectOfCard = (name: string) => projects.find((p) => name === `Card · $
 const cardLayer = (p: Project) => byName(T1, `Card · ${p.detailVariant}`)!;
 const hookLayer = (p: Project) => byName(T1, `Hook · ${p.detailVariant}`)!;
 
+// Archive cards A1–A3 (Zeyi, 2026-10-29): out of the Archive bin onto hooks 01–03 when the Archive bin is clicked.
+const ARCHIVE = archive.map((a, k) => {
+  const hook = projects[k];
+  const mini = byName(T1, a.layer)!;
+  return {
+    ...a,
+    id: `archive-${a.layer.replace(/^Archive · /, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    hook,
+    flight: archiveFlight(cssBox(mini), { flyName: `Fly · Mini · ${hook.title}`, hangName: `Hang · ${hook.detailVariant}`, box: cssBox(cardLayer(hook)) }),
+  };
+});
+
+/** A layer the physics swings with its bin (`[data-bin]`, transform-origin = the bin's hang point, set by Physics). */
+const binLayer = (kind: 'project' | 'archive', el: ReactNode) => (
+  <div data-bin={kind} style={{ position: 'absolute', left: 0, top: 0, width: 0, height: 0 }}>
+    {el}
+  </div>
+);
+
+/** An archive card hanging on hook k (Rest card; its date line is TODO(zeyi) — Figma only has the Mini). */
+function archiveCard(a: (typeof ARCHIVE)[number]) {
+  const card = cardLayer(a.hook);
+  const pivot = motionNode(animationA, `Hang · ${a.hook.detailVariant}`)!.center;
+  return (
+    <div data-card={a.id} style={{ position: 'absolute', left: 0, top: 0, width: 0, height: 0, transformOrigin: `${pivot.x}px ${pivot.y}px` }}>
+      <Placed node={card}>
+        <ProjectCard {...a} meta="" state="rest" />
+      </Placed>
+    </div>
+  );
+}
+
+/** The header button reads RESET (Zeyi, 2026-10-29; Figma still says "REARRANGE · β"). */
+const RESET_LABEL = 'RESET';
+const withLabel = (n: LayoutNode, text: string): LayoutNode => ({
+  ...n,
+  children: n.children?.map((c) => (c.type === 'TEXT' ? { ...c, text } : c)) as LayoutNode[] | undefined,
+});
+
 /** The Hover variant's own frame, used for the box that grows from M to L. */
 function hoverShell() {
   const t = componentTree('Project Card', { State: 'Hover' })!;
@@ -130,6 +172,7 @@ function boardCard(n: LayoutNode, p: Project) {
       pivotY={motionNode(animationA, `Hang · ${p.detailVariant}`)!.center.y}
       shell={hoverShell()}
       variants={{ rest: variant('rest'), hover: variant('hover'), match: variant('match'), dim: variant('dim'), taken: variant('taken') }}
+      caseHref={p.detail.caseHref}
     />
   );
 }
@@ -175,25 +218,34 @@ function physicsData(): { tools: PhysTool[]; cards: PhysCard[]; world: PhysWorld
       tapeRoll: base === 'tape-roll',
     });
   }
-  const cards: PhysCard[] = projects.map((p) => {
+  const pivotOf = (p: Project) => {
     const hook = cssBox(hookLayer(p));
-    return { slug: p.slug, box: cssBox(cardLayer(p)), pivot: { x: hook.left + hook.width / 2, y: motionNode(animationA, `Hang · ${p.detailVariant}`)!.center.y } };
-  });
+    return { x: hook.left + hook.width / 2, y: motionNode(animationA, `Hang · ${p.detailVariant}`)!.center.y };
+  };
+  const cards: PhysCard[] = [
+    ...projects.map((p) => ({ id: p.slug, set: 'projects' as const, box: cssBox(cardLayer(p)), pivot: pivotOf(p) })),
+    ...ARCHIVE.map((a) => ({ id: a.id, set: 'archive' as const, box: cssBox(cardLayer(a.hook)), pivot: pivotOf(a.hook) })),
+  ];
+  const binOf = (kind: 'project' | 'archive', name: string) => {
+    const b = cssBox(byName(T1, name)!);
+    return { kind, box: b, pivot: { x: b.left + b.width / 2, y: b.top } }; // hangs from its top centre
+  };
   const board = cssBox(byName(T1, 'Main board')!);
   const edge = 2; // Board/Panel inside stroke
   const shelf = cssBox(byName(T1, 'Shelf · desk')!);
   const plank = layerBoxOfSvgPlank();
   const world: PhysWorld = {
+    // board edges: thick walls, so even a fast tool cannot pass through in one step
     statics: [
-      { left: board.left - 50 + edge, top: board.top, width: 50, height: board.height },
-      { left: board.left + board.width - edge, top: board.top, width: 50, height: board.height },
-      { left: board.left, top: board.top + board.height - edge, width: board.width, height: 50 },
-      { left: board.left, top: board.top - 50 + edge, width: board.width, height: 50 },
+      { left: board.left - 200 + edge, top: board.top - 200, width: 200, height: board.height + 400 },
+      { left: board.left + board.width - edge, top: board.top - 200, width: 200, height: board.height + 400 },
+      { left: board.left - 200, top: board.top + board.height - edge, width: board.width + 400, height: 200 },
+      { left: board.left - 200, top: board.top - 200 + edge, width: board.width + 400, height: 200 },
       { left: shelf.left + plank.left, top: shelf.top + plank.top, width: plank.width, height: plank.height },
       cssBox(byName(T1, 'Ruler · timeline')!),
     ],
-    bins: [cssBox(byName(T1, 'Archive bin')!), cssBox(byName(T1, 'Project bin')!)],
-    holes: boardHoles(board, componentTree('Board/Hole')!),
+    bins: [binOf('archive', 'Archive bin'), binOf('project', 'Project bin')],
+    bounds: board,
   };
   return { tools, cards, world };
 }
@@ -204,7 +256,7 @@ function layerBoxOfSvgPlank(): Box {
   return { left: 1, top: 1, width: a.w - 2, height: 10 };
 }
 
-type Entry = { key: string; motion?: MotionNode; el: ReactNode; side?: boolean };
+type Entry = { key: string; name?: string; motion?: MotionNode; timeline?: 'main' | 'cards' | 'archive'; el: ReactNode; side?: boolean };
 
 /** T1 layers in Figma z-order, each with its T1 interaction; the skill tags split per tag (each has its own track). */
 function t1Entries(): Entry[] {
@@ -253,18 +305,30 @@ function t1Entries(): Entry[] {
       );
     } else if (n.name === REARRANGE) {
       el = (
-        <RearrangeButton box={n.css!} label={n.children?.find((c) => c.type === 'TEXT')?.text ?? n.name}>
-          <Layer node={at(n, { left: 0, top: 0 })} />
-        </RearrangeButton>
+        <ResetButton box={n.css!} label="Reset">
+          <Layer node={withLabel(at(n, { left: 0, top: 0 }), RESET_LABEL)} />
+        </ResetButton>
       );
     } else if (project) el = boardCard(n, project);
     else if (n.component?.startsWith('Prop/')) el = boardProp(n);
     else if (hookOf) el = <BoardFade opacity={states.t4.dimHookOpacity} keepFor={hookOf.skills}><Layer node={n} /></BoardFade>;
     else if (n.name === 'Pin · pliers') el = <BoardFade opacity={states.t4.toolOpacity}><Layer node={n} /></BoardFade>;
-    else if (n.name.startsWith('Archive · ')) el = <BoardFade opacity={states.t4.archiveOpacity}><Layer node={n} /></BoardFade>;
+    else if (n.name.startsWith('Archive · ')) {
+      // flies out of the Archive bin with the archive clock; swings with the bin while inside it
+      const a = ARCHIVE.find((x) => x.layer === n.name)!;
+      el = (
+        <BoardFade opacity={states.t4.archiveOpacity}>
+          <MotionLayer node={a.flight.fly} timeline="archive">{binLayer('archive', <Layer node={n} />)}</MotionLayer>
+        </BoardFade>
+      );
+    } else if (n.name === 'Project bin') el = binLayer('project', <Layer node={n} />);
+    else if (n.name === 'Archive bin') el = binLayer('archive', <Layer node={n} />);
     else if (states.t4.hidden.includes(n.name)) el = <BoardFade opacity={0}><Layer node={n} /></BoardFade>;
     else el = <Layer node={n} />;
-    out.push({ key: n.id, motion: motionNode(animationA, wrapper), el, side: SIDE.has(n.name) });
+    out.push({ key: n.id, name: n.name, motion: motionNode(animationA, wrapper), timeline: project ? 'cards' : 'main', el, side: SIDE.has(n.name) });
+    // the archive card that can take this project's hook (A1 → 01, A2 → 02, A3 → 03)
+    const a = project && ARCHIVE.find((x) => x.hook.slug === project.slug);
+    if (a) out.push({ key: `${a.id}-card`, motion: a.flight.hang, timeline: 'archive', el: archiveCard(a) });
   }
   return out;
 }
@@ -277,12 +341,24 @@ function t0Entry(m: MotionNode): Entry | null {
     const mini = byName(byName(T0, 'Group 161')?.children ?? [], m.name.replace('Fly · ', ''))!;
     const placed = at(mini, { left: m.center.x - mini.css!.width / 2, top: m.center.y - mini.css!.height / 2 });
     const hover = motionNode(hoverBin, m.name.replace('Fly · ', 'Motion · '));
-    const el = <Layer node={placed} />;
-    return { key: m.id, motion: m, el: hover ? <HoverLayer hover="bin" node={hover} pivot={m.center}>{el}</HoverLayer> : el };
+    const el = binLayer('project', <Layer node={placed} />);
+    return { key: m.id, motion: m, timeline: 'cards', el: hover ? <HoverLayer hover="bin" node={hover} pivot={m.center}>{el}</HoverLayer> : el };
   }
   const source = T0_COPY[m.name] && byName(T0, T0_COPY[m.name]);
   if (!source) return null;
   const el = <Layer node={at(source, { left: m.box.x, top: m.box.y, rotate: 0 })} />;
+  if (m.name === 'Nav · WORK (T0)') {
+    // On the desk, WORK opens the board like the Project bin.
+    return {
+      key: m.id,
+      motion: m,
+      el: (
+        <StageButton box={{ left: m.box.x, top: m.box.y, width: m.box.w, height: m.box.h }} action="openBoard" label={source.texts?.[0]?.text ?? 'WORK'}>
+          <Layer node={at(source, { left: 0, top: 0, rotate: 0 })} />
+        </StageButton>
+      ),
+    };
+  }
   if (m.name === 'Badge · hi (T0)') {
     return {
       key: m.id,
@@ -330,7 +406,6 @@ function layerBox(tree: FigmaNode, name: string, ox = 0, oy = 0): Box | null {
 /** T5: each project's Detail Board on the side board's place, with its "put back" button. */
 function detailBoards(): ReactNode[] {
   const [x, y] = states.t5.detailBoardBox;
-  const withCase = new Set(caseSlugs());
   return projects.map((p) => {
     const tree = componentTree('Detail Board', { Project: p.detailVariant })!;
     const put = layerBox(tree, 'Put back')!;
@@ -344,7 +419,8 @@ function detailBoards(): ReactNode[] {
             label={text(/"text":"(↩[^"]*)"/, 'Put back')}
             putBack={put}
             openCase={layerBox(tree, 'Open case page')}
-            caseHref={withCase.has(p.slug) ? `/work/${p.slug}` : undefined}
+            // TODO(zeyi): SCADA+ has no case page yet — its Detail Board keeps no "Open the case" link until one is exported.
+            caseHref={p.detail.caseHref}
             caseLabel={text(/"text":"(Open the case[^"]*)"/, 'Open the case')}
           />
         </div>
@@ -356,21 +432,37 @@ function detailBoards(): ReactNode[] {
 // The T0 bin = Fly minis + Project bin + its T0 label, consecutive in the motion frame: one hover/press target.
 const BIN_GROUP = /^(Fly · Mini · |Project bin$|Bin · T0 label$)/;
 
+const layer = (e: Entry) => {
+  const el = e.motion ? (
+    <MotionLayer key={e.key} node={e.motion} timeline={e.timeline}>
+      {e.el}
+    </MotionLayer>
+  ) : (
+    <div key={e.key}>{e.el}</div>
+  );
+  return e.side ? <SideFlip key={e.key} face="personal" origin={SIDE_ORIGIN}>{el}</SideFlip> : el;
+};
+
+/** The header layers of the home (logo, nav, Reset, language), for the sticky header strip. */
+export function HomeHeader() {
+  return <>{sceneEntries().filter(inHeader).map(layer)}</>;
+}
+
 /** The home page: one DOM for T0, Animation A and T1 (CLAUDE.md → Page model), the T0 hovers and the T1 interactions. */
 export function HomeScene() {
-  const entries = sceneEntries();
+  const entries = sceneEntries().filter((e) => !inHeader(e));
   const out: ReactNode[] = [];
-  const layer = (e: Entry) => {
-    const el = e.motion ? <MotionLayer key={e.key} node={e.motion}>{e.el}</MotionLayer> : <div key={e.key}>{e.el}</div>;
-    return e.side ? <SideFlip key={e.key} face="personal" origin={SIDE_ORIGIN}>{el}</SideFlip> : el;
-  };
   for (let i = 0; i < entries.length; i++) {
     const e = entries[i];
     if (e.motion && BIN_GROUP.test(e.motion.name)) {
       const group: Entry[] = [];
       while (i < entries.length && entries[i].motion && BIN_GROUP.test(entries[i].motion!.name)) group.push(entries[i++]);
       i--;
-      out.push(<BinButton key="bin">{group.map(layer)}</BinButton>);
+      out.push(<BinButton key="bin" kind="project">{group.map(layer)}</BinButton>);
+      continue;
+    }
+    if (e.motion?.name === 'Archive bin') {
+      out.push(<BinButton key="archive-bin" kind="archive">{layer(e)}</BinButton>);
       continue;
     }
     out.push(layer(e));
@@ -384,7 +476,7 @@ export function HomeScene() {
   const [px, py] = states.t2.pill.box;
   const [cx, cy] = states.t2.pill.cursor;
   return (
-    <BoardStateProvider skills={skills}>
+    <>
       {out}
       <Physics {...physicsData()} />
       <BoardOverlay />
@@ -405,6 +497,6 @@ export function HomeScene() {
       <HoverFade hover="bin">
         <Placed node={pill}><FigmaLayer node={pill} /></Placed>
       </HoverFade>
-    </BoardStateProvider>
+    </>
   );
 }

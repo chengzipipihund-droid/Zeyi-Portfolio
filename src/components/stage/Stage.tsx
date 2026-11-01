@@ -16,8 +16,10 @@ export function stagePoint(e: { clientX: number; clientY: number }): { x: number
 /**
  * The 1440×1024 Figma frame scaled uniformly to the container width (never above 1), centred when wider.
  * `?visual=1` forces scale 1 and marks the layer with `data-stage` for scripts/visual-check.mjs.
+ * `band`: a strip of the same frame drawn elsewhere (the sticky site header) — same scale, but not the stage that
+ * stagePoint() and the visual check look for.
  */
-export function Stage({ children, width = FRAME.w, height = FRAME.h }: { children: ReactNode; width?: number; height?: number }) {
+export function Stage({ children, width = FRAME.w, height = FRAME.h, band = false }: { children: ReactNode; width?: number; height?: number; band?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number | null>(null);
   const [visual, setVisual] = useState(false);
@@ -38,8 +40,8 @@ export function Stage({ children, width = FRAME.w, height = FRAME.h }: { childre
   return (
     <div ref={ref} className="w-full overflow-hidden" style={{ height: height * s }}>
       <div
-        data-stage={visual ? '' : undefined}
-        data-stage-layer=""
+        data-stage={visual && !band ? '' : undefined}
+        data-stage-layer={band ? undefined : ''}
         className="relative mx-auto bg-surface-wall"
         style={{
           width: width,

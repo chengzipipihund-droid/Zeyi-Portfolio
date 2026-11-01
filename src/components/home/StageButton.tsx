@@ -6,12 +6,12 @@ import { useHome } from './HomeState';
 type Box = { left: number; top: number; width: number; height: number };
 
 /**
- * A button at a layer's Figma box on T1: WORK goes back to the desk (T0, "/"), the Logo replays Animation A.
- * In T0 / during the intro it is inert (WORK shows its Default state there).
+ * A button at a layer's Figma box. On the board (T1): WORK goes back to the desk (T0, "/"), the Logo replays Animation A.
+ * On the desk (T0): WORK opens the board like the Project bin (Zeyi, 2026-11-01). Inert during the intro.
  */
-export function StageButton({ box, action, label, children }: { box: Box; action: 'backToDesk' | 'replay'; label: string; children: ReactNode }) {
+export function StageButton({ box, action, label, children }: { box: Box; action: 'backToDesk' | 'replay' | 'openBoard'; label: string; children: ReactNode }) {
   const home = useHome();
-  const enabled = home.phase === 't1' || home.phase === 'stowed';
+  const enabled = action === 'openBoard' ? home.phase === 't0' : home.phase === 't1' || home.phase === 'stowed';
   return (
     <button
       type="button"

@@ -130,8 +130,14 @@ silhouette (200 ms) while the side board flips (rotateY 0→90° 180 ms, swap to
 Put back (Esc / button): reverse; the card drops back onto the hook and swings once (6° → 0, 0.5 s).
 
 ## 8. Physics toy (M7, Matter.js)
-**Modes.** Rearrange (β) **off** (default): tools are pinned; they only swing when a card pushes them or the pointer brushes them fast.
-Rearrange **on**: every tool can be picked up, dragged, thrown; they collide and pile up. Turning it off flies everything home (spring) and re-pins.
+**No modes (Zeyi, 2026-10-29).** Every tool can always be picked up, dragged and thrown; they collide and pile up. The top-right
+button is **Reset** (Figma still says "REARRANGE · β" — rename it there): every tool flies home (spring), cards and bins stop swinging —
+the board looks as it did on arrival.
+**Hang back only at home:** a lifted tool hangs again only when released (slowly) within 30 px of its own place; anywhere else it
+drops. No re-hanging on other holes.
+**Archive swap:** clicking the Archive bin collects the project cards into the Project bin (Animation A backwards to T0.5 on the
+cards' own clock), then A1–A3 fly out of the Archive bin onto hooks 01–03 (synthesised from the minis' boxes, `lib/motion/archive.ts`);
+clicking either bin again swaps back. Both bins get the same hover (lift above the cards, shadow) when the pointer is inside their box.
 **World** (stage px, gravity y = 1, `enableSleeping`, fixed 1000/60 ms steps, ≤ 3 per frame, paused when the tab is hidden):
 - Static: floor = bottom edge of the main board (inner), side walls, every shelf top, the two bins as U-shapes (things can fall in).
 - Tools: compound bodies from `assets.json` (`collider` if Figma has a `Collider` layer, else the shape of the art itself — Zeyi:
@@ -139,19 +145,21 @@ Rearrange **on**: every tool can be picked up, dragged, thrown; they collide and
   from the SVG geometry; thin tools ≥ 8 px thick).
   Hung tools: pinned by a zero-length constraint at their anchor (`anchor` or top-centre of the art box).
 - Cards: pendulum bodies pinned at their hook point (category CARD); collide with free tools only → a thrown hammer makes a card swing.
+  They can never be lifted; swing ≤ 30°. Only the hanging set (projects or archive) collides.
+- Bins: U-shaped pendulums hung from their top centre — a hit swings them a little (≤ 8°); tools can still fall in.
 - Pointer brush: kinematic circle r = 14 following the pointer; collides with hung tools and cards only while pointer speed > 600 px/s.
 | Parameter | Start value | Meaning |
 |---|---|---|
-| detach distance | 60 px | drag a pinned tool farther than this and it comes off the wall |
+| detach distance | 30 px | drag a pinned tool farther than this and it comes off the wall |
 | rubber band | 0.5 | before detaching it follows the pointer at half distance |
-| snap radius | 24 px | released near a free hole/peg → snaps there (new home) |
+| hang radius | 30 px | released within this of its own place (pointer slower than 3 px/step) → hangs there again; else drops |
 | throw | last-3-frame pointer velocity × 0.6, max 25 px/step | fling on release |
 | restitution | metal 0.2 · tape roll 0.4 | bounce |
 | friction / static / air | 0.6 / 0.8 / 0.02 | piles stay put |
 | density | metal 0.002 · plastic/wood 0.001 | hammer heavier than pencil |
 **Render:** DOM elements positioned by `transform` in rAF from body positions (no React state per frame); `drop-shadow-lift` while held.
 **Persist:** positions in `sessionStorage` (try/catch). **Reduced motion:** physics off; pick up = click a tool, click a hole.
-Keyboard (Rearrange on): Tab to a tool, Enter picks up, arrow keys move between holes, Enter hangs, Esc drops it home.
+Keyboard: Tab to a tool, Enter knocks it off the wall / hangs it back, Esc hangs it back.
 
 ## 9. Case pages (M9)
 Figma page **Pegboard v2 — Case pages**, frames 01 (1074-230), 02 (1079-3407), 03 (1082-23178). Build a shared case layout
@@ -162,7 +170,7 @@ Open content gaps (Ultra Bridge observations, SeaTrial placeholder tolerances) s
 ## 10. Accessibility, performance, SEO
 Tab order header → bin / cards → skill tags → side board → footer; focus ring `2px solid var(--theme-accent)`. Cards and the bin are buttons
 with names ("Ultra Bridge — Edge AI Advisory System. Open details", "Open the project board"). SVGs inline via SVGR; fonts self-hosted;
-Matter.js lazy-loaded on first Rearrange; static home page. Metadata: title "Zeyi Cheng — UI/UX & Product Designer", OG image `TODO`.
+Matter.js lazy-loaded when the board opens; static home page. Metadata: title "Zeyi Cheng — UI/UX & Product Designer", OG image `TODO`.
 
 ## 11. Milestones
 | # | Scope | Done when |
@@ -174,6 +182,6 @@ Matter.js lazy-loaded on first Rearrange; static home page. Metadata: title "Zey
 | M4 | **T0** + its two hovers (7.1, 7.2) | `/visual-check t0`, `hover-hi`, `hover-bin` |
 | M5 | **Animation A** (7.3) + `?t=` freeze | storyboard checks `intro-0.55 … intro-3.45` look right; Zeyi approves the feel |
 | M6 | T1 interactions: hover L, card click (7.5), filter, Esc, keyboard, touch, reduced motion | `/visual-check hover`, `open`, `open-seatrial`, `open-coreds`, `filter` |
-| M7 | Physics toy (§8) | Zeyi can pick up, throw and pile tools; 60 fps on a mid laptop; turning Rearrange off flies everything home |
+| M7 | Physics toy (§8) | Zeyi can pick up, throw and pile tools; 60 fps on a mid laptop; Reset flies everything home |
 | M8 | Polish, metadata, Vercel preview, domain | Lighthouse ≥ 90; live on zeyi-cheng.org |
 | M9 | Case pages 01–03 | each page reviewed against its Figma frame |

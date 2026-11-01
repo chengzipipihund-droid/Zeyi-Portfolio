@@ -29,16 +29,31 @@ export const BOARD_MOTION = {
 
 // M7 physics toy (brief §8). Start values from the brief; tune the feel here.
 export const PHYSICS = {
-  /** Drag a pinned tool farther than this (px) and it comes off the wall; before that it follows at `rubberBand`. */
-  detach: 60,
+  /** Drag a hanging tool farther than this (px) and it comes off the wall; before that it follows at `rubberBand`. */
+  detach: 30,
   rubberBand: 0.5,
-  /** Put down this close (px) to a free hole → hangs there (its new home)… */
-  snap: 24,
+  /** Put down within this distance (px) of its own place, it hangs there again; anywhere else it drops (Zeyi). */
+  hang: 30,
   /** …only when the pointer was nearly still on release (px per step); faster = a throw. */
   snapMaxSpeed: 3,
   /** Fling: last-3-frame pointer velocity × throw, capped (px per step). */
   throw: 0.6,
   maxThrow: 25,
+  /** Hard cap on a free tool's speed (px per step) — keeps collisions stable. */
+  maxSpeed: 30,
+  /** The hand's spring on a held tool; more damping = less shaking when the tool is pressed against something. */
+  drag: { stiffness: 0.2, damping: 0.35 },
+  /** Air friction of the tool while it is in the hand (normal: frictionAir) — calms it when it is pushed against something. */
+  heldFrictionAir: 0.15,
+  /** Solver passes per step (Matter defaults 6 / 4) and contact slop: fewer back-and-forth corrections between bodies. */
+  iterations: { position: 10, velocity: 8 },
+  slop: 0.1,
+  /**
+   * Jitter threshold: moves smaller than this (px / radians) are not drawn, so a stuck tool or card stays still.
+   * `still` applies while the hand holds still (pointer within `handPx` for `handMs`) or a loose tool barely moves
+   * (< `slowSpeed` px / step): a tool pressed against something then rocks by ±0.5 px / ±0.3°, and that is not drawn.
+   */
+  jitter: { px: 0.4, rad: 0.004, still: { px: 1.5, rad: 0.02 }, handPx: 2, handMs: 120, slowSpeed: 0.3 },
   restitution: { metal: 0.2, tapeRoll: 0.4 },
   friction: 0.6,
   frictionStatic: 0.8,
@@ -48,9 +63,19 @@ export const PHYSICS = {
   cardFrictionAir: 0.06,
   cardDensity: 0.003,
   cardMaxSwing: 30,
-  /** Turning Rearrange off: tools fly home on this spring. */
+  /** Bins swing from their top centre, heavier and stiffer than cards (degrees). */
+  binFrictionAir: 0.1,
+  binDensity: 0.004,
+  binMaxSwing: 8,
+  /** Reset / a short drag / leaving the board: tools fly home on this spring. */
   home: { type: 'spring', stiffness: 160, damping: 20 },
 } as const;
 
 /** Metal tools (heavier, less bouncy); the rest are plastic / wood (brief §8). */
 export const METAL_TOOLS = new Set(['hammer', 'pliers', 'wrench', 'screwdriver', 'utility-knife', 'scissors', 'tape-measure']);
+
+// Case pages (docs/case-pages-brief.md §5). Tune here.
+export const CASE_MOTION = {
+  /** Chapter tabs stuck under the site header: gap (px at 1440) between the header's bottom and the tab rail. */
+  tabsGap: 12,
+} as const;

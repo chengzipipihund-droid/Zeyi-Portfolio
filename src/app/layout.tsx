@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Baloo_Chettan_2, Gentium_Book_Plus, Tilt_Warp } from 'next/font/google';
+import { Baloo_Chettan_2, Gentium_Book_Plus, Inter, JetBrains_Mono, Tilt_Warp } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
@@ -9,6 +9,9 @@ const tiltWarp = Tilt_Warp({ subsets: ['latin'], variable: '--font-tilt-warp', d
 const gentiumBookPlus = Gentium_Book_Plus({ subsets: ['latin'], weight: '400', variable: '--font-gentium-book-plus', display: 'swap' });
 // Used by one unstyled text layer (the "AI" badge on the Ultra Bridge Detail Board).
 const balooChettan2 = Baloo_Chettan_2({ subsets: ['latin'], weight: '400', variable: '--font-baloo-chettan-2', display: 'swap', preload: false });
+// Used by a few unstyled text layers inside case-page diagrams (UB process timeline, CoreDS visual language).
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap', preload: false });
+const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono', display: 'swap', preload: false });
 
 // Copy from Figma: nameplate role + logo sub ("UX / HMI DESIGNER · HELSINKI", "SHADOW-BOARD PORTFOLIO · 2025—26").
 const description = 'Zeyi Cheng — UX / HMI designer in Helsinki. Shadow-board portfolio 2025–26: Ultra Bridge, SeaTrial Explorer, CoreDS, SCADA+.';
@@ -33,7 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${tiltWarp.variable} ${gentiumBookPlus.variable} ${balooChettan2.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      // the case pages set --case-zoom on <html> before hydration (components/case/CaseZoom.tsx)
+      suppressHydrationWarning
+      className={`${tiltWarp.variable} ${gentiumBookPlus.variable} ${balooChettan2.variable} ${inter.variable} ${jetBrainsMono.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -52,6 +52,17 @@ type HomeState = {
   collectCards: () => void;
   /** stowed → T1: the bin hangs them up again. */
   hangCards: () => void;
+  /**
+   * Which cards hang on the board (Zeyi, 2026-10-29): the projects, or the archive (A1–A3, out of the Archive bin).
+   * `cardsClock` drives the project cards alone (Animation A's card layers sample min(main clock, cards clock)), so
+   * they can go back into the Project bin while the rest of the board stays; `archiveClock` drives the archive cards.
+   */
+  cards: 'projects' | 'archive';
+  swapping: boolean;
+  cardsClock: Clock;
+  archiveClock: Clock;
+  /** Archive bin: projects back into the Project bin, archive cards onto the hooks — and back. */
+  toggleArchive: () => void;
 };
 
 const Ctx = createContext<HomeState | null>(null);
@@ -70,8 +81,32 @@ export function HomeStateProvider({ children }: { children: ReactNode }) {
   const [forcedHover, setForcedHover] = useState(false);
   const [fadedOut, setFadedOut] = useState(false);
   const clock = useRef<Clock>(createClock(target === 't1' ? END : 0)).current;
+  const cardsClock = useRef<Clock>(createClock(END)).current;
+  const archiveClock = useRef<Clock>(createClock(T05)).current;
+  const [cards, setCards] = useState<'projects' | 'archive'>('projects');
+  const [swapping, setSwapping] = useState(false);
   const run = useRef<{ raf: number; to: number } | null>(null);
   const frozen = useRef(false);
+
+  /** Run a group clock to `to` (Figma timing × speed); instant with reduced motion. */
+  const tween = useCallback((c: Clock, to: number, speed: number) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      c.set(to);
+      return Promise.resolve();
+    }
+    return new Promise<void>((resolve) => {
+      const from = c.get();
+      const span = Math.abs(to - from) / speed || 1e-6;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const k = Math.min(1, (now - start) / 1000 / span);
+        c.set(from + (to - from) * k);
+        if (k < 1) requestAnimationFrame(tick);
+        else resolve();
+      };
+      requestAnimationFrame(tick);
+    });
+  }, []);
 
   const finish = useCallback(
     (to: number) => {
@@ -79,8 +114,14 @@ export function HomeStateProvider({ children }: { children: ReactNode }) {
       run.current = null;
       clock.set(to);
       setPhase(to >= END ? 't1' : to <= 0 ? 't0' : 'stowed');
+      if (to <= 0) {
+        // back on the desk: the board starts with the projects next time
+        cardsClock.set(END);
+        archiveClock.set(T05);
+        setCards('projects');
+      }
     },
-    [clock],
+    [clock, cardsClock, archiveClock],
   );
 
   /** Play the clock from where it is to `to` (0 or END); `speed` 1 = Figma timing. */
@@ -134,7 +175,7 @@ export function HomeStateProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- once, on first load
   }, []);
 
-  // Route changed (bin, WORK, back/forward): animate to the route's state.
+  // Route changed (back/forward, or a click whose animation already started): animate to the route's state.
   const first = useRef(true);
   useEffect(() => {
     if (first.current) {
@@ -142,9 +183,16 @@ export function HomeStateProvider({ children }: { children: ReactNode }) {
       return;
     }
     if (frozen.current) return;
+    const to = target === 't1' ? END : 0;
+    if (run.current?.to === to || (!run.current && clock.get() === to)) return; // already on its way (or there)
     if (target === 't1') play(END, 1);
     else play(0, HOME_MOTION.backToDeskSpeed);
-  }, [target, play]);
+  }, [target, play, clock]);
+
+  // Both routes are one scene: have the other one ready so a click never waits for the network (or a dev compile).
+  useEffect(() => {
+    router.prefetch(target === 't1' ? ROUTES.t0 : ROUTES.t1);
+  }, [router, target]);
 
   // Click or Esc during Animation A jumps to its end.
   useEffect(() => {
@@ -164,8 +212,39 @@ export function HomeStateProvider({ children }: { children: ReactNode }) {
   const setHover = useCallback((h: T0Hover) => {
     if (!forcedHover) setHoverState(h);
   }, [forcedHover]);
-  const openBoard = useCallback(() => router.push(ROUTES.t1, { scroll: false }), [router]);
-  const backToDesk = useCallback(() => router.push(ROUTES.t0, { scroll: false }), [router]);
+  // The animation starts on the click; the URL follows (the route effect then sees it is already on its way).
+  const openBoard = useCallback(() => {
+    play(END, 1);
+    router.push(ROUTES.t1, { scroll: false });
+  }, [router, play]);
+  const backToDesk = useCallback(() => {
+    // archive cards go back into their bin while Animation A plays backwards (the projects are already in theirs)
+    if (cards === 'archive') tween(archiveClock, T05, HOME_MOTION.backToDeskSpeed);
+    play(0, HOME_MOTION.backToDeskSpeed);
+    router.push(ROUTES.t0, { scroll: false });
+  }, [router, cards, tween, archiveClock, play]);
+  const toggleArchive = useCallback(async () => {
+    if (swapping || (phase !== 't1' && phase !== 'stowed')) return;
+    setSwapping(true);
+    setHoverState(null);
+    if (phase === 'stowed') {
+      // Projects already in their bin (Zeyi: the Archive bin works at any time): the board finishes Animation A with
+      // the project cards held in the bin while the archive cards fly onto the hooks.
+      cardsClock.set(T05);
+      await Promise.all([tween(clock, END, 1), tween(archiveClock, END, 1)]);
+      setPhase('t1');
+      setCards('archive');
+    } else if (cards === 'projects') {
+      await tween(cardsClock, T05, HOME_MOTION.backToDeskSpeed); // projects back into the Project bin
+      await tween(archiveClock, END, 1); // archive cards out of the Archive bin onto the hooks
+      setCards('archive');
+    } else {
+      await tween(archiveClock, T05, HOME_MOTION.backToDeskSpeed);
+      await tween(cardsClock, END, 1);
+      setCards('projects');
+    }
+    setSwapping(false);
+  }, [swapping, phase, cards, tween, clock, cardsClock, archiveClock]);
   const replay = useCallback(() => {
     clock.set(0);
     play(END, 1);
@@ -186,8 +265,13 @@ export function HomeStateProvider({ children }: { children: ReactNode }) {
       replay,
       collectCards,
       hangCards,
+      cards,
+      swapping,
+      cardsClock,
+      archiveClock,
+      toggleArchive,
     }),
-    [phase, clock, hover, forcedHover, fadedOut, setHover, openBoard, backToDesk, replay, collectCards, hangCards],
+    [phase, clock, hover, forcedHover, fadedOut, setHover, openBoard, backToDesk, replay, collectCards, hangCards, cards, swapping, cardsClock, archiveClock, toggleArchive],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
