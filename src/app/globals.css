@@ -16,11 +16,6 @@ body {
   color: var(--text-primary);
 }
 
-/* Case pages: the film's play icon hides while the film plays (the button draws pause bars). */
-[data-playing] [data-layer='Play icon'] {
-  opacity: 0;
-}
-
 /* ?visual=1 on case pages: nothing sticks, so each section's screenshot shows only that section. */
 [data-visual] .sticky {
   position: relative;

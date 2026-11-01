@@ -52,7 +52,7 @@ Colours are `var(--token)` strings; a value with `/* collection: name */` is a c
 - **`<CasePage slug>`** at the route the home Detail Board already links to (`caseHref` in `src/data/projects.ts`; default `/work/<slug>`).
   Root: `data-theme={case.modes.theme}`, background `var(--surface-wall)`. Static generation for the three slugs.
 - **Site header / footer**: the home components.
-- **`<Film>`** (UB only, section kind `film`): see §5.2. Poster = the frame's background image; video `public/projects/ultra-bridge/intro.mp4`
+- **`<Film>`** (UB only, section kind `film`): see §5.2. Poster = the frame's background image; the film is on Vimeo (`src/data/case-films.ts`, Zeyi 2026-11-01 — replaces `public/projects/ultra-bridge/intro.mp4`)
   (`TODO(zeyi)` until the file exists — the poster must look finished without it). Overlay: kicker, title "From manual to guided.",
   play/pause button (the circle), scroll cue. Hide the "VIDEO · … TODO(zeyi)" note text in production (it is a design note).
 - **`<CaseHero>`**: a white card, 2 px `var(--line-strong)` border, radius 24 — **no pegboard holes on case pages**. Kicker in

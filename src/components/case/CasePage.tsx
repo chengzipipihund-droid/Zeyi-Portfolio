@@ -1,12 +1,13 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { projects, type Project } from '@/data/projects';
-import { publicFileExists, type CaseData, type CaseNode, type CaseSection } from '@/lib/figma/cases';
+import { type CaseData, type CaseNode, type CaseSection } from '@/lib/figma/cases';
 import { CaseNodeView, findNode, type CaseCtx, type CaseLink } from './CaseNode';
 import { BackToTop } from './BackToTop';
 import { CASE_MOTION } from '@/styles/motion';
 import { ChapterTabs } from './ChapterTabs';
 import { CaseZoom } from './CaseZoom';
-import { FilmButton, FilmStage, FilmVideo } from './Film';
+import { FilmButton, FilmPlayer, FilmStage } from './Film';
+import { caseFilms, vimeoPlayer } from '@/data/case-films';
 import { SiteFooter, SiteHeader } from './SiteChrome';
 
 // One case page (docs/case-pages-brief.md §3): the Figma sections top to bottom, each a landmark with
@@ -39,20 +40,27 @@ function Section({ section, ctx, as = 'section', label, scrollMargin }: { sectio
   );
 }
 
-function Film({ section }: { section: CaseSection }) {
+function Film({ section, slug }: { section: CaseSection; slug: string }) {
   const tree = section.tree;
   const note = byName(tree, 'Placeholder note');
   const play = byName(tree, 'Play');
-  const video = section.video && publicFileExists(section.video.src) ? section.video.src : null;
+  const film = caseFilms[slug];
+  const src = film && vimeoPlayer(film.vimeo);
+  const title = byName(tree, 'Title')?.text ?? 'Project film';
   const ctx: CaseCtx = {
     priority: true,
     // The note is a design note for Zeyi ("VIDEO · intro.mp4 … TODO(zeyi)"), never shown on the site.
     hide: new Set(note ? [note.id] : []),
-    under: video && tree.media ? { [tree.id]: <FilmVideo src={video} poster={tree.media.src} /> } : undefined,
-    extra:
-      video && play
-        ? { [tree.id]: <FilmButton style={{ position: 'absolute', left: play.x, top: play.y, width: play.w, height: play.h } satisfies CSSProperties} /> }
-        : undefined,
+    extra: src
+      ? {
+          [tree.id]: (
+            <>
+              {play && <FilmButton style={{ position: 'absolute', left: play.x, top: play.y, width: play.w, height: play.h } satisfies CSSProperties} />}
+              <FilmPlayer src={src} title={title} />
+            </>
+          ),
+        }
+      : undefined,
   };
   return (
     <FilmStage data-figma-section={section.key} aria-label={section.name.replace(/^Intro film · /, 'Project film · ')} className="relative">
@@ -98,7 +106,7 @@ export function CasePage({ data }: { data: CaseData }) {
         break;
       }
       case 'film':
-        out.push(<Film key={s.key} section={s} />);
+        out.push(<Film key={s.key} section={s} slug={data.slug} />);
         break;
       case 'breadcrumb':
         out.push(

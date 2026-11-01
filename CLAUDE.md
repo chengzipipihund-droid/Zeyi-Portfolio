@@ -112,7 +112,7 @@ Pure black (`#000000` / `black`) is mapped to `var(--line-strong)` by the import
   click and push the route after (the route effect skips a run already heading there); both routes prefetch each other.
   Taken card with a case page: its dashed place reads "(click to jump)" and opens the case page.
 - Case pages (M9): `components/case/` — `CasePage` (sections → landmarks with `data-figma-section`, links, headings), `CaseNode`
-  (generic tree renderer), `SiteChrome` (header from the T1 layers, footer), `Film` (UB intro film). Data: `lib/figma/cases.ts`
+  (generic tree renderer), `SiteChrome` (header from the T1 layers, footer), `Film` (UB intro film: poster from Figma, click opens the Vimeo player from `data/case-films.ts`; intro.mp4 is not used). Data: `lib/figma/cases.ts`
   merges `design/figma-mcp/cases-supplement.json` (fonts of unstyled texts, per-side strokes, shadows, footer — exporter v3.1
   lacks them). "Strokes included in layout" is not exported either: `strokeInset` reads it from the first child's offset.
   `projects.ts → detail.caseHref` links a project to its case page by number. Visual check against the build:

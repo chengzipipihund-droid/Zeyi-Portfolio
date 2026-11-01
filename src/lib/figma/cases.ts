@@ -149,9 +149,6 @@ export function loadCase(slug: string): CaseData | null {
   return data;
 }
 
-/** Hand-added files (e.g. the intro film) are only used when they exist in public/. */
-export const publicFileExists = (src: string) => fs.existsSync(path.join(process.cwd(), 'public', src));
-
 /** Height of Figma's Site/Header (the same bar on the home and the case pages), from the case export. */
 export function siteHeaderHeight(): number {
   const first = caseSlugs()[0];

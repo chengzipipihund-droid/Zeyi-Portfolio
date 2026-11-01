@@ -2,92 +2,67 @@
 
 import { createContext, useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
 
-// Ultra Bridge intro film (docs/case-pages-brief.md §5.2). The poster is the Figma frame's image; the video
-// (public/projects/ultra-bridge/intro.mp4, TODO(zeyi)) plays over it when the file exists. Scroll scenes come in Part C.
+// Ultra Bridge intro film (docs/case-pages-brief.md §5.2). The poster is the Figma frame's image; the film lives on
+// Vimeo (src/data/case-films.ts). Nothing third-party loads until the visitor presses play: then the Vimeo player
+// covers the frame and starts with sound. Scrolling it off screen pauses it. Scroll scenes come in Part C.
 
-type FilmState = { video: RefObject<HTMLVideoElement>; playing: boolean; toggle: () => void };
+type FilmState = { player: RefObject<HTMLIFrameElement>; open: boolean; play: () => void };
 const FilmContext = createContext<FilmState | null>(null);
 
-const staticMode = () =>
-  typeof window !== 'undefined' && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || new URLSearchParams(location.search).has('visual'));
-
 export function FilmStage({ children, ...rest }: { children: ReactNode } & React.HTMLAttributes<HTMLElement>) {
-  const video = useRef<HTMLVideoElement>(null);
+  const player = useRef<HTMLIFrameElement>(null);
   const root = useRef<HTMLElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const wanted = useRef(true); // the visitor's choice; off-screen pauses never overwrite it
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const v = video.current;
-    if (!v) return;
-    if (staticMode()) wanted.current = false;
-    const sync = () => setPlaying(!v.paused);
-    v.addEventListener('play', sync);
-    v.addEventListener('pause', sync);
-    // Play only while the film is on screen.
+    if (!open) return;
+    // Vimeo's postMessage API: pause when the film leaves the screen (the visitor resumes it in the player).
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && wanted.current) v.play().catch(() => {});
-      else v.pause();
+      if (!e.isIntersecting) player.current?.contentWindow?.postMessage(JSON.stringify({ method: 'pause' }), 'https://player.vimeo.com');
     });
     if (root.current) io.observe(root.current);
-    return () => {
-      io.disconnect();
-      v.removeEventListener('play', sync);
-      v.removeEventListener('pause', sync);
-    };
-  }, []);
-
-  const toggle = () => {
-    const v = video.current;
-    if (!v) return;
-    wanted.current = v.paused;
-    if (v.paused) v.play().catch(() => {});
-    else v.pause();
-  };
+    return () => io.disconnect();
+  }, [open]);
 
   return (
-    <FilmContext.Provider value={{ video, playing, toggle }}>
-      <section ref={root} data-playing={playing || undefined} {...rest}>
+    <FilmContext.Provider value={{ player, open, play: () => setOpen(true) }}>
+      <section ref={root} data-playing={open || undefined} {...rest}>
         {children}
       </section>
     </FilmContext.Provider>
   );
 }
 
-export function FilmVideo({ src, poster }: { src: string; poster: string }) {
-  const ctx = useContext(FilmContext)!;
+/** The Vimeo player over the whole frame, mounted once the visitor has pressed play. */
+export function FilmPlayer({ src, title }: { src: string; title: string }) {
+  const { player, open } = useContext(FilmContext)!;
+  if (!open) return null;
   return (
-    <video
-      ref={ctx.video}
+    <iframe
+      ref={player}
       src={src}
-      poster={poster}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-hidden
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      title={title}
+      allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+      allowFullScreen
+      referrerPolicy="strict-origin-when-cross-origin"
+      onLoad={(e) => e.currentTarget.focus()}
+      className="border-0 bg-black"
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 3 }}
     />
   );
 }
 
-/** The circle of the film: a real play/pause button over the drawn circle (the play icon hides while playing). */
+/** The circle of the film: a real play button over the drawn circle. */
 export function FilmButton({ style }: { style: CSSProperties }) {
-  const { playing, toggle } = useContext(FilmContext)!;
+  const { open, play } = useContext(FilmContext)!;
+  if (open) return null;
   return (
     <button
       type="button"
-      onClick={toggle}
-      aria-label={playing ? 'Pause the project film' : 'Play the project film'}
+      onClick={play}
+      aria-label="Play the project film"
       className="cursor-pointer rounded-full border-0 bg-transparent p-0 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-theme-on-accent"
       style={{ ...style, zIndex: 2 }}
-    >
-      {playing && (
-        <span aria-hidden className="absolute inset-0 flex items-center justify-center gap-[10px]">
-          <span className="h-[34px] w-[9px] rounded-[2px] bg-theme-on-accent" />
-          <span className="h-[34px] w-[9px] rounded-[2px] bg-theme-on-accent" />
-        </span>
-      )}
-    </button>
+    />
   );
 }
