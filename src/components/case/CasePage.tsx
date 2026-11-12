@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { projects, type Project } from '@/data/projects';
+import { pageCopy, prototypes } from '@/data/prototypes';
 import { type CaseData, type CaseNode, type CaseSection } from '@/lib/figma/cases';
 import { CaseNodeView, findNode, type CaseCtx, type CaseLink } from './CaseNode';
 import { BackToTop } from './BackToTop';
@@ -149,7 +150,62 @@ export function CasePage({ data }: { data: CaseData }) {
           else n.children?.forEach(visit);
         };
         visit(t);
-        out.push(<Section key={s.key} section={s} scrollMargin={chapterMargin} ctx={{ links, ids: title ? { [title.id]: `${s.anchor}-title` } : {} }} />);
+        let section = s;
+        const prototype = prototypes.find((item) => item.caseHref === `/work/${data.slug}`);
+        const card = prototype && byName(t, 'Official site');
+        const button = card && byName(card, 'Button · official site');
+        if (prototype && card?.layout && button) {
+          const [top, right, bottom, left] = card.layout.padding ?? [0, 0, 0, 0];
+          const stroke = card.style?.strokeWeight ?? 0;
+          const width = card.w - left - right - stroke * 2;
+          const height = card.h - top - bottom - stroke * 2;
+          const preview: CaseNode = {
+            id: `${card.id}-prototype-preview`,
+            name: 'Prototype preview',
+            type: 'FRAME',
+            kind: 'media-frame',
+            frame: 'image',
+            x: left + stroke,
+            y: top + stroke + height + (card.layout.gap ?? 0),
+            w: width,
+            h: width * prototype.cover.h / prototype.cover.w,
+            sizing: ['FILL', 'HUG'],
+            style: { radius: card.style?.radius },
+            media: {
+              src: prototype.cover.src,
+              w: width,
+              h: width * prototype.cover.h / prototype.cover.w,
+              format: 'webp',
+              alt: prototype.cover.alt,
+            },
+          };
+          const header: CaseNode = {
+            ...card,
+            id: `${card.id}-header`,
+            name: 'Prototype header',
+            x: left + stroke,
+            y: top + stroke,
+            w: width,
+            h: height,
+            style: undefined,
+            layout: { ...card.layout, padding: [0, 0, 0, 0], clips: false },
+            children: card.children?.map((child) => child.id === button.id ? {
+              ...child,
+              children: child.children?.map((label) => label.kind === 'text' ? { ...label, text: pageCopy.open.en, link: undefined } : label),
+            } : child),
+          };
+          const portal: CaseNode = {
+            ...card,
+            layout: { ...card.layout, mode: 'VERTICAL', primaryAlign: 'MIN', primarySizing: 'AUTO', counterSizing: 'FIXED' },
+            children: [header, preview],
+          };
+          const replaceCard = (node: CaseNode): CaseNode => node.id === card.id ? portal : { ...node, children: node.children?.map(replaceCard) };
+          section = { ...s, tree: replaceCard(t) };
+          const href = `/portfolio/${prototype.slug}`;
+          links[button.id] = { href };
+          links[preview.id] = { href, label: `${prototype.title}: ${pageCopy.open.en}` };
+        }
+        out.push(<Section key={s.key} section={section} scrollMargin={chapterMargin} ctx={{ links, ids: title ? { [title.id]: `${s.anchor}-title` } : {} }} />);
         break;
       }
       case 'next': {

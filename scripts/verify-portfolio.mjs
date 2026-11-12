@@ -17,7 +17,7 @@ let browser;
 try {
   await mkdir(output, { recursive: true });
   browser = await chromium.launch();
-  for (const viewport of [{ width: 1600, height: 1100 }, { width: 390, height: 844 }]) {
+  for (const viewport of [{ width: 1600, height: 1100 }, { width: 1366, height: 768 }, { width: 390, height: 844 }]) {
     const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
     const page = await context.newPage();
     const errors = [];
@@ -55,6 +55,26 @@ try {
     for (const slug of ['ultra-bridge', 'seatrial-explorer', 'coreds']) {
       await visit(`/work/${slug}`);
       assert(await page.locator('[data-figma-section]').count() > 0, 'Case sections must render');
+      if (slug === 'seatrial-explorer') {
+        const portal = page.locator('[data-layer="Official site"]');
+        const href = '/portfolio/seatrial-explorer';
+        assert.equal(await portal.locator(`a[href="${href}"]`).count(), 2, 'Demo button and preview must open the prototype');
+        assert(!(await portal.innerText()).includes('SeatrialExplorer.vercel.app'), 'Obsolete demo address must be replaced');
+        const preview = portal.locator('[data-layer="Prototype preview"]');
+        await preview.scrollIntoViewIfNeeded();
+        await preview.locator('img').evaluate((image) => image.decode());
+        await checkWidth();
+        await portal.screenshot({ path: `${output}/${viewport.width}-seatrial-portal.png` });
+        const button = portal.getByRole('link', { name: 'Open prototype', exact: true });
+        await button.focus();
+        await page.keyboard.press('Enter');
+        await page.locator('.st-root').waitFor();
+        assert.equal(new URL(page.url()).pathname, href);
+        await page.goBack({ waitUntil: 'networkidle' });
+        await preview.click();
+        await page.locator('.st-root').waitFor();
+        assert.equal(new URL(page.url()).pathname, href);
+      }
     }
 
     await visit('/portfolio');
@@ -73,6 +93,67 @@ try {
     await page.locator('.pf-step').nth(2).click();
     await page.getByRole('button', { name: 'Overlay', exact: true }).click();
     await page.locator('.st-maps-overlay').waitFor();
+    const clockBeforeFullscreen = await page.locator('.st-clock').innerText();
+    await page.locator('.st-root').evaluate((element) => { element.dataset.fullscreenTest = 'mounted'; });
+    const nativeSupported = await page.evaluate(() => document.fullscreenEnabled);
+    const enterFullscreen = page.getByRole('button', { name: 'Enter fullscreen', exact: true });
+    const exitFullscreen = page.getByRole('button', { name: 'Exit fullscreen', exact: true });
+    await enterFullscreen.click();
+    await exitFullscreen.waitFor();
+    if (nativeSupported) await page.waitForFunction(() => document.fullscreenElement?.classList.contains('pf-stage'));
+    await page.waitForFunction(() => {
+      const stage = document.querySelector('.pf-stage').getBoundingClientRect();
+      const frame = document.querySelector('.pf-frame').getBoundingClientRect();
+      return stage.x === 0 && stage.y === 0 && Math.abs(stage.width - innerWidth) < 1 && Math.abs(stage.height - innerHeight) < 1 && frame.bottom <= stage.bottom + 1;
+    });
+    assert.equal(await page.locator('.pf-bar').evaluate((element) => element.inert), true);
+    assert.equal(await page.locator('.st-root').getAttribute('data-fullscreen-test'), 'mounted');
+    assert.equal(await page.locator('.st-clock').innerText(), clockBeforeFullscreen);
+    await page.locator('.st-maps-overlay').waitFor();
+    await page.getByRole('button', { name: 'Split', exact: true }).click();
+    const mapGeometry = await page.locator('.st-mapcard').evaluateAll((cards) => cards.map((card) => {
+      const map = card.querySelector('.st-map').getBoundingClientRect();
+      const tiles = card.querySelector('.st-tiles').getBoundingClientRect();
+      const timeline = document.querySelector('.st-timeline').getBoundingClientRect();
+      return { mapHeight: map.height, mapBottom: map.bottom, tilesTop: tiles.top, tilesBottom: tiles.bottom, timelineTop: timeline.top };
+    }));
+    assert(mapGeometry.every((geometry) => geometry.mapHeight > 0 && geometry.mapBottom <= geometry.tilesTop + 1 && geometry.tilesBottom <= geometry.timelineTop + 1), `Fullscreen maps and cards must not overlap: ${JSON.stringify(mapGeometry)}`);
+    await page.locator('.st-hull').first().waitFor();
+    const clippedHulls = await page.locator('.st-hull').evaluateAll((hulls) => hulls.filter((hull) => {
+      const bounds = hull.getBBox();
+      const chart = hull.ownerSVGElement;
+      return bounds.x < 0 || bounds.y < 0 || bounds.x + bounds.width > chart.width.baseVal.value || bounds.y + bounds.height > chart.height.baseVal.value;
+    }).length);
+    assert.equal(clippedHulls, 0, 'Fullscreen maps must contain the complete current hulls');
+    await page.locator('.pf-stage').screenshot({ path: `${output}/${viewport.width}-seatrial-fullscreen.png` });
+    await exitFullscreen.click();
+    await enterFullscreen.waitFor();
+    assert.equal(await page.evaluate(() => document.fullscreenElement), null);
+    assert.equal(await page.locator('.pf-bar').evaluate((element) => element.inert), false);
+    assert.equal(await page.locator('.st-clock').innerText(), clockBeforeFullscreen);
+    if (nativeSupported) {
+      await enterFullscreen.click();
+      await page.waitForFunction(() => !!document.fullscreenElement);
+      await page.evaluate(() => document.exitFullscreen());
+      await enterFullscreen.waitFor();
+    }
+    await page.locator('.pf-stage').evaluate((element) => {
+      element.requestFullscreen = () => Promise.reject(new DOMException('Fullscreen disabled for fallback verification', 'NotAllowedError'));
+    });
+    await enterFullscreen.click();
+    await exitFullscreen.waitFor();
+    assert.equal(await page.evaluate(() => document.fullscreenElement), null);
+    await page.locator('.pf-stage').screenshot({ path: `${output}/${viewport.width}-seatrial-fullscreen-fallback.png` });
+    await exitFullscreen.focus();
+    await page.keyboard.press('Shift+Tab');
+    assert(await page.locator('.pf-stage').evaluate((element) => element.contains(document.activeElement)), 'Fullscreen focus must stay in the prototype');
+    await page.keyboard.press('Escape');
+    await enterFullscreen.waitFor();
+    assert.equal(await page.locator('.st-root').getAttribute('data-fullscreen-test'), 'mounted');
+    assert.equal(await page.locator('.pf-demo').getAttribute('data-mode'), 'guided');
+    assert.equal(await page.locator('.pf-bar').evaluate((element) => element.inert), false);
+    assert.equal(await page.evaluate(() => document.documentElement.style.overflow), '');
+    await page.locator('.pf-stage').evaluate((element) => { delete element.requestFullscreen; });
     await page.locator('.pf-step').nth(4).click();
     await page.locator('[data-tour="st-swap"]').click();
     assert.equal(await page.locator('.pf-steps > li').nth(4).getAttribute('data-done'), 'true');
@@ -108,7 +189,7 @@ try {
     await page.locator('[data-phase="t0"]').first().waitFor({ state: 'attached' });
     assert.deepEqual(await homeStyle(), originalHomeStyle, 'Prototype styles must not change the home page');
     assert.deepEqual(errors, [], 'Browser must have no errors or failed resources');
-    console.log(`PASS ${viewport.width}px: existing routes, index, prototype navigation, tour interactions, language, images, layout, home styles`);
+    console.log(`PASS ${viewport.width}px: existing routes, portals, fullscreen and fallback, map layout, state preservation, tour interactions, language, images, home styles`);
     await context.close();
   }
   const missing = await fetch(`${base}/portfolio/not-a-prototype`);

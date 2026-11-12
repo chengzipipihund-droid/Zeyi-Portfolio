@@ -4,7 +4,8 @@
 // Guided: opening a step puts the prototype in that step's scene and outlines what to touch; the prototype reports
 // what the visitor did, which ticks the step. Explore: the rail steps aside and the prototype is simply used.
 import Link from 'next/link';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { Maximize, Minimize } from 'lucide-react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { pageCopy as C, prototypes, type Prototype } from '@/data/prototypes';
 import { FloatopiaPrototype } from '@/prototypes/floatopia/Floatopia';
 import { SeaTrialPrototype } from '@/prototypes/seatrial/SeaTrial';
@@ -15,6 +16,90 @@ type Handle = { goto(scene: string): void };
 const REGISTRY = { 'seatrial-explorer': SeaTrialPrototype, floatopia: FloatopiaPrototype } as const;
 /** Smallest logical size each prototype is laid out at; smaller stages scale it down instead of squeezing it. */
 const MIN = { desktop: { w: 1280, h: 770 }, phone: { w: 402, h: 874 } };
+
+function PrototypeStage({ fullscreen, label, children }: { fullscreen: boolean; label: string; children: ReactNode }) {
+  const host = useRef<HTMLElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  const native = useRef(false);
+  const [expanded, setExpanded] = useState(false);
+  const { lang } = useLang();
+  const action = expanded ? C.exitFullscreen[lang] : C.enterFullscreen[lang];
+
+  useEffect(() => {
+    const element = host.current;
+    const sync = () => {
+      const current = document.fullscreenElement === element;
+      if (current || native.current) setExpanded(current);
+      native.current = current;
+    };
+    document.addEventListener('fullscreenchange', sync);
+    return () => document.removeEventListener('fullscreenchange', sync);
+  }, []);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const element = host.current!;
+    const control = button.current;
+    const siblings = [...element.parentElement!.children]
+      .filter((sibling): sibling is HTMLElement => sibling instanceof HTMLElement && sibling !== element)
+      .map((sibling) => ({ sibling, inert: sibling.inert }));
+    const overflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    siblings.forEach(({ sibling }) => { sibling.inert = true; });
+    const keydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !document.fullscreenElement) {
+        event.preventDefault();
+        setExpanded(false);
+      }
+      if (event.key !== 'Tab') return;
+      const controls = [...element.querySelectorAll<HTMLElement>('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+        .filter((control) => !control.matches(':disabled') && !control.closest('[hidden], [inert]') && control.getClientRects().length > 0);
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+    document.addEventListener('keydown', keydown);
+    control?.focus({ preventScroll: true });
+    return () => {
+      document.documentElement.style.overflow = overflow;
+      siblings.forEach(({ sibling, inert }) => { sibling.inert = inert; });
+      document.removeEventListener('keydown', keydown);
+      control?.focus({ preventScroll: true });
+    };
+  }, [expanded]);
+
+  const toggle = async () => {
+    const element = host.current!;
+    if (expanded) {
+      if (document.fullscreenElement === element) await document.exitFullscreen().catch(() => undefined);
+      setExpanded(document.fullscreenElement === element);
+      return;
+    }
+    setExpanded(true);
+    if (document.fullscreenEnabled && element.requestFullscreen) {
+      await element.requestFullscreen().catch(() => undefined);
+    }
+  };
+
+  return (
+    <main ref={host} className="pf-stage" aria-label={label} data-expanded={expanded || undefined}>
+      {fullscreen && (
+        <div className="pf-stage-tools">
+          <button ref={button} type="button" className="pf-btn pf-fullscreen type-body" onClick={toggle} aria-label={action} title={action} aria-pressed={expanded}>
+            {expanded ? <Minimize aria-hidden /> : <Maximize aria-hidden />}
+          </button>
+        </div>
+      )}
+      {children}
+    </main>
+  );
+}
 
 export function Demo({ slug }: { slug: Prototype['slug'] }) {
   const proto = prototypes.find((p) => p.slug === slug)!;
@@ -144,7 +229,7 @@ export function Demo({ slug }: { slug: Prototype['slug'] }) {
         </footer>
       </aside>
 
-      <main className="pf-stage" aria-label={`${proto.title} prototype`}>
+      <PrototypeStage fullscreen={proto.kind === 'desktop'} label={`${proto.title} prototype`}>
         {!guided && <p className="pf-free type-small pf-muted"><T v={C.freeHint} /></p>}
         {proto.kind === 'desktop' && <p className="pf-narrow type-small pf-muted"><T v={C.narrow} /></p>}
         <div className="pf-stage-box" ref={stage}>
@@ -154,7 +239,7 @@ export function Demo({ slug }: { slug: Prototype['slug'] }) {
             </div>
           )}
         </div>
-      </main>
+      </PrototypeStage>
     </div>
   );
 }

@@ -309,6 +309,8 @@ export const pageCopy = {
   minutes: { en: 'min', zh: '分钟' },
   guided: { en: 'Guided', zh: '引导' },
   free: { en: 'Explore', zh: '自由探索' },
+  enterFullscreen: { en: 'Enter fullscreen', zh: '全屏展示' },
+  exitFullscreen: { en: 'Exit fullscreen', zh: '退出全屏' },
   back: { en: 'Back', zh: '上一步' },
   next: { en: 'Next', zh: '下一步' },
   finish: { en: 'Explore freely', zh: '自由探索' },

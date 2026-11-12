@@ -47,6 +47,9 @@ li[data-done] > .pf-step i { background: var(--status-on); border-color: var(--s
 .pf-rail > footer a { color: var(--text-primary); }
 
 .pf-stage { grid-area: stage; position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; padding: 20px; }
+.pf-stage-tools { display: flex; justify-content: flex-end; flex: none; }
+.pf-fullscreen { display: grid; place-items: center; aspect-ratio: 1; padding: 0; }
+.pf-fullscreen svg { width: 1em; height: 1em; }
 .pf-demo[data-kind='phone'] .pf-stage { padding: 16px 20px; }
 .pf-free { margin: 0 0 12px; text-align: center; }
 .pf-narrow { display: none; margin: 0 0 8px; }
@@ -73,6 +76,12 @@ li[data-done] > .pf-step i { background: var(--status-on); border-color: var(--s
 }
 
 /* ---------- index page */
+.pf-stage[data-expanded] { position: fixed; inset: 0; z-index: 10; width: 100%; height: 100dvh; padding: 0; background: var(--surface-wall); overflow: hidden; }
+.pf-stage[data-expanded] .pf-stage-box { flex: 1; height: auto; min-height: 0; }
+.pf-stage[data-expanded] .pf-frame { border-radius: 0; box-shadow: none; }
+.pf-stage[data-expanded] :is(.pf-free, .pf-narrow) { display: none; }
+.pf-stage[data-expanded] [data-hot] { outline: none; animation: none; box-shadow: none; }
+
 .pf-index { padding: 56px 80px 96px; display: flex; flex-direction: column; gap: 48px; }
 .pf-intro { display: flex; flex-direction: column; gap: 16px; }
 .pf-intro h1, .pf-intro p { margin: 0; max-width: 860px; }
