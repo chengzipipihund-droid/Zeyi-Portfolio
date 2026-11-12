@@ -1,0 +1,93 @@
+/* /portfolio — index and demo pages. Site tokens only (src/styles/tokens.css): wall, board, ink, soft line, the project
+   accent for the title, and the .type-* text classes. The prototypes bring their own scoped styles. */
+
+/* ---------- shared controls */
+.pf-muted { color: var(--text-secondary); }
+.pf-accent { color: var(--theme-accent); }
+.pf-grow { flex: 1; }
+.pf-btn { height: 36px; padding: 0 16px; border: 2px solid var(--line-strong); border-radius: var(--radius-chip); background: var(--surface-board); color: var(--text-primary); font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.pf-btn:disabled { border-color: var(--line-soft); color: var(--line-soft); cursor: default; }
+.pf-btn-ink { background: var(--line-strong); color: var(--surface-board); }
+.pf-btn:focus-visible, .pf-step:focus-visible, .pf-mode button:focus-visible, .pf-lang button:focus-visible, .pf-card:focus-visible, .pf-link:focus-visible, .pf-crumb a:focus-visible { outline: 2px solid var(--theme-accent); outline-offset: 2px; }
+.pf-mode, .pf-lang { display: flex; padding: 2px; border: 2px solid var(--line-strong); border-radius: var(--radius-chip); background: var(--surface-board); }
+.pf-mode button, .pf-lang button { height: 28px; padding: 0 12px; border: 0; border-radius: var(--radius-chip); background: none; color: var(--text-primary); font: 600 13px/16px var(--font-geist), system-ui, sans-serif; cursor: pointer; white-space: nowrap; }
+.pf-mode button[aria-pressed='true'], .pf-lang button[aria-pressed='true'] { background: var(--line-strong); color: var(--surface-board); }
+.pf-link { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+
+/* ---------- demo page */
+.pf-demo { height: 100vh; height: 100dvh; display: grid; grid-template: 'bar bar' 64px 'rail stage' minmax(0, 1fr) / 372px minmax(0, 1fr); background: var(--surface-wall); color: var(--text-primary); }
+.pf-demo[data-mode='free'] { grid-template-columns: 0 minmax(0, 1fr); }
+.pf-bar { grid-area: bar; display: flex; align-items: center; gap: 16px; padding: 0 24px; border-bottom: 2px solid var(--line-strong); background: var(--surface-wall); min-width: 0; }
+.pf-logo { color: var(--text-primary); text-decoration: none; white-space: nowrap; }
+.pf-crumb { display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap; }
+.pf-crumb a { color: var(--text-secondary); text-decoration: none; }
+.pf-crumb a:hover { color: var(--text-primary); text-decoration: underline; }
+.pf-crumb [aria-current] { font-weight: 600; overflow: hidden; text-overflow: ellipsis; }
+.pf-crumb span[aria-hidden] { color: var(--line-soft); }
+
+.pf-rail { grid-area: rail; display: flex; flex-direction: column; min-height: 0; overflow-y: auto; border-right: 2px solid var(--line-strong); background: var(--surface-board); }
+.pf-rail[hidden] { display: none; }
+.pf-rail > header { display: flex; flex-direction: column; gap: 8px; padding: 24px 24px 20px; border-bottom: 1px solid var(--line-soft); }
+.pf-rail h1 { margin: 0; }
+.pf-rail p { margin: 0; }
+.pf-steps { flex: 1; margin: 0; padding: 8px 0; list-style: none; }
+.pf-steps > li { border-bottom: 1px solid var(--theme-accent-soft); }
+.pf-step { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px 24px; border: 0; background: none; color: var(--text-primary); text-align: left; cursor: pointer; }
+.pf-step:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.pf-step i { flex: none; width: 24px; height: 24px; display: grid; place-items: center; border: 2px solid var(--line-strong); border-radius: 50%; font: 700 11px/1 var(--font-geist-mono), ui-monospace, monospace; font-style: normal; }
+li[data-open] > .pf-step i { background: var(--line-strong); color: var(--surface-board); }
+li[data-done] > .pf-step i { background: var(--status-on); border-color: var(--status-on); color: var(--surface-board); }
+.pf-step-body { display: flex; flex-direction: column; gap: 12px; padding: 0 24px 20px 60px; }
+.pf-why, .pf-try { display: flex; flex-direction: column; gap: 4px; }
+.pf-why b, .pf-try b { color: var(--text-secondary); font-weight: 600; }
+.pf-try { padding: 10px 12px; border: 2px solid var(--line-strong); border-radius: 12px; }
+.pf-try em { align-self: flex-start; margin-top: 4px; padding: 2px 10px; border-radius: var(--radius-chip); background: var(--status-on); color: var(--surface-board); font-style: normal; font-weight: 600; }
+.pf-step-nav { display: flex; gap: 8px; }
+.pf-rail > footer { display: flex; flex-direction: column; gap: 6px; padding: 16px 24px 20px; border-top: 1px solid var(--line-soft); }
+.pf-rail > footer a { color: var(--text-primary); }
+
+.pf-stage { grid-area: stage; position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; padding: 20px; }
+.pf-demo[data-kind='phone'] .pf-stage { padding: 16px 20px; }
+.pf-free { margin: 0 0 12px; text-align: center; }
+.pf-narrow { display: none; margin: 0 0 8px; }
+.pf-stage-box { flex: 1; position: relative; min-height: 0; }
+.pf-frame { position: absolute; left: 0; top: 0; transform-origin: 0 0; overflow: hidden; }
+[data-kind='desktop'] .pf-frame { border-radius: 12px; box-shadow: 0 0 0 2px var(--line-strong); }
+[data-kind='phone'] .pf-frame { border-radius: 40px; box-shadow: 0 0 0 2px var(--line-strong), var(--shadow-lift); }
+
+/* what the open step asks the visitor to touch */
+.pf-stage [data-hot] { outline: 2px solid var(--pb-ink); outline-offset: 3px; animation: pf-hot 1.8s ease-in-out infinite; }
+@keyframes pf-hot { 0%, 100% { box-shadow: 0 0 0 5px rgba(234, 173, 26, 0.85); } 50% { box-shadow: 0 0 0 10px rgba(234, 173, 26, 0.3); } }
+@media (prefers-reduced-motion: reduce) { .pf-stage [data-hot] { animation: none; box-shadow: 0 0 0 6px rgba(234, 173, 26, 0.7); } }
+
+/* narrow windows: the prototype first, the steps underneath; the page scrolls */
+@media (max-width: 960px) {
+  .pf-demo, .pf-demo[data-mode='free'] { height: auto; min-height: 100dvh; grid-template: 'bar' auto 'stage' auto 'rail' auto / minmax(0, 1fr); }
+  .pf-bar { flex-wrap: wrap; row-gap: 8px; padding: 12px 16px; }
+  .pf-bar .pf-link { display: none; }
+  .pf-stage { padding: 12px; }
+  .pf-narrow { display: block; }
+  .pf-stage-box { flex: none; height: 62vw; }
+  .pf-demo[data-kind='phone'] .pf-stage-box { height: min(874px, 150vw); }
+  .pf-rail { border-right: 0; border-top: 2px solid var(--line-strong); overflow: visible; }
+}
+
+/* ---------- index page */
+.pf-index { padding: 56px 80px 96px; display: flex; flex-direction: column; gap: 48px; }
+.pf-intro { display: flex; flex-direction: column; gap: 16px; }
+.pf-intro h1, .pf-intro p { margin: 0; max-width: 860px; }
+.pf-intro-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; }
+.pf-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 0; padding: 0; list-style: none; }
+.pf-card { height: 100%; display: flex; flex-direction: column; gap: 20px; padding: 24px; border: 2px solid var(--line-strong); border-radius: var(--radius-board); background: var(--surface-board); color: var(--text-primary); text-decoration: none; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.pf-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.pf-cover { height: 340px; display: grid; place-items: center; overflow: hidden; border-radius: var(--radius-card); background: var(--surface-wall); }
+.pf-cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 0 0; }
+.pf-cover[data-kind='phone'] img { width: auto; height: 300px; border-radius: 14px; box-shadow: 0 0 0 2px var(--line-strong); object-fit: contain; }
+.pf-card h2, .pf-card p, .pf-card ul { margin: 0; }
+.pf-card-head { display: flex; flex-direction: column; gap: 6px; }
+.pf-card ul { padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.pf-card li { display: flex; gap: 10px; }
+.pf-card li::before { content: ''; flex: none; width: 6px; height: 6px; margin-top: 7px; border-radius: 50%; background: var(--theme-accent); }
+.pf-card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.pf-card-foot .pf-btn { display: inline-flex; align-items: center; gap: 6px; }
+@media (prefers-reduced-motion: reduce) { .pf-card { transition: none; } .pf-card:hover { transform: none; } }
