@@ -13,6 +13,7 @@
     "visual:case": "node scripts/visual-check-case.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "geist": "^1.8.2",
     "lucide-react": "^1.72.0",
     "matter-js": "^0.20.0",

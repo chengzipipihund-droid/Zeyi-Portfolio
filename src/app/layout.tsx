@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Baloo_Chettan_2, Gentium_Book_Plus, Inter, JetBrains_Mono, Tilt_Warp } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const tiltWarp = Tilt_Warp({ subsets: ['latin'], variable: '--font-tilt-warp', display: 'swap' });
@@ -40,7 +41,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${tiltWarp.variable} ${gentiumBookPlus.variable} ${balooChettan2.variable} ${inter.variable} ${jetBrainsMono.variable} ${GeistSans.variable} ${GeistMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
